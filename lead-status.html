@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+    <link href="assets/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
+    <link href="assets/css/lib/chartist/chartist.min.css" rel="stylesheet">
+    <link href="assets/css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="assets/css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="assets/css/lib/weather-icons.css" rel="stylesheet" />
+    <link href="assets/css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/lib/helper.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <div class="logo"><a href="dashboard.html">
+                            <img src="assets/images/logo.jpeg" width="100%" alt="" />
+                        </a></div>
+                    <li><a href="dashboard.html"><i class="ti-home"></i> Dashboard </a></li>
+                   
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Project <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Vertical <span
+                                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li><a href="new-product-vertical.html">Create</a></li>
+                                    <li><a href="edit-product-vertical.html">Edit / Delete</a></li>
+                                    <li><a href="product-verticals.html">List</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Category <span
+                                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li><a href="new-product-category.html">Create</a></li>
+                                    <li><a href="edit-product-category.html">Edit / Delete</a></li>
+                                    <li><a href="product-categories.html">List</a></li>
+                                </ul>
+                            </li>
+<li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Sub Category
+                                    <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li><a href="new-product-subcategory.html">Create</a></li>
+                                    <li><a href="edit-product-subcategory.html">Edit / Delete</a></li>
+                                    <li><a href="product-subcategories.html">List</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Mini Category
+                                <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="new-product-minicategory.html">Create</a></li>
+                                <li><a href="edit-product-minicategory.html">Edit / Delete</a></li>
+                                <li><a href="product-minicategories.html">List</a></li>
+                            </ul>
+                        </li>
+                       <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Leads <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="new-lead.html">New Lead</a></li>
+                            <li><a href="manage-lead.html">Manage Leads</a></li>
+                            <li><a href="lead-source.html">Lead Sources</a></li>
+                            <li><a href="lead-status.html">Lead Statuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Forms
+                        <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="new-form.html">Create</a></li>
+                        <li><a href="edit-form.html">Edit / Delete</a></li>
+                        <li><a href="forms.html">List</a></li>
+                    </ul>
+                </li>
+
+                        </ul>
+                    </li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-user"></i> Students <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="new-student.html">New Student</a></li>
+                            <li><a href="students.html">Students</a></li>
+                            <li><a href="student-tiles.html">Student Titles</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Staff Management <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="new-user.html">Staff Users</a></li>
+                            <li><a href="roles.html">Roles</a></li>
+                            <li><a href="permissions.html">Permissions</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoices <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="new-invoice.html">New Invoice</a></li>
+                            <li><a href="invoices.html">Invoices</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-file"></i> Reports <span
+                                class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="new-report.html">New Report</a></li>
+                            <li><a href="reports.html">Reports</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html"><i class="ti-close"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <i class="ti-bell"></i>
+                                <div class="drop-down dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-heading">
+                                        <span class="text-left">Recent Notifications</span>
+                                    </div>
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/3.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Mr. John</div>
+                                                        <div class="notification-text">5 members joined today </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/3.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Mariam</div>
+                                                        <div class="notification-text">likes a photo of you</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/3.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Tasnim</div>
+                                                        <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                            ...</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/3.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Mr. John</div>
+                                                        <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                            ...</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="text-center">
+                                                <a href="#" class="more-link">See All</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <i class="ti-email"></i>
+                                <div class="drop-down dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-heading">
+                                        <span class="text-left">2 New Messages</span>
+                                        <a href="email.html">
+                                            <i class="ti-pencil-alt pull-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li class="notification-unread">
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/1.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Michael Qin</div>
+                                                        <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                            ...</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="notification-unread">
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/2.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Mr. John</div>
+                                                        <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                            ...</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/3.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Michael Qin</div>
+                                                        <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                            ...</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <img class="pull-left m-r-10 avatar-img"
+                                                        src="assets/images/avatar/2.jpg" alt="" />
+                                                    <div class="notification-content">
+                                                        <small class="notification-timestamp pull-right">02:34
+                                                            PM</small>
+                                                        <div class="notification-heading">Mr. John</div>
+                                                        <div class="notification-text">Hi Teddy, Just wanted to let you
+                                                            ...</div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="text-center">
+                                                <a href="#" class="more-link">See All</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <span class="user-avatar">Asmita Patel
+                                    <i class="ti-angle-down f-s-10"></i>
+                                </span>
+                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="profile.html">
+                                                    <i class="ti-user"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="setting.html">
+                                                    <i class="ti-settings"></i>
+                                                    <span>Setting</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="index.html">
+                                                    <i class="ti-power-off"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>Lead Statuses</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-l-0 title-margin-left">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="manage-lead.html">Leads</a></li>
+                                    <li class="breadcrumb-item active">Lead Statuses</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <section id="main-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="example1_length"><label>Show entries<select
+                                        name="example1_length" aria-controls="example1"
+                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> </label></div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                        class="form-control form-control-sm" placeholder=""
+                                        aria-controls="example1"></label></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                                role="grid" aria-describedby="example1_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-sort="ascending"
+                                            aria-label="ID: activate to sort column descending">ID</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-label="Status Name: activate to sort column ascending">
+                                            Status Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-label="Created At: activate to sort column ascending">
+                                            Created At</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-label="Updated At: activate to sort column ascending">
+                                            Updated At</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-label="Actions: activate to sort column ascending">Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+
+
+
+
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">1</td>
+                                        <td>Won</td>
+                                        <td>2020-06-21 06:00:09</td>
+                                        <td>2020-06-21 06:00:09</td>
+                                        <td>
+                                            <a href="#" type="button" class="text-primary mr-3" data-toggle="modal"
+                                                data-target="#editStatus1"> <i class="fa fa-edit"></i> </a>
+                                            <span id="delbtn1">
+                                                <a href="#" onclick="confirmDelete('1')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+
+                                            <form id="delete-status-1" method="POST" class="has-validation-callback">
+                                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden"
+                                                    name="_token" value="yNRjTEAfrD35TbVx3y4ZljrFccKHvw1t98LLQTJG">
+                                            </form>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                    <tr role="row" class="even">
+                                        <td tabindex="0" class="sorting_1">2</td>
+                                        <td>Attempted</td>
+                                        <td>2020-06-21 06:00:35</td>
+                                        <td>2020-06-21 06:00:35</td>
+                                        <td>
+                                            <a href="#" type="button" class="text-primary mr-3" data-toggle="modal"
+                                                data-target="#editStatus2"> <i class="fa fa-edit"></i> </a>
+                                            <span id="delbtn2">
+                                                <a href="#" onclick="confirmDelete('2')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+
+                                            <form id="delete-status-2" method="POST" class="has-validation-callback">
+                                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden"
+                                                    name="_token" value="yNRjTEAfrD35TbVx3y4ZljrFccKHvw1t98LLQTJG">
+                                            </form>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">3</td>
+                                        <td>Contacted</td>
+                                        <td>2020-06-21 06:11:32</td>
+                                        <td>2020-06-21 06:11:32</td>
+                                        <td>
+                                            <a href="#" type="button" class="text-primary mr-3" data-toggle="modal"
+                                                data-target="#editStatus3"> <i class="fa fa-edit"></i> </a>
+                                            <span id="delbtn3">
+                                                <a href="#" onclick="confirmDelete('3')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+
+                                            <form id="delete-status-3" method="POST" class="has-validation-callback">
+                                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden"
+                                                    name="_token" value="yNRjTEAfrD35TbVx3y4ZljrFccKHvw1t98LLQTJG">
+                                            </form>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                    <tr role="row" class="even">
+                                        <td tabindex="0" class="sorting_1">4</td>
+                                        <td>New Opportunity</td>
+                                        <td>2020-06-21 06:11:43</td>
+                                        <td>2020-06-21 06:11:43</td>
+                                        <td>
+                                            <a href="#" type="button" class="text-primary mr-3" data-toggle="modal"
+                                                data-target="#editStatus4"> <i class="fa fa-edit"></i> </a>
+                                            <span id="delbtn4">
+                                                <a href="#" onclick="confirmDelete('4')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+
+                                            <form id="delete-status-4" method="POST" class="has-validation-callback">
+                                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden"
+                                                    name="_token" value="yNRjTEAfrD35TbVx3y4ZljrFccKHvw1t98LLQTJG">
+                                            </form>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">5</td>
+                                        <td>Disqualified</td>
+                                        <td>2020-06-21 06:12:06</td>
+                                        <td>2020-06-21 06:12:06</td>
+                                        <td>
+                                            <a href="#" type="button" class="text-primary mr-3" data-toggle="modal"
+                                                data-target="#editStatus5"> <i class="fa fa-edit"></i> </a>
+                                            <span id="delbtn5">
+                                                <a href="#" onclick="confirmDelete('5')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+
+                                            <form id="delete-status-5" method="POST" class="has-validation-callback">
+                                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden"
+                                                    name="_token" value="yNRjTEAfrD35TbVx3y4ZljrFccKHvw1t98LLQTJG">
+                                            </form>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                    <tr role="row" class="even">
+                                        <td tabindex="0" class="sorting_1">6</td>
+                                        <td>Not Attempted</td>
+                                        <td>2020-06-21 06:00:09</td>
+                                        <td>2020-06-21 06:00:09</td>
+                                        <td>
+                                            <a href="#" type="button" class="text-primary mr-3" data-toggle="modal"
+                                                data-target="#editStatus6"> <i class="fa fa-edit"></i> </a>
+                                            <span id="delbtn6">
+                                                <a href="#" onclick="confirmDelete('6')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+
+                                            <form id="delete-status-6" method="POST" class="has-validation-callback">
+                                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden"
+                                                    name="_token" value="yNRjTEAfrD35TbVx3y4ZljrFccKHvw1t98LLQTJG">
+                                            </form>
+                                        </td>
+
+
+
+
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">ID</th>
+                                        <th rowspan="1" colspan="1">Status Name</th>
+                                        <th rowspan="1" colspan="1">Created At</th>
+                                        <th rowspan="1" colspan="1">Updated At</th>
+                                        <th rowspan="1" colspan="1">Actions</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer">
+                                <p>2022 © Global School of Trading.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery vendor -->
+    <script src="assets/js/lib/jquery.min.js"></script>
+    <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
+    <!-- nano scroller -->
+    <script src="assets/js/lib/menubar/sidebar.js"></script>
+    <script src="assets/js/lib/preloader/pace.min.js"></script>
+    <!-- sidebar -->
+
+    <script src="assets/js/lib/bootstrap.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <!-- bootstrap -->
+
+    <script src="assets/js/lib/calendar-2/moment.latest.min.js"></script>
+    <script src="assets/js/lib/calendar-2/pignose.calendar.min.js"></script>
+    <script src="assets/js/lib/calendar-2/pignose.init.js"></script>
+
+
+    <script src="assets/js/lib/weather/jquery.simpleWeather.min.js"></script>
+    <script src="assets/js/lib/weather/weather-init.js"></script>
+    <script src="assets/js/lib/circle-progress/circle-progress.min.js"></script>
+    <script src="assets/js/lib/circle-progress/circle-progress-init.js"></script>
+    <script src="assets/js/lib/chartist/chartist.min.js"></script>
+    <script src="assets/js/lib/sparklinechart/jquery.sparkline.min.js"></script>
+    <script src="assets/js/lib/sparklinechart/sparkline.init.js"></script>
+    <script src="assets/js/lib/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/js/lib/owl-carousel/owl.carousel-init.js"></script>
+    <!-- scripit init-->
+    <script src="assets/js/dashboard2.js"></script>
+</body>
+
+</html>
