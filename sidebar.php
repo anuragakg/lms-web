@@ -21,8 +21,7 @@
                                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
                                     <li><a href="new-product-category.php">Create</a></li>
-                                    <li><a href="edit-product-category.html">Edit / Delete</a></li>
-                                    <li><a href="product-categories.html">List</a></li>
+                                    
                                 </ul>
                             </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Sub Category
@@ -53,7 +52,7 @@
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Forms
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
-                                    <li><a href="new-form.html">Create</a></li>
+                                    <li><a href="new-form.php">Create</a></li>
                                     <li><a href="edit-form.html">Edit / Delete</a></li>
                                     <li><a href="forms.html">List</a></li>
                                 </ul>

@@ -396,7 +396,6 @@ window.TRIFED = {
     */
     fileAjaxHit: function (url, method, data = null, cb) {
         $('#error_div').hide();
-        $('.btn').prop('disabled', true);
         var auth = TRIFED.getLocalStorageItem();
         var result;
         $.ajax({
@@ -413,27 +412,23 @@ window.TRIFED = {
             },
 			beforeSend:function(){
                 $('#error_div').empty();
-                $('.btn').prop('disabled', true);
-				$('#loader-div').html('<i class="fa fa-spinner fa-spin" style="font-size:100px"></i>');
+                $('#loader-div').html('<i class="fa fa-spinner fa-spin" style="font-size:100px"></i>');
                 $('#loader-div').show();
 				
 			},
             success: function(results) 
             {
-                $('.btn').prop('disabled', false);
                 $('#loader-div').html('');
                 $('#loader-div').hide();
             },
             statusCode: {
                 401: function () {
-                    $('.btn').prop('disabled', false);
                     $('#loader-div').html('');
                     $('#loader-div').hide();
                     //localStorage.removeItem('authUser');
                     //window.location.href = '../auth/login.php';
                 },
                 404: function () {
-                    $('.btn').prop('disabled', false);
                     $('#loader-div').html('');
                     $('#loader-div').hide();
                     cb(null, "No data found");
@@ -442,7 +437,6 @@ window.TRIFED = {
                     $('#error_div').show();
                     $('#error_div').html(res.responseJSON.message);
                     $('#error_div').focus();
-                    $('.btn').prop('disabled', false);
                     $('#loader-div').html('');
                     $('#loader-div').hide();
                     cb(res.responseJSON, res.responseJSON.message);
@@ -451,7 +445,6 @@ window.TRIFED = {
                     $('#error_div').show();
                     $('#error_div').html(res.responseJSON.message);
                     
-                    $('.btn').prop('disabled', false);
                     $('#loader-div').html('');
                     $('#loader-div').hide();
                     TRIFED.showError("error",  res.responseJSON.message || "403 error");
@@ -461,7 +454,6 @@ window.TRIFED = {
                     $('#error_div').show();
                     $('#error_div').html(res.responseJSON.message);
                     
-                    $('.btn').prop('disabled', false);
                     $('#loader-div').html('');
                     $('#loader-div').hide();
                     TRIFED.showError("error",  res.responseJSON.message || "Internal server error");

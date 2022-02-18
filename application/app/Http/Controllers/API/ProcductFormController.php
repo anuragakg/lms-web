@@ -58,7 +58,7 @@ class ProcductFormController extends BaseController
     {
         $user_id = Auth::user()->id??1;
 
-        $input = $request->->orderBy('id','desc')->all();
+        $input = $request->all();
         
         $validator = Validator::make($input, [
             'title' => 'required',
@@ -70,7 +70,7 @@ class ProcductFormController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors());       
         }
 		
-		try{
+		//try{
 			DB::beginTransaction();
 			$product=new ProcductFormModel();
 			$product->title=$request->title;
@@ -79,22 +79,25 @@ class ProcductFormController extends BaseController
 			$product->added_by=$user_id;
 			$product->approved_by=0;
 			$product->save();
-            foreach($input['contorls'] as $key=>$control)
+            //echo '<pre>';print_r($input['contorls']['element']);die;
+            foreach($input['contorls']['element'] as $key=>$control)
             {
+                
+                //dd($control);
                 $FormControl=new ProductFormControlsModel();
                 $FormControl->form_id=$product->id;
-                $FormControl->control=$control['element'];
-                $FormControl->is_required=$control['is_required'];
+                $FormControl->control=$key;
+                $FormControl->is_required=isset($input['contorls']['element'][$key]['is_required'])?1:0;
                 $FormControl->save();    
             }
             
 			DB::commit();
 			return $this->sendResponse(new ApiResource($product), 'Product Form created successfully.');
-		}catch (\Throwable $th) {
+		//}catch (\Throwable $th) {
             DB::rollBack();
 			return $this->sendError('Exception Error.', $th);  
             
-        }
+        //}
     }
 
     /**

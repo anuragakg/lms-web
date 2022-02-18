@@ -84,8 +84,11 @@ var conf = {
             return endpoint + 'product_category/' + id;
         },
         'method' : 'DELETE'
-    }
+    },
 
-
+    'addProjectForm': {
+        'url': endpoint + 'product_form',
+        'method': 'POST',
+    },
 	
 }
