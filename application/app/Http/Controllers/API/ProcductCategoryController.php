@@ -166,4 +166,9 @@ class ProcductCategoryController extends BaseController
    
         return $this->sendResponse([], 'Product Category deleted successfully.');
     }
+    public function getCategory()
+    {
+        $data= ProcductCategoryModel::select('id','title')->get();
+        return $this->sendResponse($data, 'Product Category listed successfully.');
+    }
 }

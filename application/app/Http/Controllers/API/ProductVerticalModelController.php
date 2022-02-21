@@ -155,4 +155,9 @@ class ProductVerticalModelController extends BaseController
    
         return $this->sendResponse([], 'Product deleted successfully.');
     }
+    public function getVertical()
+    {
+        $data= ProductVerticalModel::select('id','title')->get();
+        return $this->sendResponse($data, 'Product form listed successfully.');
+    }
 }

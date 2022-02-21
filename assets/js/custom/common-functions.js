@@ -480,7 +480,7 @@ window.TRIFED = {
         const authUser = JSON.parse(localStorage.getItem('authUser'));
 
         if(!authUser){
-            window.location.href = '../auth/login.php';
+            window.location.href = 'index.php';
         }
 
         if (authUser.role == 1) {

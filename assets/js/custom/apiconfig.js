@@ -90,5 +90,97 @@ var conf = {
         'url': endpoint + 'product_form',
         'method': 'POST',
     },
-	
+    'getProjectForm': {
+        url : function (id) {
+            return endpoint + 'product_form/' + id;
+        },
+        'method' : 'GET'
+    },
+    'getProjectFormList': {
+        url : endpoint + 'product_form',
+        'method' : 'GET'
+    },
+    'deleteProject': {
+        url : function (id) {
+            return endpoint + 'product_form/' + id;
+        },
+        'method' : 'DELETE'
+    },
+
+    'approved_product_vertical': {
+        url : endpoint + 'approved_product_vertical',
+        'method' : 'GET'
+    },
+    'approved_product_categories': {
+        url : endpoint + 'approved_product_categories',
+        'method' : 'GET'
+    },
+    'approved_products_form': {
+        url : endpoint + 'approved_products_form',
+        'method' : 'GET'
+    },
+	'addProjectSubCategory': {
+        'url': endpoint + 'product_subcategory',
+        'method': 'POST',
+    },
+    'getProjectSubCategory': {
+        url : function (id) {
+            return endpoint + 'product_subcategory/' + id;
+        },
+        'method': 'GET',
+    },
+    'getProjectSubCategoryList': {
+        'url': endpoint + 'product_subcategory',
+        'method': 'GET',
+    },
+    'deleteSubCategory': {
+        url : function (id) {
+            return endpoint + 'product_subcategory/' + id;
+        },
+        'method' : 'DELETE'
+    },
+    'getFormControls':{
+        url : function (id) {
+            return endpoint + 'product_form/' + id;
+        },
+        'method' : 'GET'
+    },
+    'addProjectMiniCategory': {
+        'url': endpoint + 'product_mini_category',
+        'method': 'POST',
+    },
+    'getProjectMiniCategoryList': {
+        'url': endpoint + 'product_mini_category',
+        'method': 'GET',
+    },
+    'getProjectMiniCategory': {
+        url : function (id) {
+            return endpoint + 'product_mini_category/' + id;
+        },
+        'method': 'GET',
+    },
+    'getRolesList': {
+        'url': endpoint + 'roles',
+        'method': 'GET',
+    },
+    'getPermissionList': {
+        'url': endpoint + 'permissions_list',
+        'method': 'GET',
+    },
+    'getRole': {
+        url : function (id) {
+            return endpoint + 'roles/' + id;
+        },
+        'method': 'GET',
+    },
+    'addRolePermission': {
+        url : endpoint + 'save_role_permissions',
+        'method': 'POST',
+    },
+    'getRolePermission': {
+        url : function (id) {
+            return endpoint + 'get-role-permissions/' + id;
+        },
+        'method': 'GET',
+    },
 }

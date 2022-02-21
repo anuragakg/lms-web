@@ -13,7 +13,7 @@
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Vertical <span
                                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
-                                    <li><a href="new-product-vertical.php">Create</a></li>
+                                    <li class=""><a href="new-product-vertical.php">Create</a></li>
                                    
                                 </ul>
                             </li>
@@ -27,17 +27,15 @@
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Sub Category
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
-                                    <li><a href="new-product-subcategory.html">Create</a></li>
-                                    <li><a href="edit-product-subcategory.html">Edit / Delete</a></li>
-                                    <li><a href="product-subcategories.html">List</a></li>
+                                    <li><a href="new-product-subcategory.php">Create</a></li>
+                                    <li><a href="product-subcategories.php">List</a></li>
                                 </ul>
                             </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Mini Category
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
-                                    <li><a href="new-product-minicategory.html">Create</a></li>
-                                    <li><a href="edit-product-minicategory.html">Edit / Delete</a></li>
-                                    <li><a href="product-minicategories.html">List</a></li>
+                                    <li><a href="new-product-minicategory.php">Create</a></li>
+                                    <li><a href="product-minicategories.php">List</a></li>
                                 </ul>
                             </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Leads <span
@@ -53,8 +51,7 @@
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
                                     <li><a href="new-form.php">Create</a></li>
-                                    <li><a href="edit-form.html">Edit / Delete</a></li>
-                                    <li><a href="forms.html">List</a></li>
+                                    <li><a href="new-form-list.php">List</a></li>
                                 </ul>
                             </li>
 
@@ -71,9 +68,9 @@
                     <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Staff Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li><a href="new-user.html">Staff Users</a></li>
-                            <li><a href="roles.html">Roles</a></li>
-                            <li><a href="permissions.html">Permissions</a></li>
+                            <li><a href="new-user.php">Staff Users</a></li>
+                            <li><a href="roles.php">Roles</a></li>
+                            <!-- <li><a href="permissions.html">Permissions</a></li> -->
                         </ul>
                     </li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoices <span
@@ -90,7 +87,7 @@
                             <li><a href="reports.html">Reports</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html"><i class="ti-close"></i> Logout</a></li>
+                    <li><a href="javascript:void(0)" onclick="logout()"><i class="ti-close"></i> Logout</a></li>
                 </ul>
             </div>
         </div>

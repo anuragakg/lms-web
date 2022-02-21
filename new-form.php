@@ -70,7 +70,7 @@
                         <div class="col-md-7">
                             <div class="form">
                                 <label for="">New Form Name </label>
-                                <input type="text" required name="title" id="allowalpha" placeholder="Enter Form Name"
+                                <input type="text" required name="title" id="title" placeholder="Enter Form Name"
                                     class="form-control form-control-sm" >
                                     <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
                                    
@@ -80,7 +80,7 @@
                         <div class="col-md-5 d-flex">
                             <div class="form">
                                 <label for="">Select Form Type</label>
-                                <select class="form-control" name="type" aria-label="Default select example" required>
+                                <select class="form-control" name="type" id="type" aria-label="Default select example" required>
                                     <option value="">Select</option>
                                     <option value="1">Mini Category</option>
                                     <option value="2">Leads</option>
@@ -90,30 +90,30 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][first_name]">
+                                    <input type="checkbox" id="scales" name="contorls[element][source][input]">
                                     <label for="scales">Source</label>
-                                    <input type="checkbox" class="on-off-switch" name="contorls[element][first_name][is_required]" checked>
+                                    <input type="checkbox" class="on-off-switch" name="contorls[element][source][is_required]" checked>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][status]">
+                                    <input type="checkbox" id="scales" name="contorls[element][status_field][input]">
                                     <label for="scales">Status</label>
                                     
-                                    <input type="checkbox" class="on-off-switch" name="contorls[element][status][is_required]" checked>
+                                    <input type="checkbox" class="on-off-switch" name="contorls[element][status_field][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][assigned]">
+                                    <input type="checkbox" id="scales" name="contorls[element][assigned][input]">
                                     <label for="scales">Assigned</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][assigned][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][lead_temp]">
+                                    <input type="checkbox" id="scales" name="contorls[element][lead_temp][input]">
                                     <label for="scales">LeadTemprature</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][lead_temp][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][rating]">
+                                    <input type="checkbox" id="scales" name="contorls[element][rating][input]">
                                     <label for="scales">Lead Score/Rating</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][rating][is_required]" checked>
@@ -121,14 +121,14 @@
 
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][process_status]">
+                                    <input type="checkbox" id="scales" name="contorls[element][process_status][input]">
                                     <label for="scales">Process Status</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][process_status][is_required]" checked>
 
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][title]">
+                                    <input type="checkbox" id="scales" name="contorls[element][title][input]">
                                     <label for="scales">Title/Position</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][title][is_required]" checked>
@@ -136,7 +136,7 @@
 
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][first_name]">
+                                    <input type="checkbox" id="scales" name="contorls[element][first_name][input]">
                                     <label for="scales">First Name</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][first_name][is_required]" checked>
@@ -145,61 +145,61 @@
                                    
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][last_name]">
+                                    <input type="checkbox" id="scales" name="contorls[element][last_name][input]">
                                     <label for="scales">Last Name</label>
                                    
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][last_name][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][company_name]">
+                                    <input type="checkbox" id="scales" name="contorls[element][company_name][input]">
                                     <label for="scales">Company Name</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][company_name][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][email]">
+                                    <input type="checkbox" id="scales" name="contorls[element][email][input]">
                                     <label for="scales">Email</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][email][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][phone]">
+                                    <input type="checkbox" id="scales" name="contorls[element][phone][input]">
                                     <label for="scales">Phone</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][phone][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][fax]">
+                                    <input type="checkbox" id="scales" name="contorls[element][fax][input]">
                                     <label for="scales">Fax</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][fax][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][whatsapp]">
+                                    <input type="checkbox" id="scales" name="contorls[element][whatsapp][input]">
                                     <label for="scales">Whatsapp Number</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][whatsapp][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][website]">
+                                    <input type="checkbox" id="scales" name="contorls[element][website][input]">
                                     <label for="scales">Website</label>
                                    
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][website][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][speaks]">
+                                    <input type="checkbox" id="scales" name="contorls[element][speaks][input]">
                                     <label for="scales">Speaks</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][speaks][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][industry]">
+                                    <input type="checkbox" id="scales" name="contorls[element][industry][input]">
                                     <label for="scales">Industry</label>
                                    
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][industry][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
-                                    <input type="checkbox" id="scales" name="contorls[element][notes]">
+                                    <input type="checkbox" id="scales" name="contorls[element][notes][input]">
                                     <label for="scales">Notes</label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][notes][is_required]" checked>
@@ -214,22 +214,13 @@
                             data-target="#exampleModal" >Create New Form
                     </button>
                         </div>
-                        <div class="col-md-12 mt-3">
-                            <h6 class="w-100">List of Existing Forms </h6>
-                            <div id="myGrid" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
-                        </div>
+                        
                     </div>
                 </form>
             </div>
 
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer">
-                        <p>2022 © Global School of Trading.</p>
-                    </div>
-                </div>
-            </div>
+            
             </section>
         </div>
     </div>

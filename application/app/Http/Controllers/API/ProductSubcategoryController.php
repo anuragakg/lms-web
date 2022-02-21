@@ -4,23 +4,30 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Models\ProductSubcategoryModel as Apimodel;
+use App\Models\ProjectSubCategoryStatusModel;
 use App\Http\Resources\ProductSubCategoryResource as ApiResource;
 use Validator;
 use Auth;
 use DB;
-
+use App\Services\ProductSubCategoryService;
 use App\Http\Controllers\API\BaseController as BaseController;
 class ProductSubcategoryController extends BaseController
 {
+    protected $service;
+
+    public function __construct(ProductSubCategoryService $ProductSubCategoryService)
+    {
+        $this->service = $ProductSubCategoryService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         try{
-			$product=Apimodel::paginate(5);
+			$product=$this->service->getList($request);
 			$items = ApiResource::collection($product);
 			$json_data = array(
 			"recordsTotal"    => $items->total(),  
@@ -31,7 +38,7 @@ class ProductSubcategoryController extends BaseController
 			'previous' => $items->previousPageUrl(),
 			'per_page' => $items->perPage(),   
 			);
-			return $this->sendResponse( $json_data, 'Product Form List successfully.');
+			return $this->sendResponse( $json_data, 'Product Sub Category List successfully.');
 		}catch (\Throwable $th) {
             return $this->sendError('Exception Error.', $th);  
         }
@@ -55,39 +62,25 @@ class ProductSubcategoryController extends BaseController
      */
     public function store(Request $request)
     {
-        $user_id = Auth::user()->id??1;
-
         $input = $request->all();
-   
-        $validator = Validator::make($input, [
-            'sub_category' => 'required',
-            'category_id' => 'required',
-            'vertical_id' => 'required',
-            'form_id' => 'required',
-            'lead_id' => 'required'
-        ]);
-   
+        $validator=$this->service->checkValidation($input);
+
+        
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return $this->sendError('Validation Error.', $validator->errors()->first());       
         }
-		
-		try{
-			DB::beginTransaction();
-			$product=new Apimodel();
-			$product->sub_category=$request->sub_category;
-            $product->category_id=$request->category_id;
-            $product->vertical_id=$request->vertical_id;
-            $product->form_id=$request->form_id;
-            $product->lead_id=$request->lead_id;
-			$product->status=0;
-			$product->added_by=$user_id;
-			$product->approved_by=0;
-			$product->save();
-			DB::commit();
-			return $this->sendResponse(new ApiResource($product), 'Product Form created successfully.');
-		}catch (\Throwable $th) {
-            DB::rollBack();
-			return $this->sendError('Exception Error.', $th);  
+        
+        try{
+            if(isset($request->form_id) && !empty($request->form_id)){
+                $product=$this->service->updateCategory($request,$request->form_id);
+            }else{
+                $product=$this->service->addCategory($request);    
+            }
+            
+            return $this->sendResponse(new ApiResource($product), 'Product Sub Category created successfully.');
+           
+        }catch (\Throwable $th) {
+            return $this->sendError('Exception Error.', $th);  
             
         }
     }

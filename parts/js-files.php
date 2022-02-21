@@ -68,6 +68,9 @@ $cache_buster=time();
   function xssClean(input) {
     return xssFilters.inHTMLData(input);
   }
+  function logout(){
+	  TRIFED.logout()
+  }
 </script>
 
 <script>

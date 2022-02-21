@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ProcductFormModel extends Model
 {
     use HasFactory,SoftDeletes;
-	protected $table='procduct_form';
+	protected $table='product_form';
 	/**
      * Get User Details
      *
@@ -21,5 +21,13 @@ class ProcductFormModel extends Model
 	public function getApprovedBy()
     {
         return $this->hasOne('App\Models\User', 'id', 'approved_by');
+    }
+    public function getStatus()
+    {
+        return $this->hasMany('App\Models\ProjectFormStatusModel', 'product_id', 'id');
+    }
+    public function getControls()
+    {
+        return $this->hasMany('App\Models\ProductFormControlsModel', 'form_id', 'id');
     }
 }

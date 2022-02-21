@@ -8,20 +8,29 @@ use Validator;
 use Auth;
 use DB;
 use App\Http\Resources\ProductFormResource as ApiResource;
+use App\Http\Resources\ProductFormDetailResource;
 use App\Models\ProcductFormModel;
 use App\Models\ProductFormControlsModel;
+use App\Services\ProductFormService;
 use App\Http\Controllers\API\BaseController as BaseController;
 class ProcductFormController extends BaseController
 {
+    protected $service;
+
+    public function __construct(ProductFormService $ProductFormService)
+    {
+        $this->service = $ProductFormService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request = $request->all();
         try{
-			$product=ProcductFormModel::paginate(5);
+			$product=$this->service->getList($request);
 			$items = ApiResource::collection($product);
 			$json_data = array(
 			"recordsTotal"    => $items->total(),  
@@ -56,48 +65,27 @@ class ProcductFormController extends BaseController
      */
     public function store(Request $request)
     {
-        $user_id = Auth::user()->id??1;
-
         $input = $request->all();
-        
-        $validator = Validator::make($input, [
-            'title' => 'required',
-            'type' => 'required',
-            'controls' => 'array'
-        ]);
-   
+        $validator=$this->service->checkValidation($input);
+
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return $this->sendError('Validation Error.', $validator->errors()->first());       
         }
-		
-		//try{
-			DB::beginTransaction();
-			$product=new ProcductFormModel();
-			$product->title=$request->title;
-			$product->type=$request->type;
-			$product->status=0;
-			$product->added_by=$user_id;
-			$product->approved_by=0;
-			$product->save();
-            //echo '<pre>';print_r($input['contorls']['element']);die;
-            foreach($input['contorls']['element'] as $key=>$control)
-            {
-                
-                //dd($control);
-                $FormControl=new ProductFormControlsModel();
-                $FormControl->form_id=$product->id;
-                $FormControl->control=$key;
-                $FormControl->is_required=isset($input['contorls']['element'][$key]['is_required'])?1:0;
-                $FormControl->save();    
+        
+        try{
+            if(isset($request->form_id) && !empty($request->form_id)){
+
+                $product=$this->service->updateForm($request,$request->form_id);
+            }else{
+                $product=$this->service->addForm($request);    
             }
             
-			DB::commit();
-			return $this->sendResponse(new ApiResource($product), 'Product Form created successfully.');
-		//}catch (\Throwable $th) {
-            DB::rollBack();
-			return $this->sendError('Exception Error.', $th);  
+            return $this->sendResponse(new ApiResource($product), 'Product created successfully.');
+           
+        }catch (\Throwable $th) {
+            return $this->sendError('Exception Error.', $th);  
             
-        //}
+        }
     }
 
     /**
@@ -113,7 +101,7 @@ class ProcductFormController extends BaseController
         if (is_null($product)) {
             return $this->sendError('Product Form not found.');
         }
-		return $this->sendResponse(new ApiResource($product), 'Product Form retrieved successfully.');
+		return $this->sendResponse(new ProductFormDetailResource($product), 'Product Form retrieved successfully.');
     }
 
     /**
@@ -149,23 +137,7 @@ class ProcductFormController extends BaseController
         }
 
         try{
-			DB::beginTransaction();
-			$product =ProcductFormModel::find($id);
-			$product->title=$request->title;
-			$product->type=$request->type;
-			$product->save();
-
-            ProductFormControlsModel::where('form_id',$id)->delete();
-            
-            foreach($input['contorls'] as $key=>$control)
-            {
-                $FormControl=new ProductFormControlsModel();
-                $FormControl->form_id=$product->id;
-                $FormControl->control=$control['element'];
-                $FormControl->is_required=$control['is_required'];
-                $FormControl->save();    
-            }
-			DB::commit();
+			$product=$this->service->updateForm($request,$request->form_id);
 			return $this->sendResponse(new ApiResource($product), 'Product Form updated successfully.');
 		}catch (\Throwable $th) {
             DB::rollBack();
@@ -195,4 +167,27 @@ class ProcductFormController extends BaseController
 			return $this->sendError($th);  
         }
     }
+    public function getProductForm()
+    {
+        $products= ProcductFormModel::select('id','title','type')->get();
+        $product_arr=array();
+        foreach($products as $product){
+            if($product->type=='1'){
+                $product_arr['mini'][]=array(
+                    'id'=>$product->id,
+                    'title'=>$product->title
+                );
+            }
+            if($product->type=='2'){
+                $product_arr['lead'][]=array(
+                    'id'=>$product->id,
+                    'title'=>$product->title
+                );
+            }
+            
+        }
+        return $this->sendResponse($product_arr, 'Product form listed successfully.');
+        
+    }
+    
 }

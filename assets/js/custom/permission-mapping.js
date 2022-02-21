@@ -1,49 +1,49 @@
+const role_id = TRIFED.getUrlParameters().id;
 $(function() {
-  getRoles();
-  
-});
-$('#role_id').on('change',function(){
-    getPermissions();
-});
-const mustacheTemplates = {
-  permission: "#listPermission",
-  permissionHeading: "#listPermissionHeading"
-};
-
-const permissionGroups = [];
-
-function processMustacheTemplates() {
-  for (template in mustacheTemplates) {
-    const source = $(mustacheTemplates[template]).html();
-    mustacheTemplates[template] = source;
-    Mustache.parse(source);
+  getPermission();
+  if(role_id != undefined)
+  {
+	  getRolePermission(role_id);
   }
-}
+  $("#formID").submit(function(e) {
+	    e.preventDefault();
+	}).validate({
+	    rules: {
+           
+            
+        },
+        messages: {
+            
+		},
+	    submitHandler: function(form) { 
+	        
+			//const data=$('#formID').serializeArray();
+			
+    		
+			var url = conf.addRolePermission.url;
+			var method = conf.addRolePermission.method;
+			
+			var form = $('#formID')[0];   
+    		var data = new FormData(form);	
+    		if (role_id != undefined && role_id != '') 
+			{
+				data.append('role_id', role_id );
+			}
+			TRIFED.fileAjaxHit(url, method, data, function (response) {
+				if (response.status == 1) {
+					
+					TRIFED.showMessage('success', 'Saved Successfully');
+					setTimeout(function() { window.location = 'roles.php'}, 500);
+				} else {
+					TRIFED.showError('error', response.message);
+				}
+			});
+	        return false;  //This doesn't prevent the form from submitting.
+	    }
+	});
+});
 
-processMustacheTemplates();
-
-getRoles = () => {
-  var url = conf.getRolesList.url;
-  var method = conf.getRolesList.method;
-  var data = {};
-  var options = "";
-  options +='<option value="">Select Role</option>';
-  TRIFED.asyncAjaxHit(url, method, data, function(response, cb) {
-    if (response) {
-      $.each(response.data, function(i, data) {
-        
-        options +=
-          '<option value="' +
-          data.id +
-          '" >' +
-          utils.generateAbbreviation(data.title) +
-          "</option>";
-      });
-      $("#role_id").html(options);
-    }
-  });
-};
-getPermissions = () => {
+getPermission = () => {
   var url = conf.getPermissionList.url;
   var method = conf.getPermissionList.method;
   var data = {};
@@ -60,15 +60,15 @@ function renderPermissions(data) {
   $("#permission_container").html("");
   let index = 1;
   for (const group in data) {
-    permissionGroups.push(group);
-    const _data = {
-      index: index,
-      type: "th",
-      name: utils.applyDictionary(ucFirstAllWords(group)),
-      group: group
-    };
-    appendRow(mustacheTemplates.permissionHeading, _data);
-    if (Array.isArray(data[group])) {
+    
+	console.log(group)
+	let group_tr='<tr>';
+	group_tr +='<th>'+index+'</th>';
+	group_tr +='<th>'+ucFirstAllWords(group)+'</th>';
+	group_tr +='<th></th>';
+	group_tr +='</tr>';
+	$('#permission_container').append(group_tr);
+	if (Array.isArray(data[group])) {
       data[group].forEach(v => {
         const data = {
           name: v.name,
@@ -76,9 +76,16 @@ function renderPermissions(data) {
           type: "td",
           id: v.id
         };
-        appendRow(mustacheTemplates.permission, data);
+		let group_module_tr='<tr>';
+		group_module_tr +='<td></td>';
+		group_module_tr +='<td>'+v.description+'</td>';
+		group_module_tr +='<td><input type="checkbox" name="permission_id[]" value="'+v.alias+'"></td>';
+		group_module_tr +='</tr>';
+		$('#permission_container').append(group_module_tr);
+        //appendRow(mustacheTemplates.permission, data);
       });
     }
+    
     index++;
   }
 }
@@ -203,4 +210,21 @@ function toggleMasterPermissions() {
       $('#' + permission).prop("checked", true);
     }
   });
+}
+
+getRolePermission=(role_id)=>
+{
+	var url = conf.getRolePermission.url(role_id);
+	var method = conf.getRolePermission.method;
+	var data = {};
+	var options = "";
+	TRIFED.asyncAjaxHit(url, method, data, function(response, cb) {
+	if (response) {
+		response.data.forEach((row)=>{
+			$(':checkbox[value="'+row.permission+'"]').prop("checked","true");
+		})
+	  
+
+	}
+	});
 }

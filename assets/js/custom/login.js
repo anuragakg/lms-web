@@ -41,7 +41,7 @@ checkAuthentication = () => {
     var authUser= TRIFED.getLocalStorageItem();
 
     if(authUser && authUser.token){
-        window.location.href = '../auth/dashboard.php';
+        window.location.href = 'dashboard.php';
     }
 }
 
@@ -85,7 +85,12 @@ login = () => {
                 dataType: 'json',
                 
                 statusCode: {
-                    422: function (response) {
+                    404: function (response) {
+						$('#password').val('');
+                        TRIFED.showError('error', response.responseJSON.message);
+						
+                    },
+					422: function (response) {
 						$('#password').val('');
                         TRIFED.showError('error', response.responseJSON.message);
 						
@@ -118,10 +123,10 @@ function setToken(response) {
     var auth = {};
     auth.token = response.data['token'];
     auth.name = response.data['name'];
-    /*auth.role_name = response.data['role_name'];
+    auth.role_name = response.data['role_name'];
     
     auth.permissions = response.data['permissions'];
-    auth.role = response.data["role"];*/
+    auth.role = response.data["role"];
     localStorage.setItem('authUser', JSON.stringify(auth));
 }
 

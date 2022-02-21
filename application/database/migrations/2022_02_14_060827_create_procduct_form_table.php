@@ -13,7 +13,7 @@ class CreateProcductFormTable extends Migration
      */
     public function up()
     {
-        Schema::create('procduct_form', function (Blueprint $table) {
+        Schema::create('product_form', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->tinyinteger('type')->comment('1=mini category,2=lead form');

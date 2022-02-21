@@ -17,9 +17,9 @@ class CreateProductSubcategoryTable extends Migration
             $table->id();
             $table->string('sub_category');
             $table->integer('category_id');
-            $table->integer('vertical_id');
-            $table->integer('form_id');
-            $table->integer('lead_id');
+            $table->integer('product_vertical_id');
+            $table->integer('product_form_mini_id');
+            $table->integer('product_form_lead_id');
 			
 			$table->boolean('status')->default(0);
             $table->bigInteger('added_by');

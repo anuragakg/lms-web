@@ -10,10 +10,12 @@ function getUrlVars() {
 }
 const edit_id = TRIFED.getUrlParameters().id;
 $(function () {
-	
+	fetchCategory();
+	fetchProductForm();
+	fetchVertical();
 	if(edit_id!= undefined)
 	{
-		fetchFormData(edit_id)
+		fetchSubCategory(edit_id)
 	}
  	var auth = TRIFED.getLocalStorageItem();
  	let listElement='#list';
@@ -32,7 +34,7 @@ $(function () {
 					extend: 'excel',
 					text: '<i class="fa fa-file-excel-o"></i> Export to Excel',
 					titleAttr: 'EXCEL',
-					title: 'Product Form List',
+					title: 'Product Category List',
 					exportOptions: {
 						columns: [0, 1, 2,3,4,5,6]
 					}
@@ -43,7 +45,7 @@ $(function () {
 			  ],
 			  
             "ajax":{
-                     "url": conf.getProjectFormList.url,
+                     "url": conf.getProjectSubCategoryList.url,
                      "dataType": "json",
                      "type": "GET",
                      "headers": {
@@ -74,14 +76,35 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
-									return row.title;
+									return row.sub_category;
 							}
 							 
 						},
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
-									return row.type_text;
+									return row.category.title;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
+									return row.vertical.title;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
+									return row.form.title;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
+									return row.lead;
 							}
 							 
 						},
@@ -124,8 +147,8 @@ $(function () {
 							"orderable": false,
 							"render": function(data, type, row) {
 								var html='';
-								html +='<a href="new-form.php?id='+row.id+'" class="ti-pencil"></a>  | ';
-								html +='<a href="javascript:void(0)" onclick="deleteForm('+row.id+')" class="ti-trash"></a> ';
+								html +='<a href="new-product-subcategory.php?id='+row.id+'" class="ti-pencil"></a>  | ';
+								html +='<a href="javascript:void(0)" onclick="deleteCategory('+row.id+')" class="ti-trash"></a> ';
 								return html;
 									
 							}
@@ -145,23 +168,19 @@ $(function () {
 	    e.preventDefault();
 	}).validate({
 	    rules: {
-            title:{
-            	'required':true
-            },
+            
             
         },
         messages: {
-            title:{
-            	'required':'Please enter title',
-            }
+            
 		},
 	    submitHandler: function(form) { 
 	        
 			//const data=$('#formID').serializeArray();
 			
     		
-			var url = conf.addProjectForm.url;
-			var method = conf.addProjectForm.method;
+			var url = conf.addProjectSubCategory.url;
+			var method = conf.addProjectSubCategory.method;
 			
 			var form = $('#formID')[0];   
     		var data = new FormData(form);	
@@ -172,8 +191,8 @@ $(function () {
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
-					TRIFED.showMessage('success', 'Product Form Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'new-form-list.php'}, 500);
+					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
+					setTimeout(function() { window.location = 'product-sub-category-list.php'}, 500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -183,38 +202,79 @@ $(function () {
 	});    
 });
 
-
-fetchFormData = (id = 0) => {
-	var url = conf.getProjectForm.url(id);
-	var method = conf.getProjectForm.method;
+fetchSubCategory=(id=0)=>{
+	
+	var url = conf.getProjectSubCategory.url(id);
+	var method = conf.getProjectSubCategory.method;
 	var data = {};
 	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 		if (response) {
-			$('#title').val(response.data.title);
-			$('#type').val(response.data.type);
-			response.data.controls.forEach((row)=>{
-				element='contorls[element]['+row.control+'][input]';
-				$('input[name="'+element+'"]').prop('checked',true);
-				element_is_required='contorls[element]['+row.control+'][is_required]';
-				if(row.is_required==1){
-					checked=true;
-				}else{
-					checked=false;
-				}
-				$('input[name="'+element_is_required+'"]').prop('checked',checked);
+			$('#sub_category').val(response.data.sub_category);
+			$('#category_id').val(response.data.category_id);
+			$('#product_vertical_id').val(response.data.product_vertical_id);
+			$('#product_form_mini_id').val(response.data.product_form_mini_id);
+			$('#product_form_lead_id').val(response.data.product_form_lead_id);
+		}
+	});	
+
+	
+}
+fetchCategory = () => {
+	var url = conf.approved_product_categories.url;
+	var method = conf.approved_product_categories.method;
+	var data = {};
+	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+		if (response) {
+			html='<option value="">Select Category</option>';
+			response.data.forEach((row)=>{
+				html +='<option value="'+row.id+'">'+row.title+'</option>'
 			});
+			$('#category_id').html(html);
 		}
 	});
 }
-deleteForm=(id=0)=>{
+fetchProductForm = () => {
+	var url = conf.approved_products_form.url;
+	var method = conf.approved_products_form.method;
+	var data = {};
+	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+		if (response) {
+			mini_html='<option value="">Select Product Mini Category form</option>';
+			response.data.mini.forEach((row)=>{
+				mini_html +='<option value="'+row.id+'">'+row.title+'</option>'
+			});
+			$('#product_form_mini_id').html(mini_html);
+			lead_html='<option value="">Select Product Lead form</option>';
+			response.data.lead.forEach((row)=>{
+				lead_html +='<option value="'+row.id+'">'+row.title+'</option>'
+			});
+			$('#product_form_lead_id').html(lead_html);
+		}
+	});
+}
+fetchVertical = () => {
+	var url = conf.approved_product_vertical.url;
+	var method = conf.approved_product_vertical.method;
+	var data = {};
+	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+		if (response) {
+			html='<option value="">Select Product Vertical</option>';
+			response.data.forEach((row)=>{
+				html +='<option value="'+row.id+'">'+row.title+'</option>'
+			});
+			$('#product_vertical_id').html(html);
+		}
+	});
+}
+deleteCategory=(id=0)=>{
 	if(confirm('Are you sure to delete this?')){
-		var url = conf.deleteProject.url(id);
-		var method = conf.deleteProject.method;
+		var url = conf.deleteSubCategory.url(id);
+		var method = conf.deleteSubCategory.method;
 		var data = {};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
-				TRIFED.showMessage('success', 'Product Form deleted Successfully');
-				setTimeout(function() { window.location = 'new-form-list.php'}, 500);
+				TRIFED.showMessage('success', 'Product Sub Category deleted Successfully');
+				setTimeout(function() { window.location = 'product-sub-category-list.php'}, 500);
 			}
 		});	
 	}

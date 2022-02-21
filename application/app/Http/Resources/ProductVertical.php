@@ -23,7 +23,7 @@ class ProductVertical extends JsonResource
                 $pending_usertype[]='L'.$user;
             }
             if(!empty($pending_usertype)){
-                $status_text=implode(',', $pending_usertype);    
+                $status_text='Pending '.implode(',', $pending_usertype);    
             }else{
                 $status_text='Pending';
             }

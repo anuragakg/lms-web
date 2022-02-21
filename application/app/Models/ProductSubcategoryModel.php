@@ -16,11 +16,15 @@ class ProductSubcategoryModel extends Model
     }
     public function getVertical()
     {
-        return $this->belongsTo('App\Models\ProductVerticalModel', 'vertical_id', 'id');
+        return $this->belongsTo('App\Models\ProductVerticalModel', 'product_vertical_id', 'id');
     }
     public function getForm()
     {
-        return $this->belongsTo('App\Models\ProcductFormModel', 'form_id', 'id');
+        return $this->belongsTo('App\Models\ProcductFormModel', 'product_form_mini_id', 'id');
+    }
+    public function getLead()
+    {
+        return $this->belongsTo('App\Models\ProcductFormModel', 'product_form_lead_id', 'id');
     }
 
     /**
@@ -35,5 +39,9 @@ class ProductSubcategoryModel extends Model
     public function getApprovedBy()
     {
         return $this->belongsTo('App\Models\User', 'approved_by', 'id');
+    }
+    public function getStatus()
+    {
+        return $this->hasMany('App\Models\ProjectSubCategoryStatusModel', 'form_id', 'id');
     }
 }
