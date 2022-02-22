@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use Auth;
 class ProductVertical extends JsonResource
 {
     /**
@@ -14,7 +14,18 @@ class ProductVertical extends JsonResource
      */
     public function toArray($request)
     {
+        $user = Auth::user();
+        $role=$user->role;
+        $user_id=$user->id;
+        $user_role=getLTypeUser($role);
+        $current_usertype_status=null;
+        if(in_array($role, [2,3,4]))
+        {
+            $current_usertype_status=$this->getStatus->where('user_type',$user_role)->first();
+                
+        }
         $pending_user_type=$this->getStatus->where('status',0)->pluck('user_type');
+        
         
         if($this->status==0 )
         {
@@ -27,7 +38,6 @@ class ProductVertical extends JsonResource
             }else{
                 $status_text='Pending';
             }
-            
         }
         if($this->status==1)
         {
@@ -43,6 +53,7 @@ class ProductVertical extends JsonResource
             'title' => $this->title,
             'status' => $this->status,
             'status_text' => $status_text,
+            'current_usertype_status' => $current_usertype_status,
             
             'added_by' => $this->getAddedBy,
             'approved_by' => $this->getApprovedBy??'-',

@@ -183,4 +183,8 @@ var conf = {
         },
         'method': 'GET',
     },
+    'updateProjectVerticalStatus': {
+        url : endpoint + 'updateProjectVerticalStatus',
+        'method': 'POST',
+    },
 }

@@ -29,7 +29,7 @@ class ProductVerticalModelController extends BaseController
     public function index(Request $request)
     {
         $request = $request->all();
-        try{
+        //try{
 			$product=$this->service->getList($request);
 			$items = ProductResource::collection($product);
 			$json_data = array(
@@ -42,9 +42,9 @@ class ProductVerticalModelController extends BaseController
 			'per_page' => $items->perPage(),   
 			);
 			return $this->sendResponse( $json_data, 'Product Vertical Listed successfully.');
-		}catch (\Throwable $th) {
+		//}catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
-       }
+       //}
     }
 
     
@@ -159,5 +159,15 @@ class ProductVerticalModelController extends BaseController
     {
         $data= ProductVerticalModel::select('id','title')->get();
         return $this->sendResponse($data, 'Product form listed successfully.');
+    }
+    public function updateProjectVerticalStatus(Request $request)
+    {
+        try{
+            $status=$this->service->updateProjectVerticalStatus($request);
+            
+            return $this->sendResponse( $status, 'Product Vertical status updated successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
     }
 }

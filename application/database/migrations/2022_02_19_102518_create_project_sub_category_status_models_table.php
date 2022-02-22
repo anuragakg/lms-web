@@ -18,6 +18,7 @@ class CreateProjectSubCategoryStatusModelsTable extends Migration
             $table->tinyinteger('status')->comment('1=>approved,2=reject,0=pending');
             $table->string('user_type');
             $table->integer('form_id');
+			$table->integer('updated_by');
             $table->timestamps();
             $table->softDeletes();
         });

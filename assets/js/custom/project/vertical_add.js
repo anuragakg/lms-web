@@ -109,7 +109,14 @@ $(function () {
 						{
 							"orderable": false,
 							"render": function(data, type, row) {
-									return row.status_text;
+									var html='';
+									html += row.status_text+'<br>';
+									if(row.current_usertype_status.status == 0 && (auth.role ==2 || auth.role ==3 ||auth.role ==4) ){
+										html += '<a class="btn btn-success" href="javascript:void(0)" onclick="updateStatus('+row.id+',1)">Approve</a> | ';
+										html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
+									}
+									
+									return html;
 									
 							}
 						},
@@ -201,4 +208,25 @@ deleteVertical=(id=0)=>{
 		});	
 	}
 	
+}
+updateStatus=(id,status)=>{
+	if(status==1){
+		status_text='approve';
+	}else{
+		status_text='reject';
+	}
+	if(confirm(`Are you sure to ${status_text} this?`)){
+		var url = conf.updateProjectVerticalStatus.url;
+		var method = conf.updateProjectVerticalStatus.method;
+		var data = {
+			id,
+			status
+		};
+		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+			if (response) {
+				TRIFED.showMessage('success', 'Product Vertical Status Updated Successfully');
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 500);
+			}
+		});	
+	}
 }

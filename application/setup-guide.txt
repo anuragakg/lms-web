@@ -1,0 +1,4 @@
+php artisan migrate:fresh
+php artisan passport:install
+php artisan migrate
+php artisan db:seed

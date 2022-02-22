@@ -65,7 +65,7 @@
                 <section id="main-content">
 
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-7 hidden project_vertical_add project_vertical_edit">
                             <form id="formID">
                                 <div class="form">
                                     <label for=""> Product Vertical Name </label>
@@ -102,42 +102,42 @@
                             </div>
                         </div>
                     </div>
-            </div>
+				</section>
+			
+			</div>
 
 
             
-            </section>
+            
         </div>
     </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Temporary Created and sent for approval
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 <?php include('parts/js-files.php'); ?>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/custom/project/vertical_add.js?v=<?php echo time();?>"></script> 
   
-<div class="row">
-                <div class="col-lg-12">
-                    <div class="footer">
-                        <p>2022 © Global School of Trading.</p>
-                    </div>
-                </div>
-            </div>
+
+
+<!-- Modal -->
+    <div id="status_modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 </body>
 

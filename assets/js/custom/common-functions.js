@@ -17,9 +17,8 @@ window.TRIFED = {
         var auth = TRIFED.getLocalStorageItem();
         if (auth == null) {
 
-            //window.location.href = "login.php";
+            window.location.href = "index.php";
 
-           // window.location.href = "login.php";
 
         }
         return auth;
@@ -492,9 +491,9 @@ window.TRIFED = {
         
 
         let permissions = authUser['permissions'];
-         
+        
         $.each(permissions, function(key, value) {
-            $('.' + value).removeClass('hidden');
+            $('.' + value.permission).removeClass('hidden');
         });
 
        

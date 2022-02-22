@@ -29,6 +29,7 @@ Route::post('login', [RegisterController::class, 'login']);
 Route::middleware('auth:api')->group( function () {
     Route::get('logout', [RegisterController::class, 'logout']);
     Route::resource('product_vertical', ProductVerticalModelController::class);
+    Route::post('updateProjectVerticalStatus', [ProductVerticalModelController::class,'updateProjectVerticalStatus']);
     Route::get('approved_product_vertical', [ProductVerticalModelController::class,'getVertical']);
     Route::resource('product_category', ProcductCategoryController::class);
     Route::get('approved_product_categories', [ProcductCategoryController::class,'getCategory']);

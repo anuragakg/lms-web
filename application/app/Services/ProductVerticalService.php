@@ -102,4 +102,38 @@ class ProductVerticalService
     public function getProduct($id){
         return ProductVerticalModel::find($id);
     }
+    public function updateProjectVerticalStatus($request){
+        $user = Auth::user();
+        $role=$user->role;
+        $user_id=$user->id;
+        $user_role=getLTypeUser($role);
+        $id=$request->id;
+        $status=$request->status;
+
+        DB::beginTransaction();
+        $project=ProductVerticalModel::find($request->id);
+        $project_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'user_type'=>$user_role])->first();
+        $project_status->status=$status;
+        $project_status->updated_by=$$user_id;
+        $project_status->save();
+        if($status==2){
+            $project->status=2;
+            $project->approved_by=$user_id;
+            $project->save();
+        }else{
+            if($project->status!=2)
+            {
+                $all_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'status'=>0])->first();
+                if(empty($all_status))
+                {
+                    $project->approved_by=$user_id;
+                    $project->status=1;
+                    $project->save();
+                }
+            }
+        }
+        
+        DB::commit();
+        return $project;
+    }
 }

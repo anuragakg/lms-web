@@ -44,3 +44,22 @@ function status_text($status){
 function paginate_num(){
 	return 10;
 }
+
+function getLTypeUser($role)
+{
+	switch ($role) {
+		case '2':
+			$user_type=1;
+			break;
+		case '3':
+			$user_type=2;
+			break;
+		case '4':
+			$user_type=3;
+			break;
+		default:
+			$user_type=null;
+			break;
+	}
+	return $user_type;
+}

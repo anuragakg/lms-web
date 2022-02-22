@@ -18,6 +18,7 @@ class CreateProjectFormStatusModelsTable extends Migration
             $table->tinyinteger('status')->comment('1=>approved,2=reject,0=pending');
             $table->string('user_type');
             $table->integer('product_id');
+			$table->integer('updated_by');
             $table->timestamps();
             $table->softDeletes();
         });
