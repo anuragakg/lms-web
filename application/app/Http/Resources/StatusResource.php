@@ -22,8 +22,8 @@ class StatusResource extends JsonResource
             'user_type'=>'L'.$this->user_type,
             'approver_name'=>$approver->name??'-',
             'approver_email'=>$approver->email??'-',
-            'created_at' => $this->created_at->format('d/m/Y'),
-            'updated_at' => $this->updated_at->format('d/m/Y'),
+            'created_at' => $this->created_at->format('d/m/Y H:i'),
+            'updated_at' => $this->updated_at->format('d/m/Y H:i'),
         ];
     }
 }

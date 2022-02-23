@@ -111,7 +111,7 @@
             
         </div>
     </div>
-    <?php include('status_history_modal'); ?>
+    <?php include('status_history_modal.php'); ?>
 <?php include('parts/js-files.php'); ?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/custom/project/vertical_add.js?v=<?php echo time();?>"></script> 

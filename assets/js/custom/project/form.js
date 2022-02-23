@@ -134,7 +134,7 @@ $(function () {
 											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
 										}	
 									}
-									html+='<a href="javascript:void(0)" onclick="showHistory('+row.id+')">View History</a>';
+									html+='<a title="View History" href="javascript:void(0)" onclick="showHistory('+row.id+')"><i class="fa fa-line-chart" aria-hidden="true"></i></a>';
 									
 									return html;
 									
