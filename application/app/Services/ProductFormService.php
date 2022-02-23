@@ -170,4 +170,10 @@ class ProductFormService
         DB::commit();
         return $project;
     }
+
+    public function getProjectFormStatusHistory($request)
+    {
+        return ProcductFormModel::find($request->id);
+        
+    }
 }

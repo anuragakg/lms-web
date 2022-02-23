@@ -13,6 +13,7 @@ use DB;
 use Auth;
 use App\Http\Resources\ProductVertical as ProductResource;
 use Validator;
+use App\Http\Resources\ProjectStatusResource;
 class ProductVerticalModelController extends BaseController
 {
 	protected $service;
@@ -169,5 +170,15 @@ class ProductVerticalModelController extends BaseController
         }catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
        }
+    }
+	public function getProjectVerticalStatusHistory(Request $request)
+    {
+        try{
+            $status=$this->service->getStatusHistory($request);
+            
+            return $this->sendResponse( new ProjectStatusResource($status), 'status history successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }   
     }
 }

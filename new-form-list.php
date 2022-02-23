@@ -32,6 +32,7 @@
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/plugins/switch/on-off-switch.css"/>
+
 </head>
 
 <body>
@@ -88,49 +89,21 @@
                                 </table>
                             </div>
                         </div>
+                    </section>
             </div>
 
 
             
-            </section>
+            
         </div>
     </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Temporary Created and sent for approval
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+
+    <?php include('status_history_modal.php'); ?>
 <?php include('parts/js-files.php'); ?>
 
-<script type="text/javascript" src="assets/js/plugins/switch/on-off-switch.js"></script> 
-<script type="text/javascript" src="assets/js/plugins/switch/on-off-switch-onload.js"></script> 
 <script type="text/javascript" src="assets/js/custom/project/form.js?v=<?php echo time();?>"></script> 
-    
-<script type="text/javascript">
-    new DG.OnOffSwitchAuto({
-        cls: '.on-off-switch',
-        textOn: 'Is Required',
-        textOff: 'Not Required',
-        height:30,
-        textSizeRatio:0.35,
-        
-    });
-</script>
-   
+
 </body>
 
 </html>

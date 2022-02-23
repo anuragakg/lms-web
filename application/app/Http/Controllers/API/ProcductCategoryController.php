@@ -9,6 +9,7 @@ use Validator;
 use Auth;
 use DB;
 use App\Services\ProductCategoryService;
+use App\Http\Resources\ProjectStatusResource;
 use App\Http\Controllers\API\BaseController as BaseController;
 class ProcductCategoryController extends BaseController
 {
@@ -180,5 +181,15 @@ class ProcductCategoryController extends BaseController
         }catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
        }
+    }
+	public function getProjectCategoryStatusHistory(Request $request)
+    {
+        try{
+            $status=$this->service->getStatusHistory($request);
+            
+            return $this->sendResponse( new ProjectStatusResource($status), 'status history successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }   
     }
 }

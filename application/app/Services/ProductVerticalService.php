@@ -136,4 +136,9 @@ class ProductVerticalService
         DB::commit();
         return $project;
     }
+	public function getStatusHistory($request)
+    {
+        return ProductVerticalModel::find($request->id);
+        
+    }
 }

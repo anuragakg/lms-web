@@ -2,9 +2,11 @@
         <div class="nano">
             <div class="nano-content">
                 <ul>
-                    <div class="logo"><a href="dashboard.php">
+                    <div class="logo">
+						<a href="dashboard.php">
                             <img src="assets/images/logo.jpeg" width="100%" alt="" />
-                        </a></div>
+						</a>
+                    </div>
                     <li><a href="dashboard.php"><i class="ti-home"></i> Dashboard </a></li>
 
                     <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Project <span

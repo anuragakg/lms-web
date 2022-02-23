@@ -140,4 +140,9 @@ class ProductCategoryService
         DB::commit();
         return $project;
     }
+	public function getStatusHistory($request)
+    {
+        return ProcductCategoryModel::find($request->id);
+        
+    }
 }

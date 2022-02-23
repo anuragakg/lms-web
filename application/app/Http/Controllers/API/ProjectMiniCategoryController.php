@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\ProductMiniCategoryService;
 use App\Models\ProjectMiniCategoryModel as Apimodel;
 use App\Http\Resources\ProductMiniCategoryResource as ApiResource;
+use App\Http\Resources\ProjectStatusResource;
 use App\Http\Controllers\API\BaseController as BaseController;
 class ProjectMiniCategoryController extends BaseController
 {
@@ -126,5 +127,15 @@ class ProjectMiniCategoryController extends BaseController
         }catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
        }
+    }
+	public function getProjectMiniCategoryStatusHistory(Request $request)
+    {
+        try{
+            $status=$this->service->getStatusHistory($request);
+            
+            return $this->sendResponse( new ProjectStatusResource($status), 'status history successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }   
     }
 }

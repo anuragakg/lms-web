@@ -152,4 +152,9 @@ class ProductSubCategoryService
         DB::commit();
         return $project;
     }
+	public function getStatusHistory($request)
+    {
+        return ProductSubcategoryModel::find($request->id);
+        
+    }
 }

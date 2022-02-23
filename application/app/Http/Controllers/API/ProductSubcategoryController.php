@@ -11,6 +11,7 @@ use Auth;
 use DB;
 use App\Services\ProductSubCategoryService;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Resources\ProjectStatusResource;
 class ProductSubcategoryController extends BaseController
 {
     protected $service;
@@ -181,6 +182,16 @@ class ProductSubcategoryController extends BaseController
         }catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
        }
+    }
+	public function getProjectSubCategoryStatusHistory(Request $request)
+    {
+        try{
+            $status=$this->service->getStatusHistory($request);
+            
+            return $this->sendResponse( new ProjectStatusResource($status), 'status history successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }   
     }
 
 }

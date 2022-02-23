@@ -207,4 +207,24 @@ var conf = {
         url : endpoint + 'users',
         'method': 'GET',
     },
+    'getProjectFormStatusHistory': {
+        url : endpoint + 'getProjectFormStatusHistory',
+        'method': 'POST',
+    },
+	'getProjectMiniCategoryStatusHistory': {
+        url : endpoint + 'getProjectMiniCategoryStatusHistory',
+        'method': 'POST',
+    },
+	'getProjectCategoryStatusHistory': {
+        url : endpoint + 'getProjectCategoryStatusHistory',
+        'method': 'POST',
+    },
+	'getProjectSubCategoryStatusHistory': {
+        url : endpoint + 'getProjectSubCategoryStatusHistory',
+        'method': 'POST',
+    },
+	'getProjectVerticalStatusHistory': {
+        url : endpoint + 'getProjectVerticalStatusHistory',
+        'method': 'POST',
+    },
 }

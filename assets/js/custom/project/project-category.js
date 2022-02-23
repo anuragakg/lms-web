@@ -127,7 +127,7 @@ $(function () {
 											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
 										}	
 									}
-									
+									html+='<a href="javascript:void(0)" onclick="showHistory('+row.id+')">View History</a>';
 									
 									return html;
 									
@@ -242,4 +242,43 @@ updateStatus=(id,status)=>{
 			}
 		});	
 	}
+}
+showHistory=(id)=>{
+	var url = conf.getProjectCategoryStatusHistory.url;
+		var method = conf.getProjectCategoryStatusHistory.method;
+		var data = {
+			id
+		};
+		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+			if (response) {
+				var html='';
+				response.data.status.forEach((row)=>{
+					html +='<tr>';
+						html +='<td>'+row.user_type+'</td>';
+						if(row.status==1){
+							var text_class='text-success';	
+						}
+						if(row.status==2){
+							var text_class='text-danger';	
+						}
+						if(row.status==0){
+							var text_class='text-warning';	
+						}
+						html +='<td class="'+text_class+'">'+row.status_text+'</td>';
+						html +='<td>'+row.approver_name+'</td>';
+						html +='<td>'+row.approver_email+'</td>';
+						
+						if(row.status!=0){
+							html +='<td>'+row.updated_at+'</td>';
+						}else{
+							html +='<td>-</td>';
+						}
+					html +='</tr>';
+				});
+
+				$('#status_data').html(html);			
+				$('#myModal').modal('show');			
+			}
+		});
+	
 }

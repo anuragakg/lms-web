@@ -187,4 +187,9 @@ class ProductMiniCategoryService
         DB::commit();
         return $project;
     }
+	public function getStatusHistory($request)
+    {
+        return ProjectMiniCategoryModel::find($request->id);
+        
+    }
 }

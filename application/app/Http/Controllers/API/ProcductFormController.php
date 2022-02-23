@@ -9,6 +9,7 @@ use Auth;
 use DB;
 use App\Http\Resources\ProductFormResource as ApiResource;
 use App\Http\Resources\ProductFormDetailResource;
+use App\Http\Resources\ProjectStatusResource;
 use App\Models\ProcductFormModel;
 use App\Models\ProductFormControlsModel;
 use App\Services\ProductFormService;
@@ -198,6 +199,16 @@ class ProcductFormController extends BaseController
         }catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
        }
+    }
+    public function getProjectFormStatusHistory(Request $request)
+    {
+        try{
+            $status=$this->service->getProjectFormStatusHistory($request);
+            
+            return $this->sendResponse( new ProjectStatusResource($status), 'status history successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }   
     }
     
 }
