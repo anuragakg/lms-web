@@ -122,7 +122,7 @@ $(function () {
 									html += '<p class="'+text_class+'">'+row.status_text+'</p><br>';
 									if(auth.role ==2 || auth.role ==3 ||auth.role ==4)
 									{
-										if(row.current_usertype_status.status == 0){
+										if(row.current_usertype_status.status == 0 && row.status==0){
 											html += '<a class="btn btn-success" href="javascript:void(0)" onclick="updateStatus('+row.id+',1)">Approve</a> | ';
 											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
 										}	

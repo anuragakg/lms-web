@@ -13,14 +13,14 @@
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Vertical <span
                                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
-                                    <li class="hidden project_vertical_view project_vertical_add project_vertical_status"><a href="new-product-vertical.php">Create</a></li>
+                                    <li class="hidden project_vertical_view project_vertical_add project_vertical_status"><a href="new-product-vertical.php">List</a></li>
                                    
                                 </ul>
                             </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Category <span
                                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
-                                    <li class="hidden project_category_add project_category_view project_category_status"><a href="new-product-category.php">Create</a></li>
+                                    <li class="hidden project_category_add project_category_view project_category_status"><a href="new-product-category.php">List</a></li>
                                     
                                 </ul>
                             </li>
@@ -28,14 +28,14 @@
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
                                     <li class="hidden project_sub_category_add"><a href="new-product-subcategory.php">Create</a></li>
-                                    <li class="hidden project_sub_category_view"><a href="product-subcategories.php">List</a></li>
+                                    <li class="hidden project_sub_category_view"><a href="product-sub-category-list.php">List</a></li>
                                 </ul>
                             </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Mini Category
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
                                     <li class="hidden project_mini_category_add"><a href="new-product-minicategory.php">Create</a></li>
-                                    <li class="hidden project_mini_category_view"><a href="product-minicategories.php">List</a></li>
+                                    <li class="hidden project_mini_category_view"><a href="product-mini-category-list.php">List</a></li>
                                 </ul>
                             </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Leads <span

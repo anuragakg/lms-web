@@ -172,4 +172,15 @@ class ProductSubcategoryController extends BaseController
 			return $this->sendError('Exception Error.', $th);  
         }
     }
+    public function updateProjectSubCategoryStatus(Request $request)
+    {
+        try{
+            $status=$this->service->updateProjectSubCategoryStatus($request);
+            
+            return $this->sendResponse( $status, 'Product form updated successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
+    }
+
 }

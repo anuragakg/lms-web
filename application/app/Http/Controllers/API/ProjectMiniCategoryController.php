@@ -117,4 +117,14 @@ class ProjectMiniCategoryController extends BaseController
             return $this->sendError('Exception Error.', $th);  
         }
     }
+    public function updateProjectMiniCategoryStatus(Request $request)
+    {
+        try{
+            $status=$this->service->updateProjectMiniCategoryStatus($request);
+            
+            return $this->sendResponse( $status, 'Product mini category updated successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
+    }
 }

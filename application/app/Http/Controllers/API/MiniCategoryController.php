@@ -11,9 +11,15 @@ use App\Http\Resources\ProductFormResource as ApiResource;
 use App\Models\ProcductFormModel;
 use App\Models\ProductFormControlsModel;
 use App\Http\Controllers\API\BaseController as BaseController;
-
+use App\Services\ProductMiniCategoryService;
 class MiniCategoryController extends BaseController
 {
+    protected $service;
+
+    public function __construct(ProductMiniCategoryService $ProductMiniCategoryService)
+    {
+        $this->service = $ProductMiniCategoryService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -197,5 +203,15 @@ class MiniCategoryController extends BaseController
             DB::rollBack();
             return $this->sendError($th);  
         }
+    }
+    public function updateProjectMiniCategoryStatus(Request $request)
+    {
+        try{
+            $status=$this->service->updateProjectMiniCategoryStatus($request);
+            
+            return $this->sendResponse( $status, 'Product form updated successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
     }
 }

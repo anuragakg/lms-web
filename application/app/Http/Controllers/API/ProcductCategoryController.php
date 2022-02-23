@@ -171,4 +171,14 @@ class ProcductCategoryController extends BaseController
         $data= ProcductCategoryModel::select('id','title')->get();
         return $this->sendResponse($data, 'Product Category listed successfully.');
     }
+    public function updateProjectCategoryStatus(Request $request)
+    {
+        try{
+            $status=$this->service->updateProjectCategoryStatus($request);
+            
+            return $this->sendResponse( $status, 'Product Category status updated successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
+    }
 }

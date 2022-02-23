@@ -189,5 +189,15 @@ class ProcductFormController extends BaseController
         return $this->sendResponse($product_arr, 'Product form listed successfully.');
         
     }
+    public function updateProjectFormStatus(Request $request)
+    {
+        try{
+            $status=$this->service->updateProjectFormStatus($request);
+            
+            return $this->sendResponse( $status, 'Product form updated successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
+    }
     
 }

@@ -187,6 +187,22 @@ var conf = {
         url : endpoint + 'updateProjectVerticalStatus',
         'method': 'POST',
     },
+    'updateProjectCategoryStatus': {
+        url : endpoint + 'updateProjectCategoryStatus',
+        'method': 'POST',
+    },
+    'updateProjectSubCategoryStatus': {
+        url : endpoint + 'updateProjectSubCategoryStatus',
+        'method': 'POST',
+    },
+    'updateProjectMiniCategoryStatus': {
+        url : endpoint + 'updateProjectMiniCategoryStatus',
+        'method': 'POST',
+    },
+    'updateProjectFormStatus': {
+        url : endpoint + 'updateProjectFormStatus',
+        'method': 'POST',
+    },
     'users_list': {
         url : endpoint + 'users',
         'method': 'GET',

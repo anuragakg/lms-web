@@ -103,7 +103,27 @@ $(function () {
 						{
 							"orderable": false,
 							"render": function(data, type, row) {
-									return row.status_text;
+									var html='';
+									if(row.status==0){
+										text_class='text-warning';
+									}
+									if(row.status==1){
+										text_class='text-success';
+									}
+									if(row.status==2){
+										text_class='text-danger';
+									}
+									html += '<p class="'+text_class+'">'+row.status_text+'</p><br>';
+									if(auth.role ==2 || auth.role ==3 ||auth.role ==4)
+									{
+										if(row.current_usertype_status.status == 0 && row.status==0){
+											html += '<a class="btn btn-success" href="javascript:void(0)" onclick="updateStatus('+row.id+',1)">Approve</a> | ';
+											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
+										}	
+									}
+									
+									
+									return html;
 									
 							}
 						},
@@ -288,10 +308,31 @@ deleteCategory=(id=0)=>{
 		var data = {};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
-				TRIFED.showMessage('success', 'Product Sub Category deleted Successfully');
-				setTimeout(function() { window.location = 'product-sub-category-list.php'}, 500);
+				TRIFED.showMessage('success', 'Product mini Category deleted Successfully');
+				setTimeout(function() { window.location = 'product-mini-category-list.php'}, 500);
 			}
 		});	
 	}
 	
+}
+updateStatus=(id,status)=>{
+	if(status==1){
+		status_text='approve';
+	}else{
+		status_text='reject';
+	}
+	if(confirm(`Are you sure to ${status_text} this?`)){
+		var url = conf.updateProjectMiniCategoryStatus.url;
+		var method = conf.updateProjectMiniCategoryStatus.method;
+		var data = {
+			id,
+			status
+		};
+		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+			if (response) {
+				TRIFED.showMessage('success', 'Product mini category Status Updated Successfully');
+				setTimeout(function() { window.location = 'product-mini-category-list.php'}, 500);
+			}
+		});	
+	}
 }
