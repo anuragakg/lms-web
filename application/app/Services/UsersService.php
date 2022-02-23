@@ -4,19 +4,19 @@ namespace App\Services;
    
 use Illuminate\Http\Request;
 use Validator;
-use App\Models\ProductVerticalModel;
-use App\Models\ProjectVerticalStatusModel;
+use App\Models\User;
+
 use Auth;
 use DB;
-class ProductVerticalService 
+class UsersService 
 {
     public function getList($request){
         $limit = $request['length']??10;
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         
-        $product=ProductVerticalModel::orderBy('id','desc');
+        $product=User::orderBy('id','desc');
         if(!empty($search)){
-            $product=$product->where(DB::raw("CONCAT(`title`)"), 'LIKE', "%".$search."%");    
+            $product=$product->where(DB::raw("CONCAT(`name`)"), 'LIKE', "%".$search."%");    
         }
         
         return $product->paginate($limit);

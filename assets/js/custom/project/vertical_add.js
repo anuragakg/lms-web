@@ -110,11 +110,24 @@ $(function () {
 							"orderable": false,
 							"render": function(data, type, row) {
 									var html='';
-									html += row.status_text+'<br>';
-									if(row.current_usertype_status.status == 0 && (auth.role ==2 || auth.role ==3 ||auth.role ==4) ){
-										html += '<a class="btn btn-success" href="javascript:void(0)" onclick="updateStatus('+row.id+',1)">Approve</a> | ';
-										html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
+									if(row.status==0){
+										text_class='text-warning';
 									}
+									if(row.status==1){
+										text_class='text-success';
+									}
+									if(row.status==2){
+										text_class='text-danger';
+									}
+									html += '<p class="'+text_class+'">'+row.status_text+'</p><br>';
+									if(auth.role ==2 || auth.role ==3 ||auth.role ==4)
+									{
+										if(row.current_usertype_status.status == 0){
+											html += '<a class="btn btn-success" href="javascript:void(0)" onclick="updateStatus('+row.id+',1)">Approve</a> | ';
+											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
+										}	
+									}
+									
 									
 									return html;
 									

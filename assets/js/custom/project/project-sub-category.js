@@ -245,10 +245,13 @@ fetchProductForm = () => {
 			});
 			$('#product_form_mini_id').html(mini_html);
 			lead_html='<option value="">Select Product Lead form</option>';
-			response.data.lead.forEach((row)=>{
-				lead_html +='<option value="'+row.id+'">'+row.title+'</option>'
-			});
-			$('#product_form_lead_id').html(lead_html);
+			if(response.data.lead !=undefined){
+				response.data.lead.forEach((row)=>{
+					lead_html +='<option value="'+row.id+'">'+row.title+'</option>'
+				});
+				$('#product_form_lead_id').html(lead_html);	
+			}
+			
 		}
 	});
 }

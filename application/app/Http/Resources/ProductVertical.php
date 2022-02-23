@@ -56,7 +56,7 @@ class ProductVertical extends JsonResource
             'current_usertype_status' => $current_usertype_status,
             
             'added_by' => $this->getAddedBy,
-            'approved_by' => $this->getApprovedBy??'-',
+            'approved_by' => isset($this->getApprovedBy->name)?$this->getApprovedBy->name:'-',
            
             'created_at' => $this->created_at->format('d/m/Y H:i'),
             'updated_at' => $this->updated_at->format('d/m/Y H:i'),

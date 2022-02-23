@@ -187,4 +187,8 @@ var conf = {
         url : endpoint + 'updateProjectVerticalStatus',
         'method': 'POST',
     },
+    'users_list': {
+        url : endpoint + 'users',
+        'method': 'GET',
+    },
 }

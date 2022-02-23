@@ -10,6 +10,7 @@ use App\Http\Controllers\API\ProductSubcategoryController;
 use App\Http\Controllers\API\ProcductFormController;
 use App\Http\Controllers\API\ProjectMiniCategoryController;
 use App\Http\Controllers\API\RolesController;
+use App\Http\Controllers\API\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::middleware('auth:api')->group( function () {
     Route::get('permissions_list', [RolesController::class,'getPermissionsList']);
     Route::post('save_role_permissions', [RolesController::class,'savePermissions']);
     Route::get('get-role-permissions/{id}', [RolesController::class,'getRolePermission']);
+    Route::resource('users', UsersController::class);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
