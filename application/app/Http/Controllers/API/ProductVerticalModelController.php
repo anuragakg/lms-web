@@ -71,7 +71,7 @@ class ProductVerticalModelController extends BaseController
             return $this->sendError('Validation Error.', $validator->errors()->first());       
         }
 		
-		try{
+		//try{
             if(isset($request->form_id) && !empty($request->form_id)){
                 $product=$this->service->updateVertical($request,$request->form_id);
             }else{
@@ -80,10 +80,10 @@ class ProductVerticalModelController extends BaseController
 			
             return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
            
-		}catch (\Throwable $th) {
+		//}catch (\Throwable $th) {
             return $this->sendError('Exception Error.', $th);  
             
-        }
+        //}
     }
 
     /**

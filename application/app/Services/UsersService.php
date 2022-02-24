@@ -5,55 +5,46 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\User;
-
+use App\Notifications\UserCreated;
 use Auth;
 use DB;
+use Str;
+use Illuminate\Validation\Rule;
 class UsersService 
 {
     public function getList($request){
         $limit = $request['length']??10;
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         
-        $product=User::orderBy('id','desc');
+        $user=User::orderBy('id','desc');
         if(!empty($search)){
-            $product=$product->where(DB::raw("CONCAT(`name`)"), 'LIKE', "%".$search."%");    
+            $user=$user->where(DB::raw("CONCAT(`name`,`email`)"), 'LIKE', "%".$search."%");    
         }
         
-        return $product->paginate($limit);
+        return $user->paginate($limit);
             
     }
-    public function addVertical($request){
+    public function add($request){
         $user_id = Auth::user()->id??1;
         
         
         try{
             DB::beginTransaction();
-            $product=new ProductVerticalModel();
-            $product->title=$request->title;
-            $product->status=0;
-            $product->added_by=$user_id;
-            $product->approved_by=0;
-            $product->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='1';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='2';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='3';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            DB::commit();
-            return $product;
+            $user=new User();
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->role=$request->role;
+			$randomPassword = Str::random(config('lms.password_length')) ;
+			$randomPassword = '123456' ;
+            $user->password = bcrypt(hash('sha256', $randomPassword));
+            //$user->status=1;
+            //$user->added_by=$user_id;
+            $user->save();
+			$delay = now()->addSeconds(2);
+			$user->notify((new UserCreated($user,$randomPassword))->delay($delay));
+
+			DB::commit();
+            return $user;
         }catch (\Throwable $th) {
             DB::rollBack();
             throw $th;  
@@ -61,33 +52,20 @@ class UsersService
         }
         
     }
-    public function updateVertical($request,$id){
+    public function update($request,$id){
+		$user_id = Auth::user()->id??1;
         try{
             DB::beginTransaction();
-            $product =ProductVerticalModel::find($id);
-            $product->title=$request->title;
-            $product->save();
-            ProjectVerticalStatusModel::where('product_id',$id)->delete();
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='1';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
+            $user =User::find($id);
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->role=$request->role;
+			//$user->added_by=$user_id;
+            $user->save();
             
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='2';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='3';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
 
             DB::commit();
-            return $product;
+            return $user;
         }catch (\Throwable $th) {
             DB::rollBack();
             throw $th;  
@@ -96,44 +74,24 @@ class UsersService
     }
     public function checkValidation($input){
         return Validator::make($input, [
-            'title' => 'required'
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'role'  =>'required'
         ]);
     }
-    public function getProduct($id){
-        return ProductVerticalModel::find($id);
+	public function checkUpdateValidation($input,$id){
+		$model = new User();
+        return Validator::make($input, [
+            'name' => 'required',
+            'email' => ['required','email',"unique:users,email,$id"],
+            'role'  =>'required'
+        ]);
     }
-    public function updateProjectVerticalStatus($request){
-        $user = Auth::user();
-        $role=$user->role;
-        $user_id=$user->id;
-        $user_role=getLTypeUser($role);
-        $id=$request->id;
-        $status=$request->status;
-
-        DB::beginTransaction();
-        $project=ProductVerticalModel::find($request->id);
-        $project_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'user_type'=>$user_role])->first();
-        $project_status->status=$status;
-        $project_status->updated_by=$user_id;
-        $project_status->save();
-        if($status==2){
-            $project->status=2;
-            $project->approved_by=$user_id;
-            $project->save();
-        }else{
-            if($project->status!=2)
-            {
-                $all_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'status'=>0])->first();
-                if(empty($all_status))
-                {
-                    $project->approved_by=$user_id;
-                    $project->status=1;
-                    $project->save();
-                }
-            }
-        }
-        
-        DB::commit();
-        return $project;
+    public function getUser($id){
+        return User::find($id);
     }
+	public function deleteUser($id){
+        return User::whwre('id',$id)->delete();
+    }
+	
 }

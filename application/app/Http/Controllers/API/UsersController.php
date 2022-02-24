@@ -43,4 +43,77 @@ class UsersController extends BaseController
            return $this->sendError('Exception Error.', $th);  
        }
     }
+	
+	/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        
+        
+        try{
+            if(isset($request->form_id) && !empty($request->form_id)){
+				$validator=$this->service->checkUpdateValidation($input,$request->form_id);
+
+        
+				if($validator->fails()){
+					return $this->sendError('Validation Error.', $validator->errors()->first());       
+				}
+                $user=$this->service->update($request,$request->form_id);
+            }else{
+				$validator=$this->service->checkValidation($input);
+
+        
+				if($validator->fails()){
+					return $this->sendError('Validation Error.', $validator->errors()->first());       
+				}
+                $user=$this->service->add($request);    
+            }
+            
+            return $this->sendResponse(new ApiResource($user), 'user created successfully.');
+           
+        }catch (\Throwable $th) {
+            return $this->sendError('Exception Error.', $th);  
+            
+        }
+    }
+	
+	/**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = $this->service->getUser($id);
+  
+        if (is_null($user)) {
+            return $this->sendError('user not found.');
+        }
+        return $this->sendResponse(new ApiResource($user), 'user retrieved successfully.');
+    }
+	/**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try{
+            DB::beginTransaction();
+			$users=$this->service->deleteUser($id);
+            DB::commit();
+            return $this->sendResponse([], 'user deleted successfully.');
+        }catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->sendError('Exception Error.', $th);  
+        }
+    }
+
 }

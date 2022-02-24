@@ -20,6 +20,7 @@ class Users extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+            'role_id' => $this->role,
             'role' => isset($this->getRole->title)?$this->getRole->title:'-',
             
            

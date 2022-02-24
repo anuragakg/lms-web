@@ -70,7 +70,8 @@
                     <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Staff Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li class="hidden user_management_view"><a href="users-list.php">Staff Users</a></li>
+                            <li class="hidden user_management_add"><a href="add-users.php.php">Add Users</a></li>
+                            <li class="hidden user_management_view user_management_edit"><a href="users-list.php">Staff Users</a></li>
                             <li class="hidden role_view"><a href="roles.php">Roles</a></li>
                             <!-- <li><a href="permissions.html">Permissions</a></li> -->
                         </ul>

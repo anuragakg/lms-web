@@ -138,4 +138,9 @@ class RolesController extends BaseController
         $permissions=RolePermissionModel::where('role_id',$role_id)->get();
         return $this->sendResponse( $permissions, 'Roles Permission added successfully.');
     }
+    public function getRoleList()
+    {
+        $roles= RolesModel::get();
+        return $this->sendResponse( $roles, 'Roles list');
+    }
 }

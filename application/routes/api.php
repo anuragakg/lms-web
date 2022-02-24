@@ -48,6 +48,7 @@ Route::middleware('auth:api')->group( function () {
     Route::post('updateProjectMiniCategoryStatus', [ProjectMiniCategoryController::class,'updateProjectMiniCategoryStatus']);
     Route::post('getProjectMiniCategoryStatusHistory', [ProjectMiniCategoryController::class,'getProjectMiniCategoryStatusHistory']);
     Route::resource('roles', RolesController::class);
+    Route::get('role-list', [RolesController::class,'getRoleList']);
     Route::get('permissions_list', [RolesController::class,'getPermissionsList']);
     Route::post('save_role_permissions', [RolesController::class,'savePermissions']);
     Route::get('get-role-permissions/{id}', [RolesController::class,'getRolePermission']);

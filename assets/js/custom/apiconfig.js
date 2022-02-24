@@ -227,4 +227,18 @@ var conf = {
         url : endpoint + 'getProjectVerticalStatusHistory',
         'method': 'POST',
     },
+    'addUser': {
+        url : endpoint + 'users',
+        'method': 'POST',
+    },
+    'getRoleList': {
+        url : endpoint + 'role-list',
+        'method': 'GET',
+    },
+    'getUser': {
+        url : function (id) {
+            return endpoint + 'users/' + id;
+        },
+        'method': 'GET',
+    },
 }

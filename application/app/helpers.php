@@ -63,3 +63,9 @@ function getLTypeUser($role)
 	}
 	return $user_type;
 }
+
+function sendVerticalNotification($product)
+{
+	$job = (new \App\Jobs\SendVerticalNotification($product))->delay(now()->addSeconds(2)); 
+	dispatch($job);  
+}

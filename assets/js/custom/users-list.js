@@ -78,6 +78,16 @@ $(function () {
 							}
 							 
 						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
+									var html='';
+									html +='<a href="add-users.php?id='+row.id+'" class="ti-pencil"></a> ';
+									
+									return html;
+							}
+							 
+						},
 						
 						
 		               

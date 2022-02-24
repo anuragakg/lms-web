@@ -427,10 +427,10 @@ window.TRIFED = {
                     //localStorage.removeItem('authUser');
                     //window.location.href = '../auth/login.php';
                 },
-                404: function () {
+                404: function (res) {
                     $('#loader-div').html('');
                     $('#loader-div').hide();
-                    cb(null, "No data found");
+                    cb(res.responseJSON, res.responseJSON.message);
                 },
                 422: function (res) {
                     $('#error_div').show();

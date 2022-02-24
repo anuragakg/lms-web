@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\ProductVerticalModel;
 use App\Models\ProjectVerticalStatusModel;
+use App\Models\User;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\VerticalCreated;
 class ProductVerticalService 
 {
     public function getList($request){
@@ -52,6 +55,10 @@ class ProductVerticalService
             $projectstatus->user_type='3';
             $projectstatus->product_id=$product->id;
             $projectstatus->save();
+
+            sendVerticalNotification($product);
+            
+
             DB::commit();
             return $product;
         }catch (\Throwable $th) {

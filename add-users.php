@@ -29,14 +29,12 @@
     <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/lib/helper.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/css/plugins/switch/on-off-switch.css"/>
+    
 </head>
 
 <body>
 
-    <?php include('parts/head-tag.php'); ?>
+	<?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
     <div class="content-wrap">
@@ -46,7 +44,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Users List </h1>
+                                <h1> Users </h1>
                             </div>
                         </div>
                     </div>
@@ -55,8 +53,8 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="projects.html">Project</a></li>
-                                    <li class="breadcrumb-item active">Users List</li>
+                                    <li class="breadcrumb-item"><a href="projects.html">Users</a></li>
+                                    <li class="breadcrumb-item active"> User</li>
                                 </ol>
                             </div>
                         </div>
@@ -65,55 +63,51 @@
                 </div>
                 <!-- /# row -->
                 <section id="main-content">
-                    <div class="col-md-12 mt-3">
-                            <h6 class="w-100">Users List </h6>
-                            <div id="myGrid" class="table-responsive">
-                                <table width="100%" id="list" class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>SR.No</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Action</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                          </tbody>
-                                </table>
-                            </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="formID">
+                                <div class="form">
+									<div class="row">
+                                        <div class="col-md-6">
+                                            <label for="">  Name </label>
+                                            <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Email </label>
+                                            <input type="text" name="email" id="email" placeholder="Enter email" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Role </label>
+                                            <select id="role" name="role" class="form-control" required>
+                                                <option value="">Select Role</option>
+                                            </select>
+                                        </div>
+									</div>
+                                    
+                                    <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                </div>    
+                            </form>
+                            
+                            
                         </div>
-            </div>
+                        <div class="col-md-5 d-flex align-items-end">
+                        </div>
+                     </div>
+				</section>
+			
+			</div>
 
 
             
-            </section>
+            
         </div>
     </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Temporary Created and sent for approval
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include('status_history_modal.php'); ?>
 <?php include('parts/js-files.php'); ?>
+<script type="text/javascript" src="assets/js/custom/user/add.js?v=<?php echo time();?>"></script> 
+  
 
-<script type="text/javascript" src="assets/js/custom/users-list.js?v=<?php echo time();?>"></script> 
-   
 </body>
 
 </html>
