@@ -26,6 +26,13 @@
                                     
                                 </ul>
                             </li>
+                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Forms
+                                    <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                                <ul>
+                                    <li class="hidden project_forms_add"><a href="new-form.php">Create</a></li>
+                                    <li class="hidden project_forms_view"><a href="new-form-list.php">List</a></li>
+                                </ul>
+                            </li>
                             <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Product Sub Category
                                     <span class="sidebar-collapse-icon ti-angle-down"></span></a>
                                 <ul>
@@ -49,13 +56,7 @@
                                     <li><a href="lead-status.html">Lead Statuses</a></li> -->
                                 </ul>
                             </li>
-                            <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i> Forms
-                                    <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                                <ul>
-                                    <li class="hidden project_forms_add"><a href="new-form.php">Create</a></li>
-                                    <li class="hidden project_forms_view"><a href="new-form-list.php">List</a></li>
-                                </ul>
-                            </li>
+                           
 
                         </ul>
                     </li>
@@ -70,7 +71,7 @@
                     <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Staff Management <span
                                 class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
-                            <li class="hidden user_management_add"><a href="add-users.php.php">Add Users</a></li>
+                            <li class="hidden user_management_add"><a href="add-users.php">Add Users</a></li>
                             <li class="hidden user_management_view user_management_edit"><a href="users-list.php">Staff Users</a></li>
                             <li class="hidden role_view"><a href="roles.php">Roles</a></li>
                             <!-- <li><a href="permissions.html">Permissions</a></li> -->

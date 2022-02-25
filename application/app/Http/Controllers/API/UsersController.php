@@ -115,5 +115,8 @@ class UsersController extends BaseController
             return $this->sendError('Exception Error.', $th);  
         }
     }
-
+	public function sendEmail()
+	{
+		$this->service->sendEmail();
+	}
 }

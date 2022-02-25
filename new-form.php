@@ -39,6 +39,13 @@
     <?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
+    <?php include('classes/utils.php');?>
+    <?php
+    $utils=new Utils();
+    $titleList=$utils->titleList();
+    $languagesList=$utils->languagesList();
+    
+    ?>
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
@@ -91,30 +98,30 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][source][input]">
-                                    <label for="scales">Source</label>
+                                    <label for="scales">Source</label> <strong>(Text Box)</strong>
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][source][is_required]" checked>
                                 </div>
                                 <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][status_field][input]">
-                                    <label for="scales">Status</label>
+                                    <label for="scales">Status<strong>(Text Box)</strong></label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][status_field][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][assigned][input]">
-                                    <label for="scales">Assigned</label>
+                                    <label for="scales">Assigned<strong>(Text Box)</strong></label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][assigned][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][lead_temp][input]">
-                                    <label for="scales">LeadTemprature</label>
+                                    <label for="scales">LeadTemprature<strong>(Text Box)</strong></label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][lead_temp][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][rating][input]">
-                                    <label for="scales">Lead Score/Rating</label>
+                                    <label for="scales">Lead Score/Rating<strong>(Text Box)</strong></label>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][rating][is_required]" checked>
 
@@ -122,14 +129,14 @@
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][process_status][input]">
-                                    <label for="scales">Process Status</label>
+                                    <label for="scales">Process Status</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][process_status][is_required]" checked>
 
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][title][input]">
-                                    <label for="scales">Title/Position</label>
+                                    <label for="scales">Title/Position</label> <a href="javascript:void(0)" type="button" class="text-danger" data-toggle="modal" data-target="#titleModal">View Options</a>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][title][is_required]" checked>
 
@@ -137,7 +144,7 @@
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][first_name][input]">
-                                    <label for="scales">First Name</label>
+                                    <label for="scales">First Name</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][first_name][is_required]" checked>
 
@@ -146,61 +153,61 @@
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][last_name][input]">
-                                    <label for="scales">Last Name</label>
+                                    <label for="scales">Last Name</label><strong>(Text Box)</strong>
                                    
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][last_name][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][company_name][input]">
-                                    <label for="scales">Company Name</label>
+                                    <label for="scales">Company Name</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][company_name][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][email][input]">
-                                    <label for="scales">Email</label>
+                                    <label for="scales">Email</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][email][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][phone][input]">
-                                    <label for="scales">Phone</label>
+                                    <label for="scales">Phone</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][phone][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][fax][input]">
-                                    <label for="scales">Fax</label>
+                                    <label for="scales">Fax</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][fax][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][whatsapp][input]">
-                                    <label for="scales">Whatsapp Number</label>
+                                    <label for="scales">Whatsapp Number</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][whatsapp][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][website][input]">
-                                    <label for="scales">Website</label>
+                                    <label for="scales">Website</label><strong>(Text Box)</strong>
                                    
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][website][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][speaks][input]">
-                                    <label for="scales">Speaks</label>
+                                    <label for="scales">Speaks</label><a href="javascript:void(0)" type="button" class="text-danger" data-toggle="modal" data-target="#titleLanguage">View Options</a>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][speaks][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][industry][input]">
-                                    <label for="scales">Industry</label>
+                                    <label for="scales">Industry</label><strong>(Text Box)</strong>
                                    
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][industry][is_required]" checked>
                                   </div>
                                   <div class="col-md-6">
                                     <input type="checkbox" id="scales" name="contorls[element][notes][input]">
-                                    <label for="scales">Notes</label>
+                                    <label for="scales">Notes</label><strong>(Text Box)</strong>
                                     
                                     <input type="checkbox" class="on-off-switch" name="contorls[element][notes][is_required]" checked>
                                   </div>
@@ -225,24 +232,87 @@
         </div>
     </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Temporary Created and sent for approval
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
+
+
+<!-- Modal -->
+<div id="titleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Title</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <td>SR.No</td>
+                    <td>Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i=0;
+                foreach ($titleList as $key => $title) {
+                    ++$i;
+                    ?>
+                    <tr>
+                        <td><?php echo $i;?></td>
+                        <td><?php echo $title;?></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
+
+  </div>
+</div>
+<div id="titleLanguage" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Title</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <td>SR.No</td>
+                    <td>Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i=0;
+                foreach ($languagesList as $key => $language) {
+                    ++$i;
+                    ?>
+                    <tr>
+                        <td><?php echo $i;?></td>
+                        <td><?php echo $language;?></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <?php include('parts/js-files.php'); ?>
 
 <script type="text/javascript" src="assets/js/plugins/switch/on-off-switch.js"></script> 

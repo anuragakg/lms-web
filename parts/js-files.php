@@ -9,7 +9,7 @@ $cache_buster=time();
 <script src="assets/js/inspinia.js"></script>
 <script src="assets/js/plugins/pace/pace.min.js"></script>
 <script src="assets/js/plugins/slimscroll/jquery.slimscroll-1.3.8.min.js"></script>
-
+  <script src="assets/js/lib/bootstrap.min.js"></script>
 <!-- Chosen -->
 <script src="assets/js/plugins/chosen/chosen.jquery-1.8.7.js"></script>
 

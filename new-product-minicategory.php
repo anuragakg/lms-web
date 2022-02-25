@@ -33,11 +33,17 @@
 
 <body>
 
-     <?php include('parts/head-tag.php'); ?>
+    <?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
+    <?php include('classes/utils.php');?>
 
-
+	<?php
+	$utils=new Utils();
+	$titleList=$utils->titleList();
+    $languagesList=$utils->languagesList();
+	
+	?>
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
@@ -84,10 +90,13 @@
                                         class="form-control form-control-sm select2-hidden-accessible"  data-select2-id="select2-data-title_id" tabindex="-1"
                                         aria-hidden="true">
                                         <option value="">Select</option>
-                                        <option>Mr.</option>
-                                        <option>Mrs.</option>
-                                        <option>Ms.</option>
-                                        <option>M/s.</option>
+										<?php
+										foreach ($titleList as $key => $title) {
+                                            ?>
+                                            <option><?php echo $title;?></option>
+                                            <?php
+                                        }
+										?>
                                     </select>
 
                                 </div>
@@ -181,21 +190,14 @@
                                     <select name="speaks" id="speaks"
                                         class="form-control form-control-sm select2-hidden-accessible"
                                         data-select2-id="select2-data-languages_id" tabindex="-1"
-                                        aria-hidden="true" multiple>
-                                        <option>English </option>
-                                        <option>Hindi </option>
-                                        <option>Bengali </option>
-                                        <option>Urdu </option>
-                                        <option>Punjabi </option>
-                                        <option>Marathi </option>
-                                        <option>Telugu </option>
-                                        <option>Tamil </option>
-                                        <option>Gujarati </option>
-                                        <option>Kannada </option>
-                                        <option>Odia </option>
-                                        <option>Malayalam</option>
-                                        <option>Assamese </option>
-                                        <option>Sanskrit </option>
+                                        aria-hidden="true" >
+                                        <?php
+                                        foreach ($languagesList as $key => $language) {
+                                            ?>
+                                            <option><?php echo $language;?></option>
+                                            <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <span class="text text-danger"></span>

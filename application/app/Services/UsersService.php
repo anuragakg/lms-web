@@ -10,6 +10,7 @@ use Auth;
 use DB;
 use Str;
 use Illuminate\Validation\Rule;
+use Hash;
 class UsersService 
 {
     public function getList($request){
@@ -36,7 +37,7 @@ class UsersService
             $user->role=$request->role;
 			$randomPassword = Str::random(config('lms.password_length')) ;
 			$randomPassword = '123456' ;
-            $user->password = bcrypt(hash('sha256', $randomPassword));
+            $user->password = Hash::make($randomPassword);
             //$user->status=1;
             //$user->added_by=$user_id;
             $user->save();
@@ -93,5 +94,13 @@ class UsersService
 	public function deleteUser($id){
         return User::whwre('id',$id)->delete();
     }
+	public function sendEmail()
+	{
+		$user= User::first();
+		$randomPassword = '123456' ;
+		$delay = now()->addSeconds(2);
+		//$user->notify(new UserCreated($user,$randomPassword));
+		$user->notify(new UserCreated($user,$randomPassword));
+	}
 	
 }

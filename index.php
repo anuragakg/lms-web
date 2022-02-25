@@ -41,8 +41,8 @@
                         <div class="login-form">
                             <form method="post" id="formID">
                                 <div class="form-group">
-                                    <label>Email / Mobile</label>
-                                    <input type="email" class="form-control" placeholder="Email / Mobile" id="username">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="Email" id="username">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
@@ -53,14 +53,14 @@
 										<input type="checkbox"> Remember Me
 									</label>
                                     <label class="pull-right">
-										<a href="reset-password.html">Forgotten Password?</a>
+										<a href="forgot-password.php">Forgotten Password?</a>
 									</label>
 
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-flat m-t-30">Sign in</button>
-                                <div class="register-link m-t-15 text-center">
+                                <!--<div class="register-link m-t-15 text-center">
                                     <p>Don't have account ? <a href="signup.html"> Sign Up Here</a></p>
-                                </div>
+                                </div>-->
                             </form>
                         </div>
                     </div>

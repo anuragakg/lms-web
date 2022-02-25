@@ -241,4 +241,9 @@ var conf = {
         },
         'method': 'GET',
     },
+	'forgot_password': {
+        url : endpoint + 'forgot-password/',
+        'method': 'POST',
+    },
+	
 }

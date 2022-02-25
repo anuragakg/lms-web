@@ -102,6 +102,12 @@ window.TRIFED = {
         });
 
     },
+	openpage: function (page) {
+        
+                window.location.href = page;
+        
+
+    },
 
     /*
     ------------------------------------------------------------------------------

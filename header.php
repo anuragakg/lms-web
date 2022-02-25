@@ -157,20 +157,20 @@
                                 <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
                                     <div class="dropdown-content-body">
                                         <ul>
-                                            <li>
+                                            <!--<li>
                                                 <a href="profile.html">
                                                     <i class="ti-user"></i>
                                                     <span>Profile</span>
                                                 </a>
-                                            </li>
+                                            </li>-->
                                             <li>
-                                                <a href="setting.html">
+                                                <a href="javascript:void(0)" onclick="TRIFED.openpage('change-password.php')">
                                                     <i class="ti-settings"></i>
-                                                    <span>Setting</span>
+                                                    <span>Change Password</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="index.html">
+                                                <a href="javascript:void(0)" onclick="TRIFED.logout();">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>

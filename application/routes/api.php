@@ -25,10 +25,12 @@ use App\Http\Controllers\API\UsersController;
 
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
-
+Route::post('forgot-password', [RegisterController::class,'forgotPassword']);
+Route::post('reset-password', [RegisterController::class,'resetPassword']);
    
 Route::middleware('auth:api')->group( function () {
     Route::get('logout', [RegisterController::class, 'logout']);
+	Route::post('change-password', [RegisterController::class,'changePassword']);
     Route::resource('product_vertical', ProductVerticalModelController::class);
     Route::post('updateProjectVerticalStatus', [ProductVerticalModelController::class,'updateProjectVerticalStatus']);
     Route::post('getProjectVerticalStatusHistory', [ProductVerticalModelController::class,'getProjectVerticalStatusHistory']);
@@ -53,6 +55,7 @@ Route::middleware('auth:api')->group( function () {
     Route::post('save_role_permissions', [RolesController::class,'savePermissions']);
     Route::get('get-role-permissions/{id}', [RolesController::class,'getRolePermission']);
     Route::resource('users', UsersController::class);
+	Route::get('send-email', [UsersController::class,'sendEmail']);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

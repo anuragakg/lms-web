@@ -64,8 +64,12 @@ function getLTypeUser($role)
 	return $user_type;
 }
 
+function hashPassword($password){
+	return bcrypt(hash('sha256',$password));
+}
 function sendVerticalNotification($product)
 {
 	$job = (new \App\Jobs\SendVerticalNotification($product))->delay(now()->addSeconds(2)); 
 	dispatch($job);  
 }
+

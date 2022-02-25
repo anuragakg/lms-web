@@ -1,7 +1,48 @@
 create database
 update credentials in .env file 
+
+
+make server.php to index.php
 composer update
+
+//======================
+On my Ubuntu LAMP installation, I solved this problem with the following 2 changes.
+
+Enable mod_rewrite on the apache server: sudo a2enmod rewrite.
+Edit /etc/apache2/apache2.conf, changing the "AllowOverride" directive for the /var/www directory (which is my main document root): AllowOverride All
+Then restart the Apache server: service apache2 restart
+=========================
+
+php artisan route:clear
 php artisan migrate:fresh
 php artisan passport:install
 php artisan migrate
 php artisan db:seed
+
+//============create supervisor on server
+sudo apt-get install supervisor
+ cd /etc/supervisor
+sudo nano laravel-worker.conf
+and paste
+
+[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/html/application/artisan queue:work sqs --sleep=3 --tries=3 --max-time=3600
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+user=root
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/var/www/html/application/public/worker.log
+stopwaitsecs=3600
+==========Then run below commands=================
+
+sudo supervisorctl reread
+
+sudo supervisorctl update
+
+sudo supervisorctl start all
+===============
+
