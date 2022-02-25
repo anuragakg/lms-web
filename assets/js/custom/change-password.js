@@ -31,15 +31,11 @@ $(function () {
 			
 			var form = $('#formID')[0];   
     		var data = new FormData(form);	
-    		if (edit_id != undefined && edit_id != '') 
-			{
-				data.append('form_id', edit_id );
-			}
-			TRIFED.fileAjaxHit(url, method, data, function (response) {
+    		TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
-					TRIFED.showMessage('success', 'User saved successfully');
-					setTimeout(function() { window.location = 'users-list.php'}, 500);
+					TRIFED.showMessage('success', response.message);
+					setTimeout(function() { window.location = 'change-password.php'}, 500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}

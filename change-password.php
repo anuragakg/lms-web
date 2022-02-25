@@ -70,7 +70,7 @@
                                 <div class="form">
 									<div class="row">
                                         <div class="col-md-6">
-                                            <label for="">  Old Password </label>
+                                            <label for="">  Current Password </label>
                                             <input id="old_password" name="old_password" class="form-control" required>
                                         </div>
 									</div>
