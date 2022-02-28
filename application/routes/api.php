@@ -11,6 +11,8 @@ use App\Http\Controllers\API\ProcductFormController;
 use App\Http\Controllers\API\ProjectMiniCategoryController;
 use App\Http\Controllers\API\RolesController;
 use App\Http\Controllers\API\UsersController;
+use App\Http\Controllers\API\DashboardController;
+use App\Http\Controllers\API\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,7 @@ Route::post('reset-password', [RegisterController::class,'resetPassword']);
 Route::middleware('auth:api')->group( function () {
     Route::get('logout', [RegisterController::class, 'logout']);
 	Route::post('change-password', [RegisterController::class,'changePassword']);
+    Route::get('dashboard', [DashboardController::class,'index']);
     Route::resource('product_vertical', ProductVerticalModelController::class);
     Route::post('updateProjectVerticalStatus', [ProductVerticalModelController::class,'updateProjectVerticalStatus']);
     Route::post('getProjectVerticalStatusHistory', [ProductVerticalModelController::class,'getProjectVerticalStatusHistory']);
@@ -41,6 +44,7 @@ Route::middleware('auth:api')->group( function () {
     Route::get('approved_product_categories', [ProcductCategoryController::class,'getCategory']);
     Route::resource('product_subcategory', ProductSubcategoryController::class);
     Route::post('updateProjectSubCategoryStatus', [ProductSubcategoryController::class,'updateProjectSubCategoryStatus']);
+    Route::get('approved_product_subcategory', [ProductSubcategoryController::class,'approved_product_subcategory']);
     Route::post('getProjectSubCategoryStatusHistory', [ProductSubcategoryController::class,'getProjectSubCategoryStatusHistory']);
     Route::resource('product_form', ProcductFormController::class);
     Route::post('updateProjectFormStatus', [ProcductFormController::class,'updateProjectFormStatus']);
@@ -56,6 +60,9 @@ Route::middleware('auth:api')->group( function () {
     Route::get('get-role-permissions/{id}', [RolesController::class,'getRolePermission']);
     Route::resource('users', UsersController::class);
 	Route::get('send-email', [UsersController::class,'sendEmail']);
+    Route::get('notification/mark-all-read', [NotificationController::class,'markAllRead'])->name('notification-read');
+    Route::get('notification/count', [NotificationController::class,'getNotificationCount'])->name('notification-count');
+    Route::apiResource('notification', NotificationController::class);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

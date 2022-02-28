@@ -158,7 +158,7 @@ class ProductVerticalModelController extends BaseController
     }
     public function getVertical()
     {
-        $data= ProductVerticalModel::select('id','title')->get();
+        $data= ProductVerticalModel::select('id','title')->where('status',1)->get();
         return $this->sendResponse($data, 'Product form listed successfully.');
     }
     public function updateProjectVerticalStatus(Request $request)

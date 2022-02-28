@@ -2,6 +2,7 @@
 $cache_buster=time();
 ?>
 <script src="assets/js/jquery-3.4.1.min.js"></script>
+<script src="assets/js/lib/bootstrap.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xss-filters@1.2.7/dist/xss-filters.min.js"></script>
 
@@ -9,7 +10,7 @@ $cache_buster=time();
 <script src="assets/js/inspinia.js"></script>
 <script src="assets/js/plugins/pace/pace.min.js"></script>
 <script src="assets/js/plugins/slimscroll/jquery.slimscroll-1.3.8.min.js"></script>
-  <script src="assets/js/lib/bootstrap.min.js"></script>
+  
 <!-- Chosen -->
 <script src="assets/js/plugins/chosen/chosen.jquery-1.8.7.js"></script>
 
@@ -75,32 +76,12 @@ $cache_buster=time();
 
 <script>
   $(document).ready(function() {
-    /*utils.getNotifications(true);
+    utils.getNotifications(true);
     setInterval(utils.getNotifications, 10000);
-    $('.i-checks').iCheck({
-      checkboxClass: 'icheckbox_square-green',
-      radioClass: 'iradio_square-green',
-    });
-    $('#data-calendar .input-group.date').datepicker({
-      todayBtn: "linked",
-      keyboardNavigation: false,
-      forceParse: false,
-      calendarWeeks: true,
-      autoclose: true,
-      startDate: '-100y',
-    });
-    $('#dob-calendar .input-group.date').datepicker({
-      todayBtn: "linked",
-      keyboardNavigation: false,
-      forceParse: false,
-      calendarWeeks: true,
-      autoclose: true,
-      startDate: '-100y',
-      endDate: '+0d',
-    });
+    
     $("body").click(function(e) {
       utils.getNotifications(true);
-    });*/
+    });
   });
 </script>
 

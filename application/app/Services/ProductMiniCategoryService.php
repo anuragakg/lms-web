@@ -16,6 +16,9 @@ class ProductMiniCategoryService
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         
         $product=ProjectMiniCategoryModel::orderBy('id','desc');
+        if(isset($request['form_type']) && !empty($request['form_type'])){
+            $product=$product->where('form_type',$request['form_type']);
+        }
         if(!empty($search)){
             //$product=$product->where(DB::raw("CONCAT(`sub_category`)"), 'LIKE', "%".$search."%");    
         }
@@ -35,6 +38,10 @@ class ProductMiniCategoryService
             DB::beginTransaction();
             $product=new ProjectMiniCategoryModel();
 			$product->product_form_mini_id=$request->product_form_mini_id;
+            $product->form_type=$request->form_type;
+			$product->category_id=$request->category_id;
+			$product->sub_category_id=$request->sub_category_id;
+			$product->product_vertical_id=$request->product_vertical_id;
             $product->title=$request->title;
             $product->first_name=$request->first_name;
             $product->last_name=$request->last_name;
@@ -57,7 +64,12 @@ class ProductMiniCategoryService
 			$product->added_by=$user_id;
 			$product->approved_by=0;
 			$product->save();
-
+            if($request->form_type==1){
+                sendMiniCategoryNotification($product);    
+            }else{
+                sendLeadCategoryNotification($product);
+            }
+            
             $projectstatus=new ProjectMiniCategoryStatusModel();
             $projectstatus->status=0;
             $projectstatus->user_type='1';
@@ -89,6 +101,9 @@ class ProductMiniCategoryService
             DB::beginTransaction();
             $product =ProjectMiniCategoryModel::find($id);
             $product->product_form_mini_id=$request->product_form_mini_id;
+			$product->category_id=$request->category_id;
+			$product->sub_category_id=$request->sub_category_id;
+			$product->product_vertical_id=$request->product_vertical_id;
             $product->title=$request->title;
             $product->first_name=$request->first_name;
             $product->last_name=$request->last_name;
@@ -138,6 +153,9 @@ class ProductMiniCategoryService
     public function checkValidation($input){
         $validation_arr=array();
         $validation_arr['product_form_mini_id']=['required'];
+        $validation_arr['category_id']=['required'];
+        $validation_arr['sub_category_id']=['required'];
+        $validation_arr['product_vertical_id']=['required'];
         $product_form_mini_id=$input['product_form_mini_id'];
         $product=ProcductFormModel::where('id',$product_form_mini_id)->first();
         $product_controls=$product->getControls;

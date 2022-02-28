@@ -68,8 +68,8 @@ class UserCreated extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message'=>"New user successfully added",
-			'action' => $this->user->id
+            'message'=>"You have been successfully registered in our application.You can change your password here",
+			'action' => env('WEB_URL').'/change-password.php'
         ];
     }
 }

@@ -69,7 +69,60 @@ function hashPassword($password){
 }
 function sendVerticalNotification($product)
 {
-	$job = (new \App\Jobs\SendVerticalNotification($product))->delay(now()->addSeconds(2)); 
+	$job = (new \App\Jobs\SendVerticalJob($product))->delay(now()->addSeconds(2)); 
 	dispatch($job);  
+}
+function sendNewCategoryNotification($product)
+{
+	$job = (new \App\Jobs\CategoryCreatedJob($product))->delay(now()->addSeconds(2)); 
+	dispatch($job);  
+}
+function sendNewFormNotification($product)
+{
+	$job = (new \App\Jobs\NewFormCreatedJob($product))->delay(now()->addSeconds(2)); 
+	dispatch($job);  
+}
+function sendSubCategoryNotification($product)
+{
+	$job = (new \App\Jobs\NewSubCategoryJob($product))->delay(now()->addSeconds(2)); 
+	dispatch($job);  
+}
+function sendMiniCategoryNotification($product)
+{
+	$job = (new \App\Jobs\NewMiniCategoryJob($product))->delay(now()->addSeconds(2)); 
+	dispatch($job);  
+}
+function sendLeadCategoryNotification($product)
+{
+	$job = (new \App\Jobs\NewLeadCategoryJob($product))->delay(now()->addSeconds(2)); 
+	dispatch($job);  
+}
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 

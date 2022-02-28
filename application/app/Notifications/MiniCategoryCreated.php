@@ -16,9 +16,10 @@ class MiniCategoryCreated extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $title;
+    public function __construct($product)
     {
-        //
+        //$this->title=$product->title;
     }
 
     /**
@@ -29,7 +30,7 @@ class MiniCategoryCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -41,9 +42,13 @@ class MiniCategoryCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('New Product Mini Category Added')
+                    ->greeting('Hello '.$notifiable->name)
+                    ->line('A new Product Mini Category has been added. ')
+                    //->line('Title : '.$this->title)
+                    ->action('Notification Action', env('WEB_URL').'/product-mini-category-list.php?form_type=1')
+                    ->line('Please check and update the status')
+                    ->line('Thanks');
     }
 
     /**
@@ -55,7 +60,8 @@ class MiniCategoryCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'message'=>"A new Product Category has been added.Please check and update status",
+            'action' => env('WEB_URL').'/product-mini-category-list.php?form_type=1'
         ];
     }
 }

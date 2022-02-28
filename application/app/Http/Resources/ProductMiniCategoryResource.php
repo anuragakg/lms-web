@@ -50,6 +50,9 @@ class ProductMiniCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'product_form_mini_id'=>$this->product_form_mini_id,
+            'category_id'=>$this->category_id,
+            'sub_category_id'=>$this->sub_category_id,
+            'product_vertical_id'=>$this->product_vertical_id,
             'product_form_data'=>$this->getForm,
             'title'=>$this->title,
             'first_name'=>$this->first_name,

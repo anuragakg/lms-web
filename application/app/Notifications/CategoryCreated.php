@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CategoryCreated extends Notification
+class CategoryCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,9 +16,10 @@ class CategoryCreated extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $title;
+    public function __construct($product)
     {
-        //
+        $this->title=$product->title;
     }
 
     /**
@@ -29,7 +30,7 @@ class CategoryCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -41,9 +42,13 @@ class CategoryCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('New Product Category Added')
+                    ->greeting('Hello '.$notifiable->name)
+                    ->line('A new Product Category has been added. ')
+                    ->line('Title : '.$this->title)
+                    ->action('Notification Action', env('WEB_URL').'/new-product-category.php')
+                    ->line('Please check and update the status')
+                    ->line('Thanks');
     }
 
     /**
@@ -54,8 +59,10 @@ class CategoryCreated extends Notification
      */
     public function toArray($notifiable)
     {
+        $title=$this->title;
         return [
-            //
+            'message'=>"A new Product Category $title has been added.Please check and update status",
+            'action' => env('WEB_URL').'/new-product-category.php'
         ];
     }
 }

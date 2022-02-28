@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class FormCreated extends Notification
+class FormCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,9 +16,10 @@ class FormCreated extends Notification
      *
      * @return void
      */
-    public function __construct()
+	 public $title;
+    public function __construct($product)
     {
-        //
+        $this->title=$product->title;
     }
 
     /**
@@ -29,7 +30,7 @@ class FormCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -41,9 +42,13 @@ class FormCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('New Product Form Added')
+                    ->greeting('Hello '.$notifiable->name)
+                    ->line('A new Product Form has been added. ')
+                    ->line('Title : '.$this->title)
+                    ->action('Notification Action', env('WEB_URL').'/new-form-list.php')
+                    ->line('Please check and update the status')
+                    ->line('Thanks');
     }
 
     /**
@@ -54,8 +59,10 @@ class FormCreated extends Notification
      */
     public function toArray($notifiable)
     {
+        $title=$this->title;
         return [
-            //
+            'message'=>"A new Product Form $title has been added.Please check and update status",
+            'action' => env('WEB_URL').'/new-form-list.php'
         ];
     }
 }

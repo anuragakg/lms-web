@@ -169,7 +169,7 @@ class ProcductCategoryController extends BaseController
     }
     public function getCategory()
     {
-        $data= ProcductCategoryModel::select('id','title')->get();
+        $data= ProcductCategoryModel::select('id','title')->where('status',1)->get();
         return $this->sendResponse($data, 'Product Category listed successfully.');
     }
     public function updateProjectCategoryStatus(Request $request)

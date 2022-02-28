@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\VerticalCreated;
 use App\Models\User;
-class SendVerticalNotification implements ShouldQueue
+class SendVerticalJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 

@@ -81,7 +81,7 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
-									return row.added_by.name;
+									return row.added_by;
 							}
 							 
 						},

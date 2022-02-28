@@ -1,7 +1,10 @@
 const edit_id = TRIFED.getUrlParameters().id;
+const form_type = TRIFED.getUrlParameters().form_type;
 $(function () {
-	//fetchVertical();
-	//fetchCategory();
+	fetchCategory();
+	fetchSubCategory();
+	fetchVertical();
+
 	fetchProductForm();
 	
 	if(edit_id!= undefined)
@@ -46,6 +49,7 @@ $(function () {
 				         var api = new $.fn.dataTable.Api(settings);
 				         
 				         d.page = api.page()+1;
+				         d.form_type = form_type;
 				         
 				      },
 		            "dataSrc": function(json) {
@@ -171,11 +175,12 @@ $(function () {
 			{
 				data.append('form_id', edit_id );
 			}
+			data.append('form_type', 1 );
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'product-mini-category-list.php'}, 500);
+					setTimeout(function() { window.location = 'product-mini-category-list.php?form_type=1'}, 500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -187,16 +192,16 @@ $(function () {
 
 fetchSubCategory=(id=0)=>{
 	
-	var url = conf.getProjectSubCategory.url(id);
-	var method = conf.getProjectSubCategory.method;
+	var url = conf.getApprovedProjectSubCategoryList.url;
+	var method = conf.getApprovedProjectSubCategoryList.method;
 	var data = {};
 	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 		if (response) {
-			$('#sub_category').val(response.data.sub_category);
-			$('#category_id').val(response.data.category_id);
-			$('#product_vertical_id').val(response.data.product_vertical_id);
-			$('#product_form_mini_id').val(response.data.product_form_mini_id);
-			$('#product_form_lead_id').val(response.data.product_form_lead_id);
+			html='<option value="">Select Category</option>';
+			response.data.forEach((row)=>{
+				html +='<option value="'+row.id+'">'+row.sub_category+'</option>'
+			});
+			$('#sub_category_id').html(html);
 		}
 	});	
 
@@ -209,6 +214,9 @@ fetchMiniCategory=(id)=>{
 	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 		if (response) {
 			$('#product_form_mini_id').val(response.data.product_form_mini_id).trigger('change');
+			$('#category_id').val(response.data.category_id);
+			$('#sub_category_id').val(response.data.sub_category_id);
+			$('#product_vertical_id').val(response.data.product_vertical_id);
 			$('#title').val(response.data.title);
 			$('#first_name').val(response.data.first_name);
 			$('#last_name').val(response.data.last_name);

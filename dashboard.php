@@ -68,77 +68,89 @@
                 <section id="main-content">
                     <div class="row">
                         <div class="col-lg-3">
+                            <a href="new-product-vertical.php">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-money color-success border-success"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Total Profit</div>
-                                        <div class="stat-digit">1,012</div>
+                                        <div class="stat-text">Total Vertical</div>
+                                        <div class="stat-digit" id="vertical_total">0</div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-lg-3">
+                            <a href="new-product-category.php">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-user color-primary border-primary"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">New Leads</div>
-                                        <div class="stat-digit">961</div>
+                                        <div class="stat-text">Total Category</div>
+                                        <div class="stat-digit" id="category_total">0</div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-lg-3">
+                            <a href="new-form-list.php">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-layout-grid2 color-pink border-pink"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Active Projects</div>
-                                        <div class="stat-digit">770</div>
+                                        <div class="stat-text">Total Form</div>
+                                        <div class="stat-digit" id="form_total">0</div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-lg-3">
+                            <a href="product-sub-category-list.php">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-link color-danger border-danger"></i></div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Referral</div>
-                                        <div class="stat-digit">2,781</div>
+                                        <div class="stat-text">Sub Category</div>
+                                        <div class="stat-digit" id="sub_category_total">0</div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
+                            <a href="product-mini-category-list.php?form_type=1">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-money color-success border-success"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Paid Student</div>
-                                        <div class="stat-digit">200</div>
+                                        <div class="stat-text">Mini Category</div>
+                                        <div class="stat-digit" id="mini_category_total">0</div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-lg-3">
+                            <a href="product-lead-category-list.php?form_type=2">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-user color-primary border-primary"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Free Student</div>
-                                        <div class="stat-digit">50</div>
+                                        <div class="stat-text">Lead Category</div>
+                                        <div class="stat-digit" id="lead_category_total">0</div>
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <div class="col-lg-3">
                             <div class="card">
@@ -897,6 +909,7 @@
         </div>
     </div>
 	<?php include('parts/js-files.php'); ?>
+    <script type="text/javascript" src="assets/js/custom/dashboard.js?v=<?php echo time();?>"></script> 
     <!-- jquery vendor -->
    <?php /*?> <script src="assets/js/lib/jquery.min.js"></script>
     <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SubCategoryCreated extends Notification
+class SubCategoryCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,9 +16,10 @@ class SubCategoryCreated extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $sub_category;
+    public function __construct($product)
     {
-        //
+        $this->sub_category=$product->sub_category;
     }
 
     /**
@@ -29,7 +30,7 @@ class SubCategoryCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -41,9 +42,13 @@ class SubCategoryCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('New Product Sub Category Added')
+                    ->greeting('Hello '.$notifiable->name)
+                    ->line('A new Product Category has been added. ')
+                    ->line('Title : '.$this->sub_category)
+                    ->action('Notification Action', env('WEB_URL').'/product-sub-category-list.php')
+                    ->line('Please check and update the status')
+                    ->line('Thanks');
     }
 
     /**
@@ -54,8 +59,10 @@ class SubCategoryCreated extends Notification
      */
     public function toArray($notifiable)
     {
+        $sub_category=$this->sub_category;
         return [
-            //
+            'message'=>"A new Product Sub Category $sub_category has been added.Please check and update status",
+            'action' => env('WEB_URL').'/product-sub-category-list.php'
         ];
     }
 }

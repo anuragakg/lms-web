@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerticalCreated extends Notification implements ShouldQueue
+class NewLeadCategory extends Notification
 {
     use Queueable;
 
@@ -19,7 +19,7 @@ class VerticalCreated extends Notification implements ShouldQueue
     public $title;
     public function __construct($product)
     {
-        $this->title=$product->title;
+        //$this->title=$product->title;
     }
 
     /**
@@ -42,11 +42,11 @@ class VerticalCreated extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('New Product Vertical Added')
+                    ->subject('New Product Lead Category Added')
                     ->greeting('Hello '.$notifiable->name)
-                    ->line('A new Product Vertical has been added. ')
-                    ->line('Title : '.$this->title)
-                    ->action('Notification Action', env('WEB_URL').'/new-product-vertical.php')
+                    ->line('A new Product Lead Category has been added. ')
+                    //->line('Title : '.$this->title)
+                    ->action('Notification Action', env('WEB_URL').'/product-mini-category-list.php?form_type=2')
                     ->line('Please check and update the status')
                     ->line('Thanks');
     }
@@ -59,10 +59,9 @@ class VerticalCreated extends Notification implements ShouldQueue
      */
     public function toArray($notifiable)
     {
-        $title=$this->title;
         return [
-            'message'=>"A new Product Vertical $title has been added.Please check and update status",
-            'action' => env('WEB_URL').'/new-product-vertical.php'
+            'message'=>"A new Product Lead Category has been added.Please check and update status",
+            'action' => env('WEB_URL').'/product-mini-category-list.php?form_type=2'
         ];
     }
 }

@@ -17,7 +17,31 @@ var conf = {
         'method': 'POST',
     },
     
-    
+    'getNotificationCount':{
+        'url':endpoint + 'notification/count/',
+        'method':'GET',
+    },
+    'getUnreadNotifications':{
+        'url':endpoint + 'notification',
+        'method':'GET',
+    },
+    'getNotification':{
+        'url':endpoint + 'notification/',
+        'method':'GET',
+    },
+    'markNotificationRead':{
+        url : function (id) {
+            return (
+              endpoint + "notification/" + id
+            );
+        },
+        'method':'PUT',
+    },
+
+    'MarkAllNotificationRead':{
+        'url':endpoint + 'notification/mark-all-read/',
+        'method':'GET',
+    },
     'login': {
         'url': endpoint + 'login',
         'method': 'POST',
@@ -133,6 +157,10 @@ var conf = {
         'url': endpoint + 'product_subcategory',
         'method': 'GET',
     },
+    'getApprovedProjectSubCategoryList': {
+        'url': endpoint + 'approved_product_subcategory',
+        'method': 'GET',
+    },
     'deleteSubCategory': {
         url : function (id) {
             return endpoint + 'product_subcategory/' + id;
@@ -244,6 +272,10 @@ var conf = {
 	'forgot_password': {
         url : endpoint + 'forgot-password/',
         'method': 'POST',
+    },
+    'getDashboardData': {
+        url : endpoint + 'dashboard',
+        'method': 'GET',
     },
 	
 }

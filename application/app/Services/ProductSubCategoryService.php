@@ -42,7 +42,7 @@ class ProductSubCategoryService
 			$product->added_by=$user_id;
 			$product->approved_by=0;
 			$product->save();
-
+            sendSubCategoryNotification($product);
             $projectstatus=new ProjectSubCategoryStatusModel();
             $projectstatus->status=0;
             $projectstatus->user_type='1';

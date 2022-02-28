@@ -193,5 +193,11 @@ class ProductSubcategoryController extends BaseController
            return $this->sendError('Exception Error.', $th);  
        }   
     }
+    public function approved_product_subcategory()
+    {
+        $product = Apimodel::select('id','sub_category')->where('status',1)->get();
+  
+        return $this->sendResponse($product, 'Product subcategory retrieved successfully.');
+    }
 
 }

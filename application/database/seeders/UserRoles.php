@@ -36,6 +36,16 @@ class UserRoles extends Seeder
                 'slug' => 'l3',
                 'role_type' => 1
             ],
+			[
+                'title' => 'Editor',
+                'slug' => 'editor',
+                'role_type' => 1
+            ],
+			[
+                'title' => 'Student',
+                'slug' => 'student',
+                'role_type' => 1
+            ],
           
             
             

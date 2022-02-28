@@ -22,49 +22,43 @@ window.utils = {
     TRIFED.asyncAjaxHit(url2, method2, data, function(response, cb) {
       if (response) {
         $(".notification-count").html(response.data.count);
-        utils.setRoleInToken(response.data.role);
+        utils.setRolePermissionInToken(response.data.role,response.data.permissions);
+        
+      }
+      return true;
+    });
+  },
+  getUnreadNotifications(clickEvent = false) {
+    var url2 = conf.getUnreadNotifications.url;
+    var method2 = conf.getUnreadNotifications.method;
+
+    let data = {};
+
+    TRIFED.asyncAjaxHit(url2, method2, data, function(response, cb) {
+      if (response.status) {
+        //$(".notification-count").html(response.data.count);
+        let html='';
+		var template = $("#notification_template").html();
+		$('#notification-content').empty();
+		response.data.forEach((row)=>{
+			
+			var text = Mustache.render(template, row);
+			$('#notification-content').append(text);
+		})
+		
       }
       return true;
     });
   },
 
-  setRoleInToken(role){
+  setRolePermissionInToken(role,permissions){
     var auth = TRIFED.getLocalStorageItem();
     auth.role = role;
+	auth.permissions = permissions;
     localStorage.setItem('authUser', JSON.stringify(auth));
   },
-  /**
-   * Get Districts based on state
-   * @param {string} id State ID
-   * @param {callback} callback Function to be executed
-   */
-  getDistricts(id, callback) {
-    var url = conf.getDistricts.url;
-    var method = conf.getDistricts.method;
-    var data = {
-      state_id: id,
-    };
-    TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
-      if (response) {
-        return callback(response);
-      }
-      callback(null);
-    });
-  },
-
-  getBlocks(id, callback) {
-    var url = conf.getBlocks.url;
-    var method = conf.getBlocks.method;
-    var data = {
-      district_id: id,
-    };
-    TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
-      if (response) {
-        return callback(response);
-      }
-      callback(null);
-    });
-  },
+  
+  
   /**
    * Renders Options Element
    * @param {string} id Element ID/Class Name
@@ -86,45 +80,7 @@ window.utils = {
    * @param {array} records Records
    * @param {string} field Title Field
    */
-  renderOptionCategoryElements(id, records, field = "title") {
-    const el = $("select" + id);
-    el.html("");
-    el.append($("<option>").text("Select Category").val(""));
-    records.forEach((element) => {
-      el.append($("<option>").val(element.id).text(element[field]));
-    });
-  },
-
-  /**
-   * Renders Options Vdvk Element
-   * @param {string} id Element ID/Class Name
-   * @param {array} records Records
-   * @param {string} field Title Field
-   */
-  renderOptionVdvkElements(id, records, field = "kendra_name") {
-    const el = $("select" + id);
-    el.html("");
-    el.append($("<option>").text("Select Vdvk Type").val(""));
-    records.forEach((element) => {
-      el.append($("<option>").val(element.id).text(element[field]));
-    });
-  },
-
-  /**
-   * Renders Options Category Element
-   * @param {string} id Element ID/Class Name
-   * @param {array} records Records
-   * @param {string} field Title Field
-   */
-  renderOptionStateElements(id, records, field = "title") {
-    const el = $("select" + id);
-    el.html("");
-    el.append($("<option>").text("Select State").val(""));
-    records.forEach((element) => {
-      el.append($("<option>").val(element.id).text(element[field]));
-    });
-  },
-
+  
   /**
    * Renders Radio Element
    * @param {string} id Element ID/Class Name

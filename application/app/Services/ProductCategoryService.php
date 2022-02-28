@@ -56,6 +56,8 @@ class ProductCategoryService
             $projectstatus->user_type='3';
             $projectstatus->product_id=$product->id;
             $projectstatus->save();
+			
+			sendNewCategoryNotification($product);
             DB::commit();
             return $product;
         }catch (\Throwable $th) {

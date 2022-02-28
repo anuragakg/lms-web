@@ -170,7 +170,7 @@ class ProcductFormController extends BaseController
     }
     public function getProductForm()
     {
-        $products= ProcductFormModel::select('id','title','type')->get();
+        $products= ProcductFormModel::select('id','title','type')->where('status',1)->get();
         $product_arr=array();
         foreach($products as $product){
             if($product->type=='1'){

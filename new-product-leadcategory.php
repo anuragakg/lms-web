@@ -51,7 +51,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>New Mini Category</h1>
+                                <h1>New Lead Category</h1>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <div class="page-title">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="projects.html">Project</a></li>
-                                    <li class="breadcrumb-item active">Create Product Mini Category </li>
+                                    <li class="breadcrumb-item active">Create Product Lead Category </li>
                                 </ol>
                             </div>
                         </div>
@@ -310,7 +310,7 @@
 
 
     <?php include('parts/js-files.php'); ?>
-<script type="text/javascript" src="assets/js/custom/project/minicategory.js?v=<?php echo time();?>"></script> 
+<script type="text/javascript" src="assets/js/custom/project/leadcategory.js?v=<?php echo time();?>"></script> 
 
 </body>
 

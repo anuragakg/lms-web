@@ -36,7 +36,7 @@ class ProductFormService
             $product->added_by=$user_id;
             $product->approved_by=0;
             $product->save();
-			
+			sendNewFormNotification($product);
 			foreach($input['contorls']['element'] as $key=>$control)
             {
                 if(isset($input['contorls']['element'][$key]['input']))

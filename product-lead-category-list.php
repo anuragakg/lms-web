@@ -29,12 +29,14 @@
     <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/lib/helper.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/plugins/switch/on-off-switch.css"/>
 </head>
 
 <body>
 
-	<?php include('parts/head-tag.php'); ?>
+    <?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
     <div class="content-wrap">
@@ -44,18 +46,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1> Product Vertical </h1>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="projects.html">Project</a></li>
-                                    <li class="breadcrumb-item active"> Product Vertical</li>
-                                </ol>
+                                <h1>Product Lead Category </h1>
                             </div>
                         </div>
                     </div>
@@ -63,31 +54,14 @@
                 </div>
                 <!-- /# row -->
                 <section id="main-content">
-
-                    <div class="row">
-                        <div class="col-md-7 hidden project_vertical_add project_vertical_edit">
-                            <form id="formID">
-                                <div class="form">
-                                    <label for=""> Product Vertical Name </label>
-                                    <input type="text" name="title" id="title" placeholder="Enter Product Vertical Name"
-                                        class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
-                                        <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
-                                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
-                                </div>    
-                            </form>
-                            
-                            
-                        </div>
-                        <div class="col-md-5 d-flex align-items-end">
-                        </div>
-                        <div class="col-md-12 mt-3">
-                            <h6 class="w-100">List of Existing Product Vertical </h6>
-                            <div id="myGrid"  class="table-responsive">
+                    <div class="col-md-12 mt-3">
+                            <h6 class="w-100">Product Lead Category</h6>
+                            <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>SR.No</th>
-                                            <th>Name</th>
+                                            <th>Product Form</th>
                                             <th>Initiated By</th>
                                             <th>Created Date</th>
                                             
@@ -102,22 +76,17 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
-				</section>
-			
-			</div>
+            </div>
 
 
             
-            
+            </section>
         </div>
     </div>
-    <?php include('status_history_modal.php'); ?>
+        <?php include('status_history_modal.php'); ?>
 <?php include('parts/js-files.php'); ?>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/custom/project/vertical_add.js?v=<?php echo time();?>"></script> 
-  
-
+<script type="text/javascript" src="assets/js/custom/project/leadcategory.js?v=<?php echo time();?>"></script> 
+   
 </body>
 
 </html>
