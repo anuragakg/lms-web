@@ -33,6 +33,18 @@ class LeadsService
             $lead->name=$request['name'];
             $lead->email=$request['email'];
             $lead->phone=$request['phone'];
+            $lead->alternate_no=$request['alternate_no']??'-';
+            $lead->source=$request['source']??'-';
+            $lead->ad_id=$request['ad_id']??'-';
+            $lead->ad_name=$request['ad_name']??'-';
+            $lead->adset_id=$request['adset_id']??'-';
+            $lead->adset_name=$request['adset_name']??'-';
+            $lead->campaign_id=$request['campaign_id']??'-';
+            $lead->campaign_name=$request['campaign_name']??'-';
+            $lead->form_id=$request['form_id']??'-';
+            $lead->form_name=$request['form_name']??'-';
+            $lead->is_organic=$request['is_organic']??null;
+            $lead->platform=$request['platform']??'-';
             $lead->save();
             DB::commit();
             return $lead;
