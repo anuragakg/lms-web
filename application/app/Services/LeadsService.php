@@ -18,12 +18,12 @@ class LeadsService
         $limit = $request['length']??10;
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         
-        $user=Lead::orderBy('id','desc');
+        $lead=Lead::orderBy('id','desc');
         if(!empty($search)){
-            $user=$user->where(DB::raw("CONCAT(`name`,`email`)"), 'LIKE', "%".$search."%");    
+            $lead=$lead->where(DB::raw("CONCAT(`name`,`email`)"), 'LIKE', "%".$search."%");    
         }
         
-        return $user->paginate($limit);
+        return $lead->paginate($limit);
             
     }
     public function addLeads($request){
@@ -34,6 +34,7 @@ class LeadsService
             $lead->email=$request['email'];
             $lead->phone=$request['phone'];
             $lead->save();
+            DB::commit();
             return $lead;
         }catch (\Throwable $th) {
             DB::rollBack();

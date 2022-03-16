@@ -18,9 +18,26 @@ class LeadsController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $request = $request->all();
+        try{
+            $items=$this->service->getList($request);
+            
+            //$items = ApiResource::collection($users);
+            $json_data = array(
+            "recordsTotal"    => $items->total(),  
+            "recordsFiltered" => $items->total(), 
+            "data"            => $items,
+            'current_page' => $items->currentPage(),
+            'next' => $items->nextPageUrl(),
+            'previous' => $items->previousPageUrl(),
+            'per_page' => $items->perPage(),   
+            );
+            return $this->sendResponse( $json_data, 'Users Listed successfully.');
+        }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);  
+       }
     }
 
     /**
