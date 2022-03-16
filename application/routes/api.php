@@ -13,6 +13,7 @@ use App\Http\Controllers\API\RolesController;
 use App\Http\Controllers\API\UsersController;
 use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\NotificationController;
+use App\Http\Controllers\API\LeadsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,7 @@ Route::middleware('auth:api')->group( function () {
     Route::apiResource('notification', NotificationController::class);
 });
 Route::post('send-email', [UsersController::class,'sendEmail']);
+Route::apiResource('leads', LeadsController::class);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
