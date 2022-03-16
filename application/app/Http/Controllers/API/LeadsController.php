@@ -23,7 +23,7 @@ class LeadsController extends BaseController
         $request = $request->all();
         try{
             $items=$this->service->getList($request);
-            
+
             //$items = ApiResource::collection($users);
             $json_data = array(
             "recordsTotal"    => $items->total(),  
@@ -34,7 +34,7 @@ class LeadsController extends BaseController
             'previous' => $items->previousPageUrl(),
             'per_page' => $items->perPage(),   
             );
-            return $this->sendResponse( $json_data, 'Users Listed successfully.');
+            return $this->sendResponse( $json_data, 'Leads Listed successfully.');
         }catch (\Throwable $th) {
            return $this->sendError('Exception Error.', $th);  
        }
