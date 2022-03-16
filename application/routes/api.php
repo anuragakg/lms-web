@@ -59,12 +59,12 @@ Route::middleware('auth:api')->group( function () {
     Route::post('save_role_permissions', [RolesController::class,'savePermissions']);
     Route::get('get-role-permissions/{id}', [RolesController::class,'getRolePermission']);
     Route::resource('users', UsersController::class);
-	Route::post('send-email', [UsersController::class,'sendEmail']);
+	
     Route::get('notification/mark-all-read', [NotificationController::class,'markAllRead'])->name('notification-read');
     Route::get('notification/count', [NotificationController::class,'getNotificationCount'])->name('notification-count');
     Route::apiResource('notification', NotificationController::class);
 });
-
+Route::post('send-email', [UsersController::class,'sendEmail']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
