@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\User;
 use App\Notifications\UserCreated;
+use App\Notifications\LeadCreated;
 use Auth;
 use DB;
 use Str;
@@ -94,13 +95,14 @@ class UsersService
 	public function deleteUser($id){
         return User::whwre('id',$id)->delete();
     }
-	public function sendEmail()
+	public function sendEmail($request)
 	{
+
 		$user= User::first();
 		$randomPassword = '123456' ;
 		$delay = now()->addSeconds(2);
 		//$user->notify(new UserCreated($user,$randomPassword));
-		$user->notify(new UserCreated($user,$randomPassword));
+		$user->notify(new LeadCreated($request));
 	}
 	
 }
