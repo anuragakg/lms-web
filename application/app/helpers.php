@@ -6,6 +6,12 @@ function changeDateFormate($date,$date_format=null){
 	}
     return \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format($date_format);    
 }
+function changeDateTimeFormate($date,$date_format=null){
+	if($date_format==null){
+		$date_format='Y-m-d H:i:s';
+	}
+    return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format($date_format);    
+}
    
 function productImagePath($image_name)
 {

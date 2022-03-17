@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Services\LeadsService;
 use App\Http\Controllers\API\BaseController as BaseController;
+use Auth;
 class LeadsController extends BaseController
 {
     protected $service;
@@ -58,8 +59,18 @@ class LeadsController extends BaseController
      */
     public function store(Request $request)
     {
-        $data=$this->service->addLeads($request->all());
-        return $this->sendResponse($data, 'Lead created successfully.');
+        $user = $request->getUser();
+        $pass = $request->getPassword();
+        if(Auth::attempt(['email' => $user, 'password' => $pass])){ 
+            $user = Auth::user(); 
+            $data=$this->service->addLeads($request->all());
+            return $this->sendResponse($data, 'Lead created successfully.');
+        } 
+        else{ 
+            return $this->sendError('Unauthorised.', 'Unauthorised');
+        }
+
+        
     }
 
     /**
