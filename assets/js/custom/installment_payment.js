@@ -159,26 +159,28 @@ fetchPaymentInfo = (id = 0) => {
 			$('#user_name').html(response.data.getLeadUser.name);
 			$('#email_id').html(response.data.getLeadUser.email);
 			$('#programme').html(response.data.getProgramInfo.title);
+			var gst=response.data.getProgramInfo.gst;
 			$('#gross_payable').html(response.data.gross_payable);
 			$('#exemption').html(response.data.exemption);
 			$('#base_fee').html(response.data.base_fee);
-			$('#gst_applicable').html(response.data.gst_applicable);
+			//$('#gst_applicable').html(response.data.gst_applicable);
 			$('#net_base_fee').html(response.data.net_base_fee);
 			$('#fund_receivable').html(response.data.net_base_fee);
 			$('#fund_received').html(response.data.total_received);
 			$('#balance_amount').html(response.data.balance_due);
 			response.data.getInstallments.forEach((row)=>{
-				add_installments(row);
+				add_installments(row,gst);
 			});
 		}
 	});
 }
-function add_installments(row){
+function add_installments(row,gst){
 	
 	var random_id=Date.now();
 	var data = { 
 		random_id:random_id,
-		data:row
+		data:row,
+		gst
 	};
 	var template = $("#installment_template").html();
   var text = Mustache.render(template, data);
@@ -187,7 +189,9 @@ function add_installments(row){
   $('#mop_'+random_id).val(row.mop);
   $('#received_date_'+random_id).datepicker(
 	  {
-	  	format: 'dd-mm-yyyy',
+	  	dateFormat: 'dd-mm-yy',
+	  	changeMonth: true,
+        changeYear: true,
 	  }
   	);
   //inc_installment();
@@ -215,7 +219,6 @@ $('.fee').on('keyup',function(){
 	var gross_payable=$('#gross_payable').val();
 	var exemption=$('#exemption').val();
 	var base_fee=$('#base_fee').val();
-	var gst_applicable=parseFloat($('#gst_applicable').val());
 	var net_base_fee=$('#net_base_fee').val();
 	if(gross_payable!='' && exemption!='')
 	{
@@ -223,10 +226,7 @@ $('.fee').on('keyup',function(){
 		$('#base_fee').val(base_fee);
 		$('#net_base_fee').val(base_fee);
 	}
-	if(gst_applicable > 0){
-		net_base_fee=base_fee + (gst_applicable * (base_fee/100));
-		$('#net_base_fee').val(net_base_fee);
-	}
+	
 });
 getProgramInfo=()=>{
 	let program_id=$('#program_id').val();

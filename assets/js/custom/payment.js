@@ -176,7 +176,9 @@ function add_installments(){
   $("#installment_dates_container").append(text);
   $('#installment_date_'+random_id).datepicker(
   {
-  	format: 'dd-mm-yyyy',
+  	dateFormat: 'dd-mm-yy',
+	  	changeMonth: true,
+        changeYear: true,
   }
   	);
   inc_installment();
@@ -201,6 +203,9 @@ $(document).on('keyup','.installment_amount',function(){
 	$('#installment_total').val(total_amount)
 });
 $('.fee').on('keyup',function(){
+	setPaymentInfo();
+});
+setPaymentInfo=()=>{
 	var gross_payable=$('#gross_payable').val();
 	var exemption=$('#exemption').val();
 	var base_fee=$('#base_fee').val();
@@ -216,7 +221,7 @@ $('.fee').on('keyup',function(){
 		net_base_fee=base_fee + (gst_applicable * (base_fee/100));
 		$('#net_base_fee').val(net_base_fee);
 	}
-});
+}
 getProgramInfo=()=>{
 	let program_id=$('#program_id').val();
 	var url=conf.getProgramsById.url(program_id);
@@ -224,7 +229,8 @@ getProgramInfo=()=>{
 	data={program_id};
 	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 		if (response) {
-			$('#gross_payable').val(response.data.total_price)
+			$('#gross_payable').val(response.data.total_price);
+			setPaymentInfo();
 		}
 	});
 }

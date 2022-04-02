@@ -140,10 +140,7 @@
                                         <label for="scales">Base Fee</label> 
                                         <input type="text" class="form-control fee" name="base_fee" id="base_fee" value="0" readonly>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="scales">GST if Applicable</label> 
-                                        <input type="text" class="form-control fee" name="gst_applicable" id="gst_applicable" value="0" >
-                                    </div>
+
                                     <div class="col-md-6">
                                         <label for="scales">Net Base fee</label> 
                                         <input type="text" class="form-control fee" name="net_base_fee" id="net_base_fee" value="0" readonly>
@@ -200,8 +197,8 @@
 <script id="installment_template" type="text/template">
     <tr id="installment_{{random_id}}">
         <td><input type="text" class="form-control installment_no" name="instalment[installment_num][]" id="installmane_num_{{random_id}}" value=""></td>
-        <td><input type="text" class="form-control date" name="instalment[installment_date][]" id="installment_date_{{random_id}}"></td>
-        <td><input type="text" class="form-control installment_amount" name="instalment[installment_amount][]" id="installment_amount_{{random_id}}"></td>
+        <td><input type="text" class="form-control date" name="instalment[installment_date][]" id="installment_date_{{random_id}}" readonly required></td>
+        <td><input type="text" class="form-control installment_amount" name="instalment[installment_amount][]" required autocomplete="off" id="installment_amount_{{random_id}}"></td>
         <td><a href="javascript:void(0)" onclick="remove_installments({{random_id}})" ><i class="fa fa-minus"></i></a></td>
         
     </tr>

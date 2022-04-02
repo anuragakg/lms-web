@@ -49,7 +49,7 @@ class PaymentsService
             $Payment->gross_payable=$request->gross_payable;
             $Payment->exemption=$request->exemption;
             $Payment->base_fee=$request->base_fee;
-            $Payment->gst_applicable=$request->gst_applicable;
+            //$Payment->gst_applicable=$request->gst_applicable;
             $Payment->net_base_fee=$request->net_base_fee;
             $Payment->balance_due=$request->net_base_fee;
             $Payment->added_by=$user_id;
@@ -89,7 +89,7 @@ class PaymentsService
             'gross_payable' => 'required',
             'exemption' => 'required',
             'base_fee' => 'required',
-            'gst_applicable' => 'required',
+            //'gst_applicable' => 'required',
             'net_base_fee' => 'required',
             'instalment.installment_num.*' => 'required',
             'instalment.installment_date.*' => 'required',

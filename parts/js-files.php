@@ -60,6 +60,8 @@ $cache_buster=time();
 <script src="assets/js/custom/utils.js"></script>
 <script src="assets/js/plugins/multiselect/jquery.multi-select.js"></script>
 <script src="assets/js/plugins/easyAutocomplete/jquery.easy-autocomplete.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
     <script src="assets/js/lib/jquery.nanoscroller.min.js"></script>
     <!-- nano scroller -->
     <script src="assets/js/lib/menubar/sidebar.js"></script>

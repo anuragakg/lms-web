@@ -27,7 +27,7 @@ class PaymentInstallmentResource extends JsonResource
             'total_received' => $this->total_received,
             'mop' => $this->mop,
             'received_by' => $this->received_by,
-            'received_date' => date('d-m-Y',strtotime($this->received_date)),
+            'received_date' => $this->received_date!=null ? date('d-m-Y',strtotime($this->received_date)):'',
             'created_at' => $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at->format('d/m/Y'),
         ];

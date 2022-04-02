@@ -138,10 +138,7 @@
                                         <label for="scales">Base Fee</label> 
                                         <p id="base_fee" ></p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="scales">GST if Applicable</label> 
-                                        <p id="gst_applicable"  ></p>
-                                    </div>
+                                    
                                     <div class="col-md-6">
                                         <label for="scales">Net Base fee</label> 
                                         <p id="net_base_fee" ></p>
@@ -203,11 +200,11 @@
 <script id="installment_template" type="text/template">
     <tr id="installment_{{random_id}}">
         <td><input type="text" class="form-control installment_no" name="instalment[installment_num][{{data.id}}]" id="installmane_num_{{random_id}}" value="{{data.installment_num}}" readonly></td>
-        <td><input type="text" class="form-control date"  id="installment_date_{{random_id}}" readonly value="{{data.installment_date}}" ></td>
+        <td><input type="text" class="form-control "  id="installment_date_{{random_id}}" readonly value="{{data.installment_date}}" ></td>
         <td><input type="text" class="form-control installment_amount"  id="installment_amount_{{random_id}}" value="{{data.installment_amount}}" readonly></td>
 
         <td><input type="text" name="w_fee[{{data.id}}]" class="form-control "  id="w_fee_{{random_id}}" onkeyup="check_total_received({{random_id}})" value="{{data.w_fee}}"></td>
-        <td><input type="text" value="{{data.gst}}" name="gst[{{data.id}}]" class="form-control " onkeyup="check_total_received({{random_id}})"  id="gst_{{random_id}}" ></td>
+        <td><input type="text" value="{{gst}}" name="gst[{{data.id}}]" class="form-control " onkeyup="check_total_received({{random_id}})" readonly id="gst_{{random_id}}" ></td>
         <td><input type="text" value="{{data.total_received}}" name="total_received[{{data.id}}]" class="form-control "  id="total_received_{{random_id}}" readonly value="0"></td>
         <td>
             <select name="mop[{{data.id}}]" class="form-control "  id="mop_{{random_id}}" >

@@ -24,7 +24,7 @@ class PaymentListResource extends JsonResource
             'gross_payable' => $this->gross_payable,
             'exemption' => $this->exemption,
             'base_fee' => $this->base_fee,
-            'gst_applicable' => $this->gst_applicable,
+            //'gst_applicable' => $this->gst_applicable,
             'net_base_fee' => $this->net_base_fee,
             'total_received' => $this->total_received,
             'balance_due' => $this->balance_due,
