@@ -217,7 +217,7 @@
             </select>
         </td>
         <td><input type="text" name="received_by[{{data.id}}]" class="form-control "  id="received_by_{{random_id}}" value="{{data.received_by}}"></td>
-        <td><input type="text" value="{{data.received_date}}" name="received_date[{{data.id}}]" class="form-control "  id="received_date_{{random_id}}" ></td>
+        <td><input type="text" value="{{data.received_date}}" name="received_date[{{data.id}}]" class="form-control "  id="received_date_{{random_id}}" readonly ></td>
        
         
     </tr>
