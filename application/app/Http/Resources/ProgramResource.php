@@ -19,7 +19,7 @@ class ProgramResource extends JsonResource
             'title' => $this->title,
             'base_price' => $this->base_price,
             'gst' => $this->gst,
-            'total_price' => $this->base_price+$this->gst,
+            'total_price' => $this->base_price+(($this->gst*$this->base_price)/100),
             'added_by' => $this->getAddedBy->name,
             'created_at' => $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at->format('d/m/Y'),
