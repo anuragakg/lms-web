@@ -14,6 +14,9 @@ use App\Http\Controllers\API\UsersController;
 use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\NotificationController;
 use App\Http\Controllers\API\LeadsController;
+use App\Http\Controllers\API\ProgramsController;
+use App\Http\Controllers\API\Payments;
+use App\Http\Controllers\API\CronController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +67,13 @@ Route::middleware('auth:api')->group( function () {
     Route::get('notification/mark-all-read', [NotificationController::class,'markAllRead'])->name('notification-read');
     Route::get('notification/count', [NotificationController::class,'getNotificationCount'])->name('notification-count');
     Route::apiResource('notification', NotificationController::class);
+    Route::apiResource('programs', ProgramsController::class);
+    Route::apiResource('payments', Payments::class);
+    Route::post('payments-installment', [Payments::class,'paymentInstallment']);
+    Route::get('getPrograms', [ProgramsController::class,'getProgram']);
+    
 });
+Route::apiResource('cron', CronController::class);
 Route::post('send-email', [UsersController::class,'sendEmail']);
 Route::apiResource('leads', LeadsController::class);
 Route::middleware('auth:api')->get('/user', function (Request $request) {

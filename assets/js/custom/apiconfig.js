@@ -277,5 +277,50 @@ var conf = {
         url : endpoint + 'dashboard',
         'method': 'GET',
     },
-	
+    'getProgramsList': {
+        url : endpoint + 'programs',
+        'method': 'GET',
+    },
+    'getPrograms': {
+        url : endpoint + 'getPrograms',
+        'method': 'GET',
+    },
+    'addPrograms': {
+        url : endpoint + 'programs',
+        'method': 'POST',
+    },
+    'getProgramsById': {
+        url : function (id) {
+            return endpoint + 'programs/' + id;
+        },
+        'method': 'GET',
+    },
+    'deleteProgramsById': {
+        url : function (id) {
+            return endpoint + 'programs/' + id;
+        },
+        'method': 'GET',
+    },
+    'getSocialMediaLeads': {
+        url : endpoint + 'leads',
+        'method': 'GET',
+    },
+    'addPaymentDetails': {
+        url : endpoint + 'payments',
+        'method': 'POST',
+    },
+	'getPaymentInfo': {
+        url : function (id) {
+            return endpoint + 'payments/' + id;
+        },
+        'method': 'GET',
+    },
+    'addPaymentInstallment': {
+        url : endpoint + 'payments-installment',
+        'method': 'POST',
+    },
+    'getPaymentList': {
+        url : endpoint + 'payments',
+        'method': 'GET',
+    },
 }

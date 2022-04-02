@@ -30,7 +30,6 @@ $GLOBALS['cache_buster'] = '0.7';
 <link href="assets/css/plugins/steps/jquery.steps.css" rel="stylesheet">
 <link href="assets/js/plugins/multiselect/multi-styles.css" rel="stylesheet">
 <link href="assets/css/plugins/easyAutocomplete/easy-autocomplete.min.css" rel="stylesheet">
-
 <style id="antiClickjack">body{display:none !important;}</style>
 <script type="text/javascript"> if (self === top) { var antiClickjack = document.getElementById("antiClickjack"); antiClickjack.parentNode.removeChild(antiClickjack); } else { top.location = self.location; } </script>
 <script type="text/javascript">

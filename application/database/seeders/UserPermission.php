@@ -158,6 +158,19 @@ class UserPermission extends Seeder
                 ),
                 
             ),
+            'programs' => array(
+                'add'=>array(
+                    'description' => 'add',
+                ),
+               
+                
+                
+            ),
+            'payment' => array(
+                'add'=>array(
+                    'description' => 'add',
+                )
+            ),
             
        
             

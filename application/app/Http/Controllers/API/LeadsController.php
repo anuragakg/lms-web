@@ -61,14 +61,14 @@ class LeadsController extends BaseController
     {
         $user = $request->getUser();
         $pass = $request->getPassword();
-        if(Auth::attempt(['email' => $user, 'password' => $pass])){ 
+        //if(Auth::attempt(['email' => $user, 'password' => $pass])){ 
             $user = Auth::user(); 
             $data=$this->service->addLeads($request->all());
             return $this->sendResponse($data, 'Lead created successfully.');
-        } 
-        else{ 
+        //} 
+        //else{ 
             return $this->sendError('Unauthorised.', 'Unauthorised');
-        }
+        //}
 
         
     }

@@ -5,7 +5,6 @@ $cache_buster=time();
 <script src="assets/js/lib/bootstrap.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xss-filters@1.2.7/dist/xss-filters.min.js"></script>
-
 <!-- Custom and plugin javascript -->
 <script src="assets/js/inspinia.js"></script>
 <script src="assets/js/plugins/pace/pace.min.js"></script>
