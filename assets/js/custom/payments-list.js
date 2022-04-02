@@ -90,6 +90,13 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
+									return row.net_base_fee;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
 									return row.total_received;
 							}
 							 
@@ -101,13 +108,7 @@ $(function () {
 							}
 							 
 						},
-						{ 
-							"orderable": false,
-							"render": function(data, type, row) {
-									return row.net_base_fee;
-							}
-							 
-						},
+						
 						
 						
 						{
