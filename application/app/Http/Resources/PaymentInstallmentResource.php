@@ -23,7 +23,7 @@ class PaymentInstallmentResource extends JsonResource
             'installment_amount' => $this->installment_amount,
             'w_fee' => $this->w_fee,
             'gst' => $this->gst,
-            'gst' => $this->gst,
+            'gst_amount' => $this->gst_amount,
             'total_received' => $this->total_received,
             'mop' => $this->mop,
             'received_by' => $this->received_by,

@@ -97,6 +97,7 @@
                                             <th>Title</th>
                                             <th>Base Price</th>
                                             <th>GST</th>
+                                            <th>Total</th>
                                             <th>Initiated By</th>
                                             
                                             <th>Action</th>

@@ -1,4 +1,6 @@
 const lead_id = TRIFED.getUrlParameters().id;
+var base_fee=0;
+var net_base_fee=0;
 $(function () {
 	$('.date').datepicker();
 	fetchPrograms();
@@ -128,6 +130,8 @@ $(function () {
 			
 			var form = $('#formID')[0];   
     		var data = new FormData(form);	
+
+    		
     		//if (edit_id != undefined && edit_id != '') 
 			//{
 				//data.append('form_id', edit_id );
@@ -208,29 +212,35 @@ $('.fee').on('keyup',function(){
 setPaymentInfo=()=>{
 	var gross_payable=$('#gross_payable').val();
 	var exemption=$('#exemption').val();
-	var base_fee=$('#base_fee').val();
-	var gst_applicable=parseFloat($('#gst_applicable').val());
-	var net_base_fee=$('#net_base_fee').val();
+	//var base_fee=base_fee;
+	//var net_base_fee=net_base_fee;
 	if(gross_payable!='' && exemption!='')
 	{
-		base_fee=parseFloat(gross_payable) - parseFloat(exemption);
-		$('#base_fee').val(base_fee);
-		$('#net_base_fee').val(base_fee);
+		var base_fee_exempted=parseFloat(base_fee) - parseFloat(exemption);
+		var net_base_fee_exempted=parseFloat(net_base_fee) - parseFloat(exemption);
+		$('#base_fee').val(base_fee_exempted);
+
+		$('#net_base_fee').val(net_base_fee_exempted);
 	}
-	if(gst_applicable > 0){
-		net_base_fee=base_fee + (gst_applicable * (base_fee/100));
-		$('#net_base_fee').val(net_base_fee);
-	}
+	// if(gst_applicable > 0){
+	// 	net_base_fee=base_fee + (gst_applicable * (base_fee/100));
+	// 	$('#net_base_fee').val(net_base_fee);
+	// }
 }
 getProgramInfo=()=>{
 	let program_id=$('#program_id').val();
 	var url=conf.getProgramsById.url(program_id);
 	var method=conf.getProgramsById.method;
-	data={program_id};
+	data={};
 	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 		if (response) {
+			base_fee=response.data.base_price;
+			net_base_fee=response.data.total_price;
 			$('#gross_payable').val(response.data.total_price);
-			setPaymentInfo();
+			$('#base_fee').val(base_fee);
+			$('#net_base_fee').val(net_base_fee);
+			$('#exemption').val(0);
+			//setPaymentInfo();
 		}
 	});
 }

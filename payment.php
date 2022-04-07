@@ -130,7 +130,7 @@
                                             
                                     <div class="col-md-6">
                                         <label for="scales">Gross Payable</label> 
-                                        <input type="text" class="form-control fee" name="gross_payable" id="gross_payable">
+                                        <input type="text" class="form-control " name="gross_payable" id="gross_payable" readonly>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="scales">Exemption</label> 
@@ -138,12 +138,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="scales">Base Fee</label> 
-                                        <input type="text" class="form-control fee" name="base_fee" id="base_fee" value="0" readonly>
+                                        <input type="text" class="form-control " name="base_fee" id="base_fee" value="0" readonly>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label for="scales">Net Base fee</label> 
-                                        <input type="text" class="form-control fee" name="net_base_fee" id="net_base_fee" value="0" readonly>
+                                        <input type="text" class="form-control " name="net_base_fee" id="net_base_fee" value="0" readonly>
                                     </div>
                                         
                                 </div>

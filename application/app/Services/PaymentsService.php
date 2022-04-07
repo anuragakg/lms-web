@@ -42,6 +42,11 @@ class PaymentsService
             $lead=Lead::findOrFail($request->lead_id);
             $lead->is_payment_setup=1;
             $lead->save();
+            if($request->installment_total > $request->net_base_fee)
+            {
+                throw new \Error('installment total should not be greater than net base fee');
+            }
+
 
             $Payment->lead_id=$request->lead_id;
             $Payment->program_id=$request->program_id;
@@ -120,8 +125,11 @@ class PaymentsService
                 if($installment !=''){
                     $paymentInstallment->w_fee=$installment;
                     $gst=$request['gst'][$key]!='' ? $request['gst'][$key] : 0;
+                    $gst_amount=$request['gst_amount'][$key]!='' ? $request['gst_amount'][$key] : 0;
                     $paymentInstallment->gst=$gst;
-                    $total_received=$installment + (($gst * $installment)/100);
+                    $paymentInstallment->gst_amount=$gst_amount;
+                    //$total_received=$installment + (($gst * $installment)/100);
+                    $total_received=$request['total_received'][$key]!='' ? $request['total_received'][$key] : 0;
                     $paymentInstallment->total_received=$total_received;
                     $paymentInstallment->mop=$request['mop'][$key];
                     $paymentInstallment->received_by=$request['received_by'][$key];

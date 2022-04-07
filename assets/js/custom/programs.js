@@ -95,6 +95,13 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
+									return row.total_price;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
 									return row.added_by;
 							}
 							 

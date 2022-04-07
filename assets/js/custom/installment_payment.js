@@ -1,5 +1,5 @@
 const payment_id = TRIFED.getUrlParameters().id;
-
+var gst=0;
 $(function () {
 	$('.date').datepicker();
 	fetchPaymentInfo(payment_id);
@@ -159,7 +159,7 @@ fetchPaymentInfo = (id = 0) => {
 			$('#user_name').html(response.data.getLeadUser.name);
 			$('#email_id').html(response.data.getLeadUser.email);
 			$('#programme').html(response.data.getProgramInfo.title);
-			var gst=response.data.getProgramInfo.gst;
+			gst=response.data.getProgramInfo.gst;
 			$('#gross_payable').html(response.data.gross_payable);
 			$('#exemption').html(response.data.exemption);
 			$('#base_fee').html(response.data.base_fee);
@@ -251,3 +251,13 @@ function check_total_received(random_id){
 		$('#total_received_'+random_id).val(total_received);
 	}
 }
+$(document).on('keyup','.total_received',function(){
+	var random_id=$(this).attr('data-id');
+	var total_received=$(this).val();
+	total_received=parseFloat(total_received);
+	var gst_amount=(total_received * gst)/100;
+
+	w_fee=total_received-gst_amount;
+	$('#w_fee_'+random_id).val(w_fee);
+	$('#gst_amount'+random_id).val(gst_amount);
+});
