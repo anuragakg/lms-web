@@ -14,8 +14,8 @@ class AlterLeadsTableAddMaincode extends Migration
     public function up()
     {
          Schema::table('leads', function (Blueprint $table) {
-            $table->string('main_code');
-            $table->string('parent_code');
+            $table->string('main_code')->default(null);
+            $table->string('parent_code')->default(null);
         });
         DB::statement('UPDATE `leads` SET `main_code`=null'); 
         DB::statement('ALTER TABLE `leads` ADD UNIQUE(`main_code`)'); 
