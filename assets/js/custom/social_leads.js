@@ -41,6 +41,8 @@ $(function () {
 				         var api = new $.fn.dataTable.Api(settings);
 				         
 				         d.page = api.page()+1;
+				         d.main_code = $('#main_code').val();
+				         d.parent_code = $('#parent_code').val();
 				         
 				      },
 		            "dataSrc": function(json) {
@@ -97,6 +99,20 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
+									return row.main_code;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
+									return row.parent_code;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
 									return row.created_time;
 							}
 							 
@@ -108,7 +124,7 @@ $(function () {
 							"render": function(data, type, row) {
 								var html='';
 								if(payment_add){
-									if(row.is_payment_setup==0){
+									if(row.is_payment_setup==null || row.is_payment_setup==0){
 										html +='<a href="payment.php?id='+row.id+'" class="btn btn-primary">Setup Payment Info</a>  | ';		
 									}else{
 										html +='Payment Info Added ';		
@@ -128,7 +144,9 @@ $(function () {
 
       });
 
-
+	$('#search-btn').click(function () {
+		    oTable.ajax.reload();
+		});		
 });
 
 

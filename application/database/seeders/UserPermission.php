@@ -162,9 +162,11 @@ class UserPermission extends Seeder
                 'add'=>array(
                     'description' => 'add',
                 ),
-               
-                
-                
+            ),
+            'import_excel' => array(
+                'add'=>array(
+                    'description' => 'Import Social Leads',
+                ),
             ),
             'payment' => array(
                 'add'=>array(

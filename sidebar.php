@@ -187,6 +187,7 @@ $path=$parts['path'];
                             <li><a href="reports.html">Reports</a></li> -->
                         </ul>
                     </li>
+                    <li class="hidden import_excel_add"><a href="import-leads.php"><i class="ti-file"></i> Import Leads</a></li>
                     <li class="hidden programs_add"><a href="programs.php"><i class="ti-file"></i> Programs</a></li>
 
                     <li class="hidden payment_add"><a href="social_leads.php"><i class="ti-file"></i> Social Leads </a></li>

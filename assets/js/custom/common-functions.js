@@ -466,8 +466,8 @@ window.TRIFED = {
                 },
             }
         }).done(function (res) {
-			//$('#loader-div').html('');
-            //$('#loader-div').hide();
+			$('#loader-div').html('');
+            $('#loader-div').hide();
             if (TRIFED.checkStatus(res)) {
                 cb(res);
             }

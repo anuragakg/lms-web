@@ -1,3 +1,18 @@
+<style type="text/css">
+  #loader-div{
+       width: 100%;
+    height: 100vh;
+    background: #ffffff4a;
+    position: fixed;
+    z-index: 9999;
+    text-align: center;
+    margin-top: 40vh;
+
+
+  }
+</style>
+<div id="disable-div"></div>
+<div id="loader-div" style="display: none"></div>
 <div class="header">
         <div class="container-fluid">
             <div class="row">

@@ -4510,9 +4510,6 @@ h6.h1 {
   }
 }
 
-input[type="file"] {
-  display: none;
-}
 .custom-file-upload {
   border: 1px solid #49830c;
   display: inline-block;

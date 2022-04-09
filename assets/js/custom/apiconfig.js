@@ -323,4 +323,8 @@ var conf = {
         url : endpoint + 'payments',
         'method': 'GET',
     },
+    'import_leads': {
+        url : endpoint + 'import-leads',
+        'method': 'POST',
+    },
 }

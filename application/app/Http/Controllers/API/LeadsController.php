@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Services\LeadsService;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Auth;
+use App\Imports\LeadsImport;
+use Excel;
+use App\Models\Lead;
+use DB;
+use App\Jobs\LeadsUpdate;
 class LeadsController extends BaseController
 {
     protected $service;
@@ -116,5 +121,36 @@ class LeadsController extends BaseController
     public function destroy($id)
     {
         //
+    }
+    public function importLeads(Request $request){
+        ini_set('max_execution_time', 0);
+
+        try{
+
+            $array=Excel::toArray(new LeadsImport,request()->file('file'));
+            
+            
+            //DB::beginTransaction();
+            // $count=0;
+            $data=array();
+            foreach ($array[0] as $key => $arr) 
+            {
+                $data[]=array(
+                    'phone'=>$arr['number'],  
+                    'name'=>$arr['name'],  
+                    'email'=>$arr['email_id'] 
+                );
+                //$this->service->addUpdateLeads($arr);
+            }
+            DB::table('leads')->insertOrIgnore($data);
+            return $this->sendResponse($data, 'data imported successfully.');
+            // $job = (new \App\Jobs\LeadsUpdate()->delay(now()->addSeconds(2)); 
+            // dispatch($job);  
+            //DB::commit();
+        }catch (\Throwable $th){
+
+            //DB::rollBack();
+            throw $th;  
+        }
     }
 }

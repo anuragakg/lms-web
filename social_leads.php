@@ -53,9 +53,25 @@
                     <!-- /# column -->
                 </div>
                 <!-- /# row -->
+                <div class="row">
+                    <div class="col-md-3">
+                                <label>Main Code</label>
+                                <input type="text" name="main_code" id="main_code" class="form-control" >    
+                            </div>
+                            <div class="col-md-3">
+                                <label>Parent Code</label>
+                                <input type="text" name="parent_code" id="parent_code" class="form-control" >    
+                            </div>
+                            <div class="col-md-3">
+                                <label>&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
+                                <button type="button" class="btn btn-primary" id="search-btn"> Search</button>
+                            </div>
+                </div>
                 <section id="main-content">
                     <div class="col-md-12 mt-3">
                             <h6 class="w-100">Social Media Leads</h6>
+                            
+                            
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -66,6 +82,8 @@
                                             <th>Phone</th>
                                             <th>Source</th>
                                             <th>Add name</th>
+                                            <th>Main code</th>
+                                            <th>Parent Code</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>

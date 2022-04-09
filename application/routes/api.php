@@ -71,7 +71,8 @@ Route::middleware('auth:api')->group( function () {
     Route::apiResource('payments', Payments::class);
     Route::post('payments-installment', [Payments::class,'paymentInstallment']);
     Route::get('getPrograms', [ProgramsController::class,'getProgram']);
-    
+    Route::post('import-leads', [LeadsController::class,'importLeads']);
+
 });
 Route::apiResource('cron', CronController::class);
 Route::post('send-email', [UsersController::class,'sendEmail']);
