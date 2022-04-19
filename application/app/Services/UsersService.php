@@ -35,6 +35,13 @@ class UsersService
             $user->name=$request->name;
             $user->email=$request->email;
             $user->role=$request->role;
+            $user->phone=$request->phone;
+            $user->role=$request->role;
+            $user->emp_code=$request->emp_code;
+            $user->dept=$request->dept;
+            $user->designation=$request->designation;
+            $user->rm=$request->rm;
+            $user->doj=$request->doj;
 			$randomPassword = Str::random(config('lms.password_length')) ;
 			$randomPassword = '123456' ;
             $user->password = Hash::make($randomPassword);
@@ -61,6 +68,13 @@ class UsersService
             $user->name=$request->name;
             $user->email=$request->email;
             $user->role=$request->role;
+            $user->phone=$request->phone;
+            $user->role=$request->role;
+            $user->emp_code=$request->emp_code;
+            $user->dept=$request->dept;
+            $user->designation=$request->designation;
+            $user->rm=$request->rm;
+            $user->doj=$request->doj;
 			//$user->added_by=$user_id;
             $user->save();
             

@@ -78,10 +78,34 @@
                                             <input type="text" name="email" id="email" placeholder="Enter email" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                         </div>
                                         <div class="col-md-6">
+                                            <label for="">  Phone </label>
+                                            <input type="text" name="phone" id="phone" placeholder="Enter phone" class="form-control form-control-sm" required="">
+                                        </div>
+                                        <div class="col-md-6">
                                             <label for="">  Role </label>
                                             <select id="role" name="role" class="form-control" required>
                                                 <option value="">Select Role</option>
                                             </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Employee Code </label>
+                                            <input type="text" name="emp_code" id="emp_code" placeholder="Enter Employee Code" class="form-control form-control-sm" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Department </label>
+                                            <input type="text" name="dept" id="dept" placeholder="Enter Department" class="form-control form-control-sm" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Designation </label>
+                                            <input type="text" name="designation" id="designation" placeholder="Enter designation" class="form-control form-control-sm" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Reporting Manager </label>
+                                            <input type="text" name="rm" id="rm" placeholder="Enter Reporting Manager" class="form-control form-control-sm" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">  Date of joining </label>
+                                            <input type="text" name="doj" id="doj" placeholder="Enter Date of joining" class="form-control form-control-sm" required="">
                                         </div>
 									</div>
                                     

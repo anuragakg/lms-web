@@ -2,6 +2,11 @@
 const edit_id = TRIFED.getUrlParameters().id;
 $(function () {
 	fetchRoleList();
+	$('#doj').datepicker(
+	{
+		dateFormat: 'yy-mm-dd'
+	}
+	);
 	if(edit_id!= undefined)
 	{
 		getUser(edit_id)
@@ -70,6 +75,12 @@ getUser=(id=0)=>{
 			$('#name').val(response.data.name);
 			$('#email').val(response.data.email);
 			$('#role').val(response.data.role_id);
+			$('#phone').val(response.data.phone);
+			$('#emp_code').val(response.data.emp_code);
+			$('#dept').val(response.data.dept);
+			$('#designation').val(response.data.designation);
+			$('#rm').val(response.data.rm);
+			$('#doj').val(response.data.doj);
 		}
 	});
 }
