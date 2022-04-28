@@ -397,11 +397,9 @@ span.badge {
 }
 .dataTables_length select{ margin: 0 5px; }
 .dataTables_filter{ margin-left: 20px; }
-table.dataTable thead .sorting:after{ display: none; }
-.dataTables_info{  padding-top: 4px;   padding-right: 5px; }
-.dataTables_wrapper {
-    padding-bottom: 15px;
-}
+table.dataTable thead .sorting:after{ display: none!important; }
+.dataTables_info{  padding-top: 4px!important;   padding-right: 5px; }
+
 .dt-buttons .dt-button {
   background-image: none;
   background: #ffffff;
@@ -721,7 +719,7 @@ a.dt-button.active:not(.disabled) {
   font-weight: 700;
 }
 .sidebar-hide .logo {
-  width: 0;
+  width: 60px; padding: 11px 2px;
 }
 .sidebar-hide .logo span {
   display: none;
@@ -1572,11 +1570,6 @@ footer p {
   font-size: 30px;
   color: #ffffff;
 }
-.stat-widget-three .stat-content {
-  text-align: center;
-  padding: 15px;
-  margin-left: 90px;
-}
 .stat-widget-three .stat-digit {
   font-size: 30px;
 }
@@ -1899,7 +1892,7 @@ footer p {
 /*    Input Style
 ------------------------*/
 .form-control {
-  height: 42px;
+  height: 38px;
   border-radius: 0px;
   box-shadow: none;
   border-color: #e7e7e7;
@@ -2072,7 +2065,7 @@ footer p {
 ----------------------*/
 label {
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 /*    Form Horizontal
 ----------------------*/
@@ -4415,8 +4408,9 @@ h6.h1 {
   position: relative;
     top: -10px;
     left: -7px;  }
-.div.dt-buttons{ text-align: left; }
-
+#main-content {
+    padding-bottom: 15px;
+}
 @media(max-width: 767px) {
     .header-icon {padding:5px;}
     .container-fluid{ padding-right: 10px; padding-left: 10px; }
@@ -4433,9 +4427,14 @@ h6.h1 {
     .m-t-20 { margin-top: 10px!important;}
     .home-widget-three .stat-icon{ padding: 17px; }
     .notification-count {top: -4px; left: 0;}
-    .form-control{ height: 34px; }
+    .form-control{ height: 34px;font-size: 14px; }
+    select.form-control:not([size]):not([multiple]) { height: 34px; font-size: 14px;}
     .dataTables_length{ margin-right: 10px; }
     .dataTables_filter{ margin-left: 0px; }
+    .home-widget-three .stat-digit{ font-size: 18px;line-height: 22px; }
+    .home-widget-three .stat-content{ padding: 10px; }
+    .table-responsive .table > thead > tr > th{ min-width: 110px; }
+    div.dt-buttons{ text-align: left; }
 }
 
 

@@ -48,7 +48,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1>New Lead Category</h1>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -72,7 +72,7 @@
                 <section id="main-content">
                     <form id="formID">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-3">
                                 <div class="form">
                                     <label for="">Select Product Form</label>
                                     <select onchange="getFormControls()" id="product_form_mini_id" name="product_form_mini_id" required class="form-control" aria-label="Default select example">
@@ -80,7 +80,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-3">
                                 <div class="form">
                                     <label for="">Select Product Category</label>
                                     <select name="category_id" required id="category_id" class="form-control" aria-label="Default select example">
@@ -90,7 +90,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-3">
                                 <div class="form">
                                     <label for="">Select Product Sub Category</label>
                                     <select name="sub_category_id" required id="sub_category_id" class="form-control" aria-label="Default select example">
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="row"> 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-3">
                             <div class="form">
                                     <label for="">Select Product Vertical</label>
                                     <select required name="product_vertical_id" id="product_vertical_id" class="form-control" aria-label="Default select example">
