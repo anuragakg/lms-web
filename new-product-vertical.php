@@ -41,7 +41,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1> Product Vertical </h1>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -72,7 +72,7 @@
                                     <input type="text" name="title" id="title" placeholder="Enter Product Vertical Name"
                                         class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                         <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
-                                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                        <button type="submit"  class="btn btn-sm btn-primary mt-2">Submit</button>
                                 </div>    
                             </form>
                             
