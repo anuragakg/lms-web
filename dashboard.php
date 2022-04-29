@@ -176,11 +176,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title">
                                     <h4>Fee Collections and Expenses</h4>
-
                                 </div>
                                 <div class="card-body">
                                     <div class="ct-bar-chart m-t-30"></div>
@@ -188,17 +187,17 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <!--<div class="col-lg-4">
                             <div class="card">
 
                                 <div class="card-body">
                                     <div class="ct-pie-chart"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="row">
-                        <div class="col-lg-4">
+                       <!-- <div class="col-lg-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card bg-primary">
@@ -313,9 +312,9 @@
 
                                 </div>
                             </div>
-                        </div>
-                        <!-- /# column -->
-                        <div class="col-lg-8">
+                        </div>-->
+                        <!-- /# All Exam Result -->
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title pr">
                                     <h4>All Exam Result</h4>
@@ -439,9 +438,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /# column -->
+                        <!-- /# All Exam Result -->
                     </div>
                     <!-- /# row -->
+
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="card p-0">
@@ -551,15 +551,77 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4">
+                        <!--<div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="year-calendar"></div>
                                 </div>
                             </div>
-                            <!-- /# card -->
-                        </div>
+                        </div>-->
                         <!-- /# column -->
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-title">
+                                    <h4>Task</h4>
+
+                                </div>
+                                <div class="todo-list">
+                                    <div class="tdl-holder">
+                                        <div class="tdl-content">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"><i></i><span>22,Dec Publish The Final
+                                                            Exam Result</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
+                                                            School</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"><i></i><span>Recently Our Maganement
+                                                            Programme Start</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>Check out some
+                                                            Popular courses</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
+                                                            School</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>Connect with one new
+                                                            person</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="tdl-new form-control"
+                                            placeholder="Write new item and hit 'Enter'...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# Task column End -->
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-title">
@@ -637,7 +699,7 @@
                             </div>
                             <!-- /# card -->
                         </div>
-                        <!-- /# column -->
+                        <!-- /# Notice Board  column End -->
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-title">
@@ -711,72 +773,12 @@
                             </div>
                             <!-- /# card -->
                         </div>
+                        <!-- /# Timeline column End -->
                     </div>
                     <!-- /# row -->
 
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-title">
-                                    <h4>Task</h4>
-
-                                </div>
-                                <div class="todo-list">
-                                    <div class="tdl-holder">
-                                        <div class="tdl-content">
-                                            <ul>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox"><i></i><span>22,Dec Publish The Final
-                                                            Exam Result</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
-                                                            School</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox"><i></i><span>Recently Our Maganement
-                                                            Programme Start</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Check out some
-                                                            Popular courses</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
-                                                            School</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Connect with one new
-                                                            person</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <input type="text" class="tdl-new form-control"
-                                            placeholder="Write new item and hit 'Enter'...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title pr">
                                     <h4>All Expense</h4>
