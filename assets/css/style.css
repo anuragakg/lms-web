@@ -559,6 +559,8 @@ a.dt-button.active:not(.disabled) {
   background: #49830c;
   border-color: #49830c;
   color: #ffffff !important;
+  min-width: 100px;
+  height: 38px;
 }
 .btn-primary.active,
 .btn-primary:focus,
@@ -4411,6 +4413,8 @@ h6.h1 {
 #main-content {
     padding-bottom: 15px;
 }
+break-inside: { display: none; } 
+#list td p{ margin: 0 10px 0 0; display: inline-block; }
 @media(max-width: 767px) {
     .header-icon {padding:5px;}
     .container-fluid{ padding-right: 10px; padding-left: 10px; }
@@ -4435,6 +4439,7 @@ h6.h1 {
     .home-widget-three .stat-content{ padding: 10px; }
     .table-responsive .table > thead > tr > th{ min-width: 110px; }
     div.dt-buttons{ text-align: left; }
+    .btn-primary { height: 34px; }
 }
 
 

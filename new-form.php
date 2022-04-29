@@ -74,26 +74,23 @@
                 <section id="main-content">
                     <form id="formID">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="form">
-                                <label for="">New Form Name </label>
-                                <input type="text" required name="title" id="title" placeholder="Enter Form Name"
-                                    class="form-control form-control-sm" >
-                                    <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
-                                   
-                            </div>
-                            
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form">
-                                <label for="">Select Form Type</label>
-                                <select class="form-control" name="type" id="type" aria-label="Default select example" required>
-                                    <option value="">Select</option>
-                                    <option value="1">Mini Category</option>
-                                    <option value="2">Leads</option>
-                                </select>
+                        <div class="col-md-10">
+                            <div class="form row">
+                                 <div class="col-md-2 mt-2"><label for="">New Form Name </label></div>
+                                 <div class="col-md-3"><input type="text" required name="title" id="title" placeholder="Enter Form Name" class="form-control form-control-sm" >
+                                <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div></div>
+
+                                 <div class="col-md-2 mt-2"><label for="">Select Form Type</label></div>
+                                 <div class="col-md-3">
+                                    <select class="form-control" name="type" id="type" aria-label="Default select example" required>
+                                        <option value="">Select</option>
+                                        <option value="1">Mini Category</option>
+                                        <option value="2">Leads</option>
+                                    </select>
+                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6 mt-2">
@@ -217,9 +214,8 @@
                         <div class="col-md-5 d-flex align-items-end">
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" id="enableCreate" class="btn btn-sm btn-primary mt-3" data-toggle="modal"
-                            data-target="#exampleModal" >Create New Form
-                    </button>
+                            <button type="submit" id="enableCreate" class="btn btn-sm btn-primary mt-3" data-toggle="modal" data-target="#exampleModal" >Create New Form
+                            </button>
                         </div>
                         
                     </div>
