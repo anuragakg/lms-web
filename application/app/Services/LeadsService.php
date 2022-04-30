@@ -20,7 +20,7 @@ class LeadsService
         
         $lead=Lead::orderBy('id','desc');
         if(!empty($search)){
-            $lead=$lead->where(DB::raw("CONCAT(`name`,`email`)"), 'LIKE', "%".$search."%");    
+            $lead=$lead->where(DB::raw("CONCAT(`name`,`email`,`phone`)"), 'LIKE', "%".$search."%");    
         }
         if(isset($request['main_code']) && !empty($request['main_code'])){
             $lead=$lead->where('main_code',$request['main_code']);    
