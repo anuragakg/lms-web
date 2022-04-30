@@ -13,6 +13,8 @@ class CreateLeadsNumberTrigger extends Migration
      */
     public function up()
     {
+        //DB::statement('DROP TRIGGER IF EXISTS leads_number');
+
         DB::unprepared("
             CREATE TRIGGER `leads_number` BEFORE INSERT ON `leads`
              FOR EACH ROW BEGIN
@@ -20,6 +22,7 @@ class CreateLeadsNumberTrigger extends Migration
                 DECLARE parentcode VARCHAR(50) ;
                 SELECT UPPER(HEX(UUID_SHORT())) into parentcode;
                 SET new.parent_code = parentcode;
+                SET new.main_code = parentcode;
                 IF NEW.phone IS NOT NULL
                 THEN 
                     IF NEW.phone in (
@@ -32,9 +35,12 @@ class CreateLeadsNumberTrigger extends Migration
                         END IF;
                         SET new.parent_code = parentcode;
                         
+                        SELECT UPPER(HEX(UUID_SHORT())) into maincode;
+                        SET new.main_code = maincode;
+                        
                     END IF;
                 END IF;
-                
+
                 IF NEW.email IS NOT NULL
                 THEN 
                     IF NEW.email in (
@@ -46,18 +52,20 @@ class CreateLeadsNumberTrigger extends Migration
                             SELECT UPPER(HEX(UUID_SHORT())) into parentcode;
                         END IF;
                         SET new.parent_code = parentcode;
+                        
+                        SELECT UPPER(HEX(UUID_SHORT())) into maincode;
+                        SET new.main_code = maincode;
                     END IF;
                 END IF;
-                
-                
+
+
                 IF NEW.email IS NULL THEN
                         SET new.email = '-';
                 END IF;
                 IF NEW.phone IS NULL THEN
                         SET new.phone = '-';
                 END IF;
-                SELECT UPPER(HEX(UUID_SHORT())) into maincode;
-                SET new.main_code = maincode;
+
             END
         ");
     }
