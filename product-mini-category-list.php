@@ -42,6 +42,7 @@
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
@@ -53,8 +54,9 @@
                     <!-- /# column -->
                 </div>
                 <!-- /# row -->
-                <section id="main-content">
-                    <div class="col-md-12 mt-3">
+
+                    <section id="main-content">
+                        <div class="mt-3">
                             <h6 class="w-100">Product Mini Category</h6>
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
@@ -72,15 +74,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                </tbody>
                                 </table>
                             </div>
                         </div>
+                    </section>
             </div>
-
-
-            
-            </section>
         </div>
     </div>
         <?php include('status_history_modal.php'); ?>
