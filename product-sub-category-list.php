@@ -65,8 +65,9 @@
                 </div>
                 <!-- /# row -->
                 <section id="main-content">
-                    <div class="col-md-12 mt-3">
-                            <h6 class="w-100">List of Existing Forms </h6>
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <!--<h6 class="w-100">List of Existing Forms </h6>-->
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -87,15 +88,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
-            </div>
-
-
-            
-            </section>
+                    </div>    
+                </section>
         </div>
     </div>
         <?php include('status_history_modal.php'); ?>

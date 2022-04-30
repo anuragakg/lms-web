@@ -4413,7 +4413,7 @@ h6.h1 {
 #main-content {
     padding-bottom: 15px;
 }
-break-inside: { display: none; } 
+#list td br { display: none; } 
 #list td p{ margin: 0 10px 0 0; display: inline-block; }
 @media(max-width: 767px) {
     .header-icon {padding:5px;}
