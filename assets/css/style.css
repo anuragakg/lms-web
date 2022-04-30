@@ -80,8 +80,8 @@
 }
 .card {
   background: #ffffff;
-  margin: 7.5px 0;
-  padding: 20px;
+  margin: 5px 0;
+  padding: 10px;
   border: 1px solid #e7e7e7;
   border-radius: 3px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -199,7 +199,7 @@
 }
 span.badge {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 12px;
 }
 .vtabs {
   display: table;
@@ -393,11 +393,13 @@ span.badge {
 .dataTables_length {
   display: inline-block;
   float: left;
-  margin-right: 30px;
+  margin-right: 20px;
 }
-.dt-buttons {
-  margin-bottom: 15px;
-}
+.dataTables_length select{ margin: 0 5px; }
+.dataTables_filter{ margin-left: 20px; }
+table.dataTable thead .sorting:after{ display: none!important; }
+.dataTables_info{  padding-top: 4px!important;   padding-right: 5px; }
+
 .dt-buttons .dt-button {
   background-image: none;
   background: #ffffff;
@@ -456,10 +458,7 @@ a.dt-button.active:not(.disabled) {
   box-shadow: none;
   color: #ffffff;
 }
-@media (max-width: 767px) {
-  .dataTables_length {
-    margin-left: 10px;
-  }
+
   select.input-sm {
     width: 167px;
   }
@@ -560,6 +559,8 @@ a.dt-button.active:not(.disabled) {
   background: #49830c;
   border-color: #49830c;
   color: #ffffff !important;
+  min-width: 100px;
+  height: 38px;
 }
 .btn-primary.active,
 .btn-primary:focus,
@@ -720,14 +721,14 @@ a.dt-button.active:not(.disabled) {
   font-weight: 700;
 }
 .sidebar-hide .logo {
-  width: 0;
+  width: 60px; padding: 11px 2px;
 }
 .sidebar-hide .logo span {
   display: none;
 }
 .header-icon {
   font-size: 18px;
-  padding: 12px 15px;
+  padding:10px;
   color: #252525;
   position: relative;
   transition: all 0.4s ease-in-out;
@@ -735,6 +736,7 @@ a.dt-button.active:not(.disabled) {
   vertical-align: middle;
   float: left;
 }
+.header-icon .loggedin-user{     text-transform: capitalize;  }
 .header-icon i,
 .header-icon img,
 .header-icon span {
@@ -869,24 +871,15 @@ a.dt-button.active:not(.disabled) {
 }
 /*    Search box
 ----------------------*/
-.main .page-header {
-  min-height: 50px;
-  margin: 15px 0 5px;
-  padding: 0 15px;
-  border-bottom: 0;
-  border-radius: 3px;
-}
+.main .page-header{  margin: 20px 0 0 0; }
 .main .page-header h1 {
   font-size: 18px;
-  padding: 14px 0;
+  padding: 10px 0;
   margin: 0;
-}
-.main .page-header h1 span {
-  font-size: 14px;
 }
 .main .page-header .breadcrumb {
   margin: 0;
-  padding: 15px;
+  padding: 10px;
   background: transparent;
   float: right;
 }
@@ -1533,7 +1526,7 @@ footer p {
 }
 .stat-widget-one .stat-text {
   font-size: 14px;
-  color: #868e96;
+  color: #000;
 }
 .stat-widget-one .stat-digit {
   font-size: 24px;
@@ -1578,11 +1571,6 @@ footer p {
 .stat-widget-three .stat-icon i {
   font-size: 30px;
   color: #ffffff;
-}
-.stat-widget-three .stat-content {
-  text-align: center;
-  padding: 15px;
-  margin-left: 90px;
 }
 .stat-widget-three .stat-digit {
   font-size: 30px;
@@ -1799,12 +1787,7 @@ footer p {
     Responsive
 =================================================
 */
-@media (max-width: 768px) {
-  .card {
-    display: inline-block;
-    width: 100%;
-  }
-}
+
 @media (max-width: 360px) {
   .stat-widget-five .stat-heading {
     padding-left: 0;
@@ -1911,7 +1894,7 @@ footer p {
 /*    Input Style
 ------------------------*/
 .form-control {
-  height: 42px;
+  height: 38px;
   border-radius: 0px;
   box-shadow: none;
   border-color: #e7e7e7;
@@ -2084,7 +2067,7 @@ footer p {
 ----------------------*/
 label {
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 /*    Form Horizontal
 ----------------------*/
@@ -2505,8 +2488,6 @@ ul {
 .table > thead > tr > td,
 .table > thead > tr > th {
   border-top: 1px solid #e7e7e7;
-  line-height: 1.42857;
-  padding: 8px;
   vertical-align: top;
 }
 @media (max-width: 767px) {
@@ -2714,15 +2695,7 @@ tbody tr td {
 tbody tr td:last-child {
   text-align: right;
 }
-.table > tbody > tr > td,
-.table > tbody > tr > th,
-.table > tfoot > tr > td,
-.table > tfoot > tr > th,
-.table > thead > tr > td,
-.table > thead > tr > th {
-  line-height: 32px;
-  vertical-align: top;
-}
+
 .table > thead > tr > th {
   border-bottom: 1px solid #e7e7e7;
   font-weight: 600;
@@ -2760,10 +2733,6 @@ tbody tr td:last-child {
     margin-bottom: 8px;
     margin-top: 8px;
   }
-}
-.table td,
-.table th {
-  padding: 0.55rem;
 }
 .table .round-img img {
   width: 38px;
@@ -3610,7 +3579,7 @@ tbody tr td:last-child {
   height: 270px;
 }
 .ct-bar-chart {
-  height: 250px;
+  height: 50px;
 }
 .ct-label {
   color: rgba(0, 0, 0, 0.8);
@@ -3663,8 +3632,8 @@ tbody tr td:last-child {
 }
 body {
   font-family: 'Roboto', sans-serif;
-  background: rgba(88, 115, 254, 0.04);
-  color: #868e96;
+  background: #edffdb;
+  color: #000;
   font-size: 14px;
 }
 a,
@@ -3948,66 +3917,7 @@ h6.h1 {
     width: 1400px;
   }
 }
-.row {
-  margin-left: -7.5px;
-  margin-right: -7.5px;
-}
-.col-lg-1,
-.col-lg-10,
-.col-lg-11,
-.col-lg-12,
-.col-lg-2,
-.col-lg-3,
-.col-lg-4,
-.col-lg-5,
-.col-lg-6,
-.col-lg-7,
-.col-lg-8,
-.col-lg-9,
-.col-md-1,
-.col-md-10,
-.col-md-11,
-.col-md-12,
-.col-md-2,
-.col-md-3,
-.col-md-4,
-.col-md-5,
-.col-md-6,
-.col-md-7,
-.col-md-8,
-.col-md-9,
-.col-sm-1,
-.col-sm-10,
-.col-sm-11,
-.col-sm-12,
-.col-sm-2,
-.col-sm-3,
-.col-sm-4,
-.col-sm-5,
-.col-sm-6,
-.col-sm-7,
-.col-sm-8,
-.col-sm-9,
-.col-xs-1,
-.col-xs-10,
-.col-xs-11,
-.col-xs-12,
-.col-xs-2,
-.col-xs-3,
-.col-xs-4,
-.col-xs-5,
-.col-xs-6,
-.col-xs-7,
-.col-xs-8,
-.col-xs-9 {
-  padding-top: 7.5px;
-  padding-bottom: 7.5px;
-}
-@media (max-width: 667px) {
-  .dt-buttons {
-    margin-left: 10px;
-  }
-}
+
 @media (max-width: 480px) {
   .dt-buttons {
     display: inline-block;
@@ -4350,49 +4260,8 @@ h6.h1 {
 ---------------------------------------------------------------------- */
 /*  5 - media screen and (max-width: 1024px)
 ---------------------------------------------------------------------- */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .title-margin-right {
-    margin-right: 7px !important;
-  }
-  .title-margin-left {
-    margin-left: 7px !important;
-  }
-}
-/*  5 - media screen and (max-width: 1024px) End
----------------------------------------------------------------------- */
-/*  6 - media screen and (max-width: 991px)
----------------------------------------------------------------------- */
-@media (min-width: 768px) and (max-width: 991px) {
-  .title-margin-right {
-    margin-right: 7px !important;
-  }
-  .title-margin-left {
-    margin-left: 7px !important;
-  }
-}
-/*  6 - media screen and (max-width: 991px) End
----------------------------------------------------------------------- */
-/*  7 - media screen and (max-width: 767px)
----------------------------------------------------------------------- */
-@media (min-width: 680px) and (max-width: 767px) {
-  .title-margin-right {
-    margin-right: 7px !important;
-  }
-  .title-margin-left {
-    margin-left: 7px !important;
-  }
-}
-/*  7 - media screen and (max-width: 767px) End
----------------------------------------------------------------------- */
-/*  8 - media screen and (max-width: 680px)
----------------------------------------------------------------------- */
+
 @media (min-width: 480px) and (max-width: 679px) {
-  .title-margin-right {
-    margin-right: 7px !important;
-  }
-  .title-margin-left {
-    margin-left: 7px !important;
-  }
   .inbox-pagination {
     margin-top: 30px;
     float: left !important;
@@ -4409,17 +4278,9 @@ h6.h1 {
     display: inline;
   }
 }
-/*  8 - media screen and (max-width: 680px) End
----------------------------------------------------------------------- */
-/*  9 - media screen and (max-width: 480px)
----------------------------------------------------------------------- */
+
 @media (min-width: 360px) and (max-width: 479px) {
-  .title-margin-right {
-    margin-right: 7px !important;
-  }
-  .title-margin-left {
-    margin-left: 7px !important;
-  }
+
   #project {
     margin-left: 0%;
   }
@@ -4439,17 +4300,9 @@ h6.h1 {
     display: inline;
   }
 }
-/*  9 - media screen and (max-width: 360px) End
----------------------------------------------------------------------- */
-/*  10 - media screen and (max-width: 320px)
----------------------------------------------------------------------- */
+
 @media (min-width: 320px) and (max-width: 359px) {
-  .title-margin-right {
-    margin-right: 7px !important;
-  }
-  .title-margin-left {
-    margin-left: 7px !important;
-  }
+
   #project {
     margin-left: 0%;
   }
@@ -4548,10 +4401,45 @@ h6.h1 {
   background-color: #f41841;
   color: #5e5e5e;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  padding-bottom: 4px;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding: 2px 2px 2px 3px;
   text-shadow: none;
 }
+.notification-count{ 
+  position: relative;
+    top: -10px;
+    left: -7px;  }
+#main-content {
+    padding-bottom: 15px;
+}
+#list td br { display: none; } 
+#list td p{ margin: 0 10px 0 0; display: inline-block; }
+@media(max-width: 767px) {
+    .header-icon {padding:5px;}
+    .container-fluid{ padding-right: 10px; padding-left: 10px; }
+    .main .page-header{  margin: 0; }
+    .page-header .page-title h1 {  font-size: 14px;   padding: 0; margin: 15px 0 0 0; }
+    .main .page-header .breadcrumb{  padding: 0;   float: none; }
+    .stat-widget-one .stat-icon i{  font-size: 18px;padding: 10px;    border-width: 2px; }
+    .main .page-header .breadcrumb li a, .main .page-header .breadcrumb li.active{ font-size: 12px; }
+    .stat-widget-one .stat-content{ margin-top: 0; }
+    .stat-widget-one .stat-digit{ font-size: 18px; line-height: 22px;  }
+    .card-title h4{  font-size: 16px; }
+    .table td, .table th{ padding: 5px; line-height: 18px; }
+    .card {display: inline-block;width: 100%;padding: 10px;}
+    .m-t-20 { margin-top: 10px!important;}
+    .home-widget-three .stat-icon{ padding: 17px; }
+    .notification-count {top: -4px; left: 0;}
+    .form-control{ height: 34px;font-size: 14px; }
+    select.form-control:not([size]):not([multiple]) { height: 34px; font-size: 14px;}
+    .dataTables_length{ margin-right: 10px; }
+    .dataTables_filter{ margin-left: 0px; }
+    .home-widget-three .stat-digit{ font-size: 18px;line-height: 22px; }
+    .home-widget-three .stat-content{ padding: 10px; }
+    .table-responsive .table > thead > tr > th{ min-width: 110px; }
+    div.dt-buttons{ text-align: left; }
+    .btn-primary { height: 34px; }
+}
+
+

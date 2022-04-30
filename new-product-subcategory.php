@@ -42,7 +42,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1>Create New Product Sub Category </h1>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -65,77 +65,78 @@
                 <!-- /# row -->
                 <section id="main-content">
                     <form id="formID">
+                        <div class="row">
+                            <div class="col-md-6 mt-3">
+                                <div class="form row form-group">
+                                    <label class="col-md-6 col-form-label" for="">New Product Sub Category</label>
+                                    <div class="col-md-6">
+                                        <input type="text" required name="sub_category" id="sub_category" placeholder="Enter Product Sub Category" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                        <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form row form-group">
+                                    <label class="col-md-6 col-form-label" for="">Select Product Category</label>
+                                    <div class="col-md-6">
+                                        <select name="category_id" required id="category_id" class="form-control" aria-label="Default select example">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form row form-group">
+                                    <label class="col-md-6 col-form-label" for="">Select Product Vertical</label>
+                                    <div class="col-md-6">
+                                        <select required name="product_vertical_id" id="product_vertical_id" class="form-control" aria-label="Default select example">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form row form-group">
+                                    <label class="col-md-6 col-form-label" for="">Select Product Mini Category Form</label>
+                                    <div class="col-md-6">
+                                        <select required name="product_form_mini_id" id="product_form_mini_id" class="form-control" aria-label="Default select example">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form  row form-group">
+                                    <label class="col-md-6 col-form-label" for="">Select Lead Form</label>
+                                    <div class="col-md-6">
+                                        <select required name="product_form_lead_id" id="product_form_lead_id" class="form-control" aria-label="Default select example">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 d-flex align-items-end">
+                                <button type="submit" class="btn btn-sm btn-primary mt-3" >Save</button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="">New Product Sub Category</label>
-                                <input type="text" required name="sub_category" id="sub_category" placeholder="Enter Product Sub Category"
-                                    class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
-
-                            </div>
-                            <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="">Select Product Category</label>
-                                <select name="category_id" required id="category_id" class="form-control" aria-label="Default select example">
-                                    <option value="">Select</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="">Select Product Vertical</label>
-                                <select required name="product_vertical_id" id="product_vertical_id" class="form-control" aria-label="Default select example">
-                                    <option value="">Select</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="">Select Product Mini Category Form</label>
-                                <select required name="product_form_mini_id" id="product_form_mini_id" class="form-control" aria-label="Default select example">
-                                    <option value="">Select</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form">
-                                <label for="">Select Lead Form</label>
-                                <select required name="product_form_lead_id" id="product_form_lead_id" class="form-control" aria-label="Default select example">
-                                    <option value="">Select</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12 d-flex align-items-end">
-                            <button type="submit" class="btn btn-sm btn-primary" >Save
-                            </button>
-                            
-                        </div>
-                        </div>
-                        </form>
                         <div class="col-md-12 mt-3">
                             <h6 class="w-100">List of Existing Product Sub Categories </h6>
                             <div id="myGrid" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
                         </div>
                     </div>
-            </div>
+                </section>
 
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer">
-                        <p>2022 © Global School of Trading.</p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer">
+                            <p>2022 © Global School of Trading.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            </section>
         </div>
-    </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

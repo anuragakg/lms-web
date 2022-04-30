@@ -43,16 +43,15 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Hello, <span>Welcome Here <input type="text" name="daterange" value="" /></span>
-                                </h1>
+                                <h1>Hello, Welcome Here </h1>
                             </div>
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -74,7 +73,7 @@
                                     <div class="stat-icon dib"><i class="ti-money color-success border-success"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Total Vertical</div>
+                                        <div class="stat-text font-weight-bold">Total Vertical</div>
                                         <div class="stat-digit" id="vertical_total">0</div>
                                     </div>
                                 </div>
@@ -88,7 +87,7 @@
                                     <div class="stat-icon dib"><i class="ti-user color-primary border-primary"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Total Category</div>
+                                        <div class="stat-text font-weight-bold">Total Category</div>
                                         <div class="stat-digit" id="category_total">0</div>
                                     </div>
                                 </div>
@@ -102,7 +101,7 @@
                                     <div class="stat-icon dib"><i class="ti-layout-grid2 color-pink border-pink"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Total Form</div>
+                                        <div class="stat-text font-weight-bold">Total Form</div>
                                         <div class="stat-digit" id="form_total">0</div>
                                     </div>
                                 </div>
@@ -115,7 +114,7 @@
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-link color-danger border-danger"></i></div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Sub Category</div>
+                                        <div class="stat-text font-weight-bold">Sub Category</div>
                                         <div class="stat-digit" id="sub_category_total">0</div>
                                     </div>
                                 </div>
@@ -131,7 +130,7 @@
                                     <div class="stat-icon dib"><i class="ti-money color-success border-success"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Mini Category</div>
+                                        <div class="stat-text font-weight-bold">Mini Category</div>
                                         <div class="stat-digit" id="mini_category_total">0</div>
                                     </div>
                                 </div>
@@ -145,7 +144,7 @@
                                     <div class="stat-icon dib"><i class="ti-user color-primary border-primary"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Lead Category</div>
+                                        <div class="stat-text font-weight-bold">Lead Category</div>
                                         <div class="stat-digit" id="lead_category_total">0</div>
                                     </div>
                                 </div>
@@ -158,7 +157,7 @@
                                     <div class="stat-icon dib"><i class="ti-layout-grid2 color-pink border-pink"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Programs</div>
+                                        <div class="stat-tex font-weight-bold">Programs</div>
                                         <div class="stat-digit">5</div>
                                     </div>
                                 </div>
@@ -169,7 +168,7 @@
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-link color-danger border-danger"></i></div>
                                     <div class="stat-content dib">
-                                        <div class="stat-text">Invoices</div>
+                                        <div class="stat-text font-weight-bold">Invoices</div>
                                         <div class="stat-digit">121</div>
                                     </div>
                                 </div>
@@ -177,11 +176,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title">
                                     <h4>Fee Collections and Expenses</h4>
-
                                 </div>
                                 <div class="card-body">
                                     <div class="ct-bar-chart m-t-30"></div>
@@ -189,17 +187,17 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
+                        <!--<div class="col-lg-4">
                             <div class="card">
 
                                 <div class="card-body">
                                     <div class="ct-pie-chart"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="row">
-                        <div class="col-lg-4">
+                       <!-- <div class="col-lg-4">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card bg-primary">
@@ -314,9 +312,9 @@
 
                                 </div>
                             </div>
-                        </div>
-                        <!-- /# column -->
-                        <div class="col-lg-8">
+                        </div>-->
+                        <!-- /# All Exam Result -->
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title pr">
                                     <h4>All Exam Result</h4>
@@ -440,9 +438,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /# column -->
+                        <!-- /# All Exam Result -->
                     </div>
                     <!-- /# row -->
+
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="card p-0">
@@ -552,15 +551,77 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4">
+                        <!--<div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="year-calendar"></div>
                                 </div>
                             </div>
-                            <!-- /# card -->
-                        </div>
+                        </div>-->
                         <!-- /# column -->
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-title">
+                                    <h4>Task</h4>
+
+                                </div>
+                                <div class="todo-list">
+                                    <div class="tdl-holder">
+                                        <div class="tdl-content">
+                                            <ul>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"><i></i><span>22,Dec Publish The Final
+                                                            Exam Result</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
+                                                            School</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"><i></i><span>Recently Our Maganement
+                                                            Programme Start</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>Check out some
+                                                            Popular courses</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
+                                                            School</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked><i></i><span>Connect with one new
+                                                            person</span>
+                                                        <a href='#' class="ti-close"></a>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" class="tdl-new form-control"
+                                            placeholder="Write new item and hit 'Enter'...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# Task column End -->
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-title">
@@ -638,7 +699,7 @@
                             </div>
                             <!-- /# card -->
                         </div>
-                        <!-- /# column -->
+                        <!-- /# Notice Board  column End -->
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-title">
@@ -712,72 +773,12 @@
                             </div>
                             <!-- /# card -->
                         </div>
+                        <!-- /# Timeline column End -->
                     </div>
                     <!-- /# row -->
 
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-title">
-                                    <h4>Task</h4>
-
-                                </div>
-                                <div class="todo-list">
-                                    <div class="tdl-holder">
-                                        <div class="tdl-content">
-                                            <ul>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox"><i></i><span>22,Dec Publish The Final
-                                                            Exam Result</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
-                                                            School</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox"><i></i><span>Recently Our Maganement
-                                                            Programme Start</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Check out some
-                                                            Popular courses</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>First Jan Start Our
-                                                            School</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label>
-                                                        <input type="checkbox" checked><i></i><span>Connect with one new
-                                                            person</span>
-                                                        <a href='#' class="ti-close"></a>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <input type="text" class="tdl-new form-control"
-                                            placeholder="Write new item and hit 'Enter'...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-title pr">
                                     <h4>All Expense</h4>

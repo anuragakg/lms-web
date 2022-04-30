@@ -44,7 +44,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1>List of Existing Forms </h1>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -66,7 +66,8 @@
                 </div>
                 <!-- /# row -->
                 <section id="main-content">
-                    <div class="col-md-12 mt-3">
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
                             <h6 class="w-100">List of Existing Forms </h6>
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
@@ -85,11 +86,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
             </div>
 
 

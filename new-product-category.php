@@ -41,7 +41,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1> Product Category </h1>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -65,21 +65,17 @@
                 <section id="main-content">
 
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-12">
                             <form id="formID">
-                                <div class="form">
-                                    <label for=""> Product Category Name </label>
-                                    <input type="text" name="title" id="title" placeholder="Enter Product Category Name"
-                                        class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
-                                        <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div>
-                                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                <div class="row form">
+                                    <div class="col-md-2 mt-2"><label for=""> Product Category Name </label></div>
+                                    <div class="col-md-3 mb-2"><input type="text" name="title" id="title" placeholder="Enter Product Category Name" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                    <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div></div>
+                                    <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Submit</button></div>
                                 </div>    
                             </form>
-                            
-                            
                         </div>
-                        <div class="col-md-5 d-flex align-items-end">
-                        </div>
+
                         <div class="col-md-12 mt-3">
                             <h6 class="w-100">List of Existing Product Category </h6>
                             <div id="myGrid"  class="table-responsive">
@@ -97,16 +93,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-            </div>
-
-
             
-            </section>
+                </section>
         </div>
     </div>
     
