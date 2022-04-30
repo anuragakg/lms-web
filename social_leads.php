@@ -42,36 +42,31 @@
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <h1>Social Media Leads </h1>
+                    <div class="row">
+                        <div class="col-lg-8 p-r-0 title-margin-right">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <h1>Social Media Leads </h1>
+                                </div>
                             </div>
                         </div>
+                        <!-- /# column -->
                     </div>
-                    <!-- /# column -->
-                </div>
-                <!-- /# row -->
-                <div class="row">
-                    <div class="col-md-3">
-                                <label>Main Code</label>
-                                <input type="text" name="main_code" id="main_code" class="form-control" >    
-                            </div>
-                            <div class="col-md-3">
-                                <label>Parent Code</label>
-                                <input type="text" name="parent_code" id="parent_code" class="form-control" >    
-                            </div>
-                            <div class="col-md-3">
-                                <label>&nbsp;&nbsp;&nbsp;&nbsp;</label><br>
-                                <button type="button" class="btn btn-primary" id="search-btn"> Search</button>
-                            </div>
-                </div>
-                <section id="main-content">
-                    <div class="col-md-12 mt-3">
+                    <!-- /# row -->
+
+                    <div class="form-group customForm">
+                        <label class="col-form-label">Main Code</label>
+                        <input type="text" name="main_code" id="main_code" class="form-control" > 
+                    
+                        <label class="col-form-label">Parent Code</label>
+                        <input type="text" name="parent_code" id="parent_code" class="form-control" >
+                        
+                        <button type="button" class="btn btn-primary" id="search-btn"> Search</button>
+                    </div>
+
+                    <section id="main-content">
+                        <div class="mt-3">
                             <h6 class="w-100">Social Media Leads</h6>
-                            
-                            
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -89,19 +84,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
+                    </section>
             </div>
-
-
-            
-            </section>
         </div>
-    </div>
+    </div>    
         <?php include('status_history_modal.php'); ?>
-<?php include('parts/js-files.php'); ?>
+        <?php include('parts/js-files.php'); ?>
 <script type="text/javascript" src="assets/js/custom/social_leads.js?v=<?php echo time();?>"></script> 
    
 </body>
