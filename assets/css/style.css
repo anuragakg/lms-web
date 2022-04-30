@@ -1979,18 +1979,8 @@ footer p {
   border-color: #dc3545;
   color: #dc3545;
 }
-/*    Input Size
---------------------*/
-.input-sm {
-  font-size: 12px;
-  height: 30px;
-  line-height: 1.5;
-}
-.input-lg {
-  font-size: 18px;
-  height: 46px;
-  line-height: 1.33333;
-}
+
+
 /*    Basic form
 ----------------------*/
 label {
@@ -2415,8 +2405,7 @@ ul {
 .table > tfoot > tr > th,
 .table > thead > tr > td,
 .table > thead > tr > th {
-  border-top: 1px solid #e7e7e7;
-  vertical-align: top;
+  border-top: 1px solid #e7e7e7; vertical-align: top; padding: 5px!important;    min-width: 100px;
 }
 @media (max-width: 767px) {
   .files .btn span {
@@ -4347,6 +4336,7 @@ h6.h1 {
 .customForm .form-control{ width: 150px; display: inline-block; }
 .customForm .col-form-label{ margin-right: 5px;     margin-right: 10px; }
 div.dataTables_wrapper div.dataTables_length select{ width: auto!important;}
+
 @media(max-width: 767px) {
     .header-icon {padding:5px;}
     .container-fluid{ padding-right: 10px; padding-left: 10px; }
@@ -4369,7 +4359,6 @@ div.dataTables_wrapper div.dataTables_length select{ width: auto!important;}
     .dataTables_filter{ margin-left: 0px; }
     .home-widget-three .stat-digit{ font-size: 18px;line-height: 22px; }
     .home-widget-three .stat-content{ padding: 10px; }
-    .table-responsive .table > thead > tr > th{ min-width: 110px; }
     .table-responsive div.dt-buttons{ text-align: left; }
     .btn-primary { height: 34px;     padding: 3px 5px;}
     .customForm .col-form-label{ width: 100px; }
