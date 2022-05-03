@@ -43,7 +43,7 @@
         <div class="main">
             <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="col-lg-12">
                             <div class="page-header">
                                 <div class="page-title">
                                     <h1>Social Media Leads </h1>
@@ -66,7 +66,7 @@
 
                     <section id="main-content">
                         <div class="mt-3">
-                            <h6 class="w-100">Social Media Leads</h6>
+                            <!--<h6 class="w-100">Social Media Leads</h6> -->
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
