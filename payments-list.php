@@ -42,8 +42,9 @@
         <div class="content-wrap">
             <div class="main">
                 <div class="container-fluid">
+                    
                     <div class="row">
-                        <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="col-lg-12">
                             <div class="page-header">
                                 <div class="page-title">
                                     <h1>Payment-list</h1>

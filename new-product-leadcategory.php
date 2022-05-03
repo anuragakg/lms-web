@@ -55,6 +55,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <!-- /# column -->
                     <div class="col-lg-4">
                         <div class="page-header">
