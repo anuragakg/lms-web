@@ -41,7 +41,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1> Users </h1>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -65,59 +65,77 @@
                 <section id="main-content">
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <form id="formID">
                                 <div class="form">
-									<div class="row">
+									<div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Name </label>
                                         <div class="col-md-6">
-                                            <label for="">  Name </label>
                                             <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Email </label>
                                         <div class="col-md-6">
-                                            <label for="">  Email </label>
                                             <input type="text" name="email" id="email" placeholder="Enter email" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Phone </label>
                                         <div class="col-md-6">
-                                            <label for="">  Phone </label>
                                             <input type="text" name="phone" id="phone" placeholder="Enter phone" class="form-control form-control-sm" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Role </label>
                                         <div class="col-md-6">
-                                            <label for="">  Role </label>
                                             <select id="role" name="role" class="form-control" required>
                                                 <option value="">Select Role</option>
                                             </select>
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Employee Code  </label>
                                         <div class="col-md-6">
-                                            <label for="">  Employee Code </label>
                                             <input type="text" name="emp_code" id="emp_code" placeholder="Enter Employee Code" class="form-control form-control-sm" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">Department  </label>
                                         <div class="col-md-6">
-                                            <label for="">  Department </label>
                                             <input type="text" name="dept" id="dept" placeholder="Enter Department" class="form-control form-control-sm" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">Designation  </label>
                                         <div class="col-md-6">
-                                            <label for="">  Designation </label>
                                             <input type="text" name="designation" id="designation" placeholder="Enter designation" class="form-control form-control-sm" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">Reporting Manager  </label>
                                         <div class="col-md-6">
-                                            <label for="">  Reporting Manager </label>
                                             <input type="text" name="rm" id="rm" placeholder="Enter Reporting Manager" class="form-control form-control-sm" required="">
                                         </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">Date of joining  </label>
                                         <div class="col-md-6">
-                                            <label for="">  Date of joining </label>
                                             <input type="text" name="doj" id="doj" placeholder="Enter Date of joining" class="form-control form-control-sm" required="">
                                         </div>
-									</div>
-                                    
-                                    <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for=""> </label>
+                                        <div class="col-md-6">
+                                            <button type="submit"  class="btn btn-sm btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                        
                                 </div>    
                             </form>
-                            
-                            
-                        </div>
-                        <div class="col-md-5 d-flex align-items-end">
                         </div>
                      </div>
+
 				</section>
 			
 			</div>

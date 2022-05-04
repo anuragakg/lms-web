@@ -57,7 +57,7 @@
 
                     <section id="main-content">
                         <div class="mt-3">
-                            <h6 class="w-100">Product Mini Category</h6>
+                             <!--<h6 class="w-100">Product Mini Category</h6>-->
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>

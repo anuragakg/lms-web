@@ -2594,8 +2594,9 @@ ul {
   border-radius: 3px;
 }
 thead tr th {
-  color: #373757;
+  color: #fff;
   font-weight: 500;
+  background: #49830c;
 }
 thead tr th:last-child {
   text-align: right;
@@ -4333,7 +4334,7 @@ h6.h1 {
 #list td br { display: none; } 
 #list td p{ margin: 0 10px 0 0; display: inline-block; }
 .customForm{ margin-top: 10px; }
-.customForm .form-control{ width: 150px; display: inline-block; }
+.customForm .form-control{ width: 150px; display: inline-block;     margin-right: 15px; }
 .customForm .col-form-label{ margin-right: 5px;     margin-right: 10px; }
 div.dataTables_wrapper div.dataTables_length select{ width: auto!important;}
 
