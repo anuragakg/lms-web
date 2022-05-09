@@ -82,7 +82,7 @@
                                             <th>Phone</th>
                                             <th>Source</th>
                                             <th>Add name</th>
-                                            <th>Main code</th>
+                                            <th>Child code</th>
                                             <th>Parent Code</th>
                                             <th>Created Date</th>
                                             <th>Action</th>

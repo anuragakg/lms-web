@@ -20,7 +20,7 @@ $(function () {
 					extend: 'excel',
 					text: '<i class="fa fa-file-excel-o"></i> Export to Excel',
 					titleAttr: 'EXCEL',
-					title: 'Programs List',
+					title: 'Social leads List',
 					exportOptions: {
 						columns: [0, 1, 2,3,4]
 					}
@@ -62,7 +62,7 @@ $(function () {
 						    }
 						},
 						{ 
-							"orderable": false,
+							"orderable": true,
 							"render": function(data, type, row) {
 									return row.name;
 							}
