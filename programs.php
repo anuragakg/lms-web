@@ -34,14 +34,14 @@
 
 <body>
 
-	<?php include('parts/head-tag.php'); ?>
+    <?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1> Programs </h1>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -61,32 +61,34 @@
                     <!-- /# column -->
                 </div>
                 <!-- /# row -->
+
                 <section id="main-content">
 
                     <div class="row">
-                        <div class="col-md-7 hidden programs_add">
+                        <div class="col-md-6 hidden programs_add">
                             <form id="formID">
-                                <div class="form">
-                                    <label for="">Title</label>
-                                    <input type="text" name="title" id="title" placeholder="Enter Program Name"
-                                        class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                <div class="form row form-group">
+                                    <label class="col-md-3 col-form-label" for="">Title</label>
+                                    <div class="col-md-9 mb-2">
+                                        <input type="text" name="title" id="title" placeholder="Enter Program Name"class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                    </div>
 
-                                    <label for="">Base Price</label>
-                                    <input type="text" name="base_price" id="base_price" placeholder="Enter base_price"
-                                        class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                    <label class="col-md-3 col-form-label" for="">Base Price</label>
+                                    <div class="col-md-9 mb-2">
+                                        <input type="text" name="base_price" id="base_price" placeholder="Enter base_price" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                    </div>
 
-                                    <label for="">GST</label>
-                                    <input type="text" name="gst" id="gst" placeholder="Enter gst "
-                                        class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
-                                        
-                                    <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                    <label class="col-md-3 col-form-label" for="">GST</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="gst" id="gst" placeholder="Enter gst" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
+                                    </div>
+                                    <div class="col-md-12">    
+                                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                    </div>
                                 </div>    
                             </form>
-                            
-                            
                         </div>
-                        <div class="col-md-5 d-flex align-items-end">
-                        </div>
+
                         <div class="col-md-12 mt-3">
                             <h6 class="w-100">List of Existing Product Vertical </h6>
                             <div id="myGrid"  class="table-responsive">
@@ -104,18 +106,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-				</section>
-			
-			</div>
-
-
+                </section>
             
-            
+            </div>
+
         </div>
     </div>
     <?php include('status_history_modal.php'); ?>

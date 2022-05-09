@@ -1,83 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
-/*
-    Template: Admin Board
-    Author: Saiful
-    Developer by: Saiful Islam
 
-    Table of Content
-    ================
-
-1. variable
-2. fonts
-3. card
-4. global
-5. badge
-6. tab
-7. modal
-8. timeline
-9. data-table
-10. panel
-11. button
-12. header
-13. gmap
-14. chat
-15. carousel
-16. weather
-17. invoice-edit
-18. invoice
-19. widget-stat
-20. recent-comments
-21. recent-message
-22. forms
-23. compose-email
-24. progress-bar
-25. todo-list
-26. datamap
-27. table
-28. order-progress
-29. login
-30. chart
-31. nestable
-32. profile
-33. profile-widget
-34. ui-element-basic
-35. calendar
-36. flot-chart
-37. morris-chart
-38. products_1
-39. products_2
-40. products_3
-41. favourite_menu
-42. order-list
-43. booking-system
-44. scrollable
-45. vector-map
-46. menu-upload
-47. social-media-stats
-48. vertical-carousel
-49. chartist
-50. table-export
-51. ui-widget-v1
-42. responsive
-
-*/
-/*    Font Variable
-----------------------*/
-/*    Color Variable
------------------------*/
-/*    Solid Color
-------------------*/
-/*    Brand color
-----------------------*/
 /*----------------font-------------------*/
-.icon-name {
-  color: #000;
-}
+.icon-name { color: #000; }
+
 /*  Opensans
 --------------- */
-.card-body {
-  padding: 0;
-}
+.card-body { padding: 0; }
 .card {
   background: #ffffff;
   margin: 5px 0;
@@ -2051,18 +1979,8 @@ footer p {
   border-color: #dc3545;
   color: #dc3545;
 }
-/*    Input Size
---------------------*/
-.input-sm {
-  font-size: 12px;
-  height: 30px;
-  line-height: 1.5;
-}
-.input-lg {
-  font-size: 18px;
-  height: 46px;
-  line-height: 1.33333;
-}
+
+
 /*    Basic form
 ----------------------*/
 label {
@@ -2487,8 +2405,7 @@ ul {
 .table > tfoot > tr > th,
 .table > thead > tr > td,
 .table > thead > tr > th {
-  border-top: 1px solid #e7e7e7;
-  vertical-align: top;
+  border-top: 1px solid #e7e7e7; vertical-align: top; padding: 5px!important;    min-width: 100px;
 }
 @media (max-width: 767px) {
   .files .btn span {
@@ -2677,8 +2594,9 @@ ul {
   border-radius: 3px;
 }
 thead tr th {
-  color: #373757;
+  color: #fff;
   font-weight: 500;
+  background: #49830c;
 }
 thead tr th:last-child {
   text-align: right;
@@ -4407,7 +4325,7 @@ h6.h1 {
   text-shadow: none;
 }
 .notification-count{ 
-  position: relative;
+    position: relative;
     top: -10px;
     left: -7px;  }
 #main-content {
@@ -4415,6 +4333,11 @@ h6.h1 {
 }
 #list td br { display: none; } 
 #list td p{ margin: 0 10px 0 0; display: inline-block; }
+.customForm{ margin-top: 10px; }
+.customForm .form-control{ width: 150px; display: inline-block;     margin-right: 15px; }
+.customForm .col-form-label{ margin-right: 5px;     margin-right: 10px; }
+div.dataTables_wrapper div.dataTables_length select{ width: auto!important;}
+
 @media(max-width: 767px) {
     .header-icon {padding:5px;}
     .container-fluid{ padding-right: 10px; padding-left: 10px; }
@@ -4437,9 +4360,10 @@ h6.h1 {
     .dataTables_filter{ margin-left: 0px; }
     .home-widget-three .stat-digit{ font-size: 18px;line-height: 22px; }
     .home-widget-three .stat-content{ padding: 10px; }
-    .table-responsive .table > thead > tr > th{ min-width: 110px; }
-    div.dt-buttons{ text-align: left; }
-    .btn-primary { height: 34px; }
+    .table-responsive div.dt-buttons{ text-align: left; }
+    .btn-primary { height: 34px;     padding: 3px 5px;}
+    .customForm .col-form-label{ width: 100px; }
+    .customForm .form-control{ margin: 0 0 10px 0; }
 }
 
 

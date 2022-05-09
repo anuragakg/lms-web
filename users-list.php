@@ -43,7 +43,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
                                 <h1>Users List </h1>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <!-- /# column -->
-                    <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="col-lg-4">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
@@ -64,9 +64,10 @@
                     <!-- /# column -->
                 </div>
                 <!-- /# row -->
-                <section id="main-content">
-                    <div class="col-md-12 mt-3">
-                            <h6 class="w-100">Users List </h6>
+
+                    <section id="main-content">
+                        <div class="mt-3">
+                            <!--<h6 class="w-100">Users List </h6> -->
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -80,17 +81,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
+                    </section>
             </div>
 
-
-            
-            </section>
         </div>
-    </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

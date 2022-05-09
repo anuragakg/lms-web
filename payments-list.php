@@ -39,23 +39,25 @@
     <?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
-    <div class="content-wrap">
-        <div class="main">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-8 p-r-0 title-margin-right">
-                        <div class="page-header">
-                            <div class="page-title">
-                                <h1>Payment-list</h1>
+        <div class="content-wrap">
+            <div class="main">
+                <div class="container-fluid">
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page-header">
+                                <div class="page-title">
+                                    <h1>Payment-list</h1>
+                                </div>
                             </div>
                         </div>
+                        <!-- /# column -->
                     </div>
-                    <!-- /# column -->
-                </div>
-                <!-- /# row -->
-                <section id="main-content">
-                    <div class="col-md-12 mt-3">
-                            <h6 class="w-100">Payment-list</h6>
+                    <!-- /# row -->
+
+                    <section id="main-content">
+                        <div class="mt-3">
+                            <!--<h6 class="w-100">Payment-list</h6> -->
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -72,17 +74,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                          </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
+                    </section>    
+                </div>
             </div>
-
-
-            
-            </section>
         </div>
-    </div>
 <?php include('parts/js-files.php'); ?>
 <script type="text/javascript" src="assets/js/custom/payments-list.js?v=<?php echo time();?>"></script> 
    

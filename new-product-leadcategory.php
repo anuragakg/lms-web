@@ -55,6 +55,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <!-- /# column -->
                     <div class="col-lg-4">
                         <div class="page-header">
@@ -69,49 +70,45 @@
                     <!-- /# column -->
                 </div>
                 <!-- /# row -->
+
                 <section id="main-content">
                     <form id="formID">
-                        <div class="row">
-                            <div class="col-md-4 mt-3">
-                                <div class="form">
-                                    <label for="">Select Product Form</label>
-                                    <select onchange="getFormControls()" id="product_form_mini_id" name="product_form_mini_id" required class="form-control" aria-label="Default select example">
-                                        
-                                    </select>
+                            <div class="form row form-group">
+                                <label class="col-md-3 col-form-label" for="">Select Product Form</label>
+                                <div class="col-md-4">
+                                    <select onchange="getFormControls()" id="product_form_mini_id" name="product_form_mini_id" required class="form-control" aria-label="Default select example"></select>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mt-3">
-                                <div class="form">
-                                    <label for="">Select Product Category</label>
+                            </div>  
+
+                            <div class="form row form-group">
+                                <label class="col-md-3 col-form-label" for="">Select Product Category</label>
+                                <div class="col-md-4">
                                     <select name="category_id" required id="category_id" class="form-control" aria-label="Default select example">
                                     <option value="">Select</option>
-                                    
                                     </select>
                                 </div>
-
                             </div>
-                            <div class="col-md-4 mt-3">
-                                <div class="form">
-                                    <label for="">Select Product Sub Category</label>
+
+                            <div class="form row form-group">
+                                <label class="col-md-3 col-form-label" for="">Select Product Sub Category</label>
+                                <div class="col-md-4">
                                     <select name="sub_category_id" required id="sub_category_id" class="form-control" aria-label="Default select example">
                                     <option value="">Select</option>
-                                    
                                     </select>
                                 </div>
-                                
-                            </div>
-                        </div>
-                        <div class="row"> 
-                            <div class="col-md-4 mt-3">
-                            <div class="form">
-                                    <label for="">Select Product Vertical</label>
+                            </div> 
+
+                            <div class="form row form-group">
+                                <label class="col-md-3 col-form-label" for="">Select Product Vertical</label>
+                                <div class="col-md-4">
                                     <select required name="product_vertical_id" id="product_vertical_id" class="form-control" aria-label="Default select example">
                                     <option value="">Select</option>
-                                    
                                     </select>
                                 </div>
                             </div>
-                        </div>
+
+                            <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+
                         <div class="row">    
                             <div class="col-md-4 col-sm-12 title" style="display:none">
 
@@ -294,7 +291,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                        
                     </form>
                     <div class="row">
                         <div class="col-lg-12">
