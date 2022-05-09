@@ -15,11 +15,16 @@ use Hash;
 class LeadsService 
 {
     public function getList($request){
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+            //6 => 'storage_capacity',
+        );
         $limit = $request['length']??10;
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         $order = isset($columns[$request['order'][0]['column']]) ? $columns[$request['order'][0]['column']] : 'id';
         $dir = isset($request['order'][0]['dir']) ? $request['order'][0]['dir'] : 'DESC';
-        
+
         $lead=Lead::orderBy($order, $dir);
         if(!empty($search)){
             $lead=$lead->where(DB::raw("CONCAT(`name`,`email`,`phone`)"), 'LIKE', "%".$search."%");    
