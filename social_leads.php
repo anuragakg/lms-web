@@ -55,7 +55,7 @@
                     <!-- /# row -->
 
                     <div class="form-group customForm">
-                        <label class="col-form-label">Main Code</label>
+                        <label class="col-form-label">Child Code</label>
                         <input type="text" name="main_code" id="main_code" class="form-control" > 
                     
                         <label class="col-form-label">Parent Code</label>
