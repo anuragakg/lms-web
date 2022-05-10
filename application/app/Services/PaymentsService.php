@@ -86,6 +86,62 @@ class PaymentsService
         }
         
     }
+
+
+    public function updatePayment($request,$form_id){
+        $user_id = Auth::user()->id??1;
+        
+        
+        try{
+            DB::beginTransaction();
+            $Payment=Payment::where(['id'=>$form_id])->first();
+            
+            if($request->installment_total > $request->net_base_fee)
+            {
+                throw new \Error('installment total should not be greater than net base fee');
+            }
+
+            $Payment->lead_id=$request->lead_id;
+            $Payment->program_id=$request->program_id;
+            $Payment->installment_total=$request->installment_total;
+            $Payment->gross_payable=$request->gross_payable;
+            $Payment->exemption=$request->exemption;
+            $Payment->base_fee=$request->base_fee;
+            //$Payment->gst_applicable=$request->gst_applicable;
+            $Payment->net_base_fee=$request->net_base_fee;
+            $Payment->balance_due=$request->net_base_fee;
+            $Payment->added_by=$user_id;
+            $Payment->save();
+
+            foreach ($request['instalment']['installment_id'] as $key => $installment_id) {
+                $paymentInstallment=PaymentInstallment::where('id',$installment_id)->first();
+                if(empty($paymentInstallment)){
+                    $paymentInstallment=new PaymentInstallment();    
+                }
+                $date= $request['instalment']['installment_date'][$key];
+                $date=date('Y-m-d',strtotime($date));
+                $paymentInstallment->payment_id=$Payment->id;
+                $paymentInstallment->lead_id=$request->lead_id;
+                $paymentInstallment->installment_num=isset($request['instalment']['installment_num'][$key])?$request['instalment']['installment_num'][$key]:'';
+                $paymentInstallment->installment_date=$date;
+                $paymentInstallment->installment_amount=isset($request['instalment']['installment_amount'][$key])?$request['instalment']['installment_amount'][$key]:'';
+                $paymentInstallment->save();
+            }  
+
+
+            
+
+            $job = (new \App\Jobs\SetupUserInstallment($Payment))->delay(now()->addSeconds(2)); 
+            dispatch($job);  
+            DB::commit();
+            return $Payment;
+        }catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;  
+            
+        }
+        
+    }
     
     public function checkValidation($input){
         return Validator::make($input, [

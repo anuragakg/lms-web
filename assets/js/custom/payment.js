@@ -1,10 +1,18 @@
 const lead_id = TRIFED.getUrlParameters().id;
+const form_id = TRIFED.getUrlParameters().form_id;
+const action = TRIFED.getUrlParameters().action;
 var base_fee=0;
 var net_base_fee=0;
 $(function () {
 	$('.date').datepicker();
 	fetchPrograms();
-	add_installments();
+	if(action=='edit'){
+		fetchEditDetails(form_id);	
+	}else{
+		add_installments();	
+	}
+	
+	
 	var auth = TRIFED.getLocalStorageItem();
  	let listElement='#list';
 	var oTable =$(listElement).DataTable({
@@ -132,11 +140,11 @@ $(function () {
     		var data = new FormData(form);	
 
     		
-    		//if (edit_id != undefined && edit_id != '') 
-			//{
-				//data.append('form_id', edit_id );
+    		if (form_id != undefined && form_id != '') 
+			{
+				data.append('form_id', form_id );
 				
-			//}
+			}
 			data.append('lead_id', lead_id );
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
@@ -167,12 +175,31 @@ fetchPrograms = (id = 0) => {
 		}
 	});
 }
-function add_installments(){
+fetchEditDetails = (form_id)=>{
+	var url = conf.getPaymentInfo.url(form_id);
+	var method = conf.getPaymentInfo.method;
+	var data = {};
+	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+		if (response.status) {
+			$('#program_id').val(response.data.program_id);
+			$('#gross_payable').val(response.data.gross_payable);
+			$('#exemption').val(response.data.exemption);
+			$('#base_fee').val(response.data.base_fee);
+			$('#net_base_fee').val(response.data.net_base_fee);
+			$('#installment_total').val(response.data.installment_total);
+			var installments=response.data.getInstallments;
+			installments.forEach((row)=>{
+				add_installments(row);	
+			});
+		}
+	});	
+}
+function add_installments(row){
 	
 	var random_id=Date.now();
 	var data = { 
 		random_id:random_id,
-
+		result:row
 	};
 	var template = $("#installment_template").html();
   var text = Mustache.render(template, data);
@@ -199,16 +226,40 @@ function remove_installments(random_id){
 	$('#installment_'+random_id).remove();
 	inc_installment();
 }
+function remove_installments_db(installment_id,random_id){
+	if(confirm('Do you really want to delete this? After clicking on this, this installment will be deleted permanently')){
+		
+		var url = conf.remove_installment.url;
+		var method = conf.remove_installment.method;
+		var data = {
+			installment_id
+		};
+		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+			if (response.status) {
+				$('#installment_'+random_id).remove();
+				inc_installment();	
+				setTotalAmount();	
+			}
+		});
+
+
+			
+	}
+}
 $(document).on('keyup','.installment_amount',function(){
+	setTotalAmount();	
+});
+$('.fee').on('keyup',function(){
+	setPaymentInfo();
+});
+
+setTotalAmount=()=>{
 	var total_amount=0;
 	$('.installment_amount').each(function(){
 		total_amount +=parseInt($(this).val());
 	});
 	$('#installment_total').val(total_amount)
-});
-$('.fee').on('keyup',function(){
-	setPaymentInfo();
-});
+}
 setPaymentInfo=()=>{
 	var gross_payable=$('#gross_payable').val();
 	var exemption=$('#exemption').val();

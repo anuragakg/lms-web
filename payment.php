@@ -196,10 +196,20 @@
 <script type="text/javascript" src="assets/js/custom/payment.js?v=<?php echo time();?>"></script> 
 <script id="installment_template" type="text/template">
     <tr id="installment_{{random_id}}">
-        <td><input type="text" class="form-control installment_no" name="instalment[installment_num][]" id="installmane_num_{{random_id}}" value=""></td>
-        <td><input type="text" class="form-control date" name="instalment[installment_date][]" id="installment_date_{{random_id}}" readonly required></td>
-        <td><input type="text" class="form-control installment_amount" name="instalment[installment_amount][]" required autocomplete="off" id="installment_amount_{{random_id}}"></td>
-        <td><a href="javascript:void(0)" onclick="remove_installments({{random_id}})" ><i class="fa fa-minus"></i></a></td>
+
+        <td>
+            <input type="hidden" name="instalment[installment_id][]" value="{{result.id}}">
+            <input type="text" class="form-control installment_no" name="instalment[installment_num][]" id="installmane_num_{{random_id}}" value=""></td>
+        <td><input type="text" class="form-control date" name="instalment[installment_date][]" value="{{result.installment_date}}" id="installment_date_{{random_id}}" readonly required></td>
+        <td><input type="text" class="form-control installment_amount" name="instalment[installment_amount][]" required autocomplete="off" id="installment_amount_{{random_id}}" value="{{result.installment_amount}}"></td>
+        <td>
+            {{#result.id}}
+                <a href="javascript:void(0)" onclick="remove_installments_db({{result.id}},{{random_id}})" ><i class="fa fa-minus"></i></a>
+            {{/result.id}}
+            {{^result.id}}
+                <a href="javascript:void(0)" onclick="remove_installments({{random_id}})" ><i class="fa fa-minus"></i></a>
+            {{/result.id}}
+        </td>
         
     </tr>
 </script>

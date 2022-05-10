@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Models\Payment;
+use App\Models\PaymentInstallment;
 
 use App\Http\Resources\PaymentResource;
 use App\Http\Resources\PaymentListResource;
@@ -98,6 +99,36 @@ class Payments extends BaseController
             return $this->sendError('Program not found.');
         }
 		return $this->sendResponse(new PaymentResource($payment), 'Payment retrieved successfully.');
+    }
+
+    public function leadPaymentDetails($id)
+    {
+        $payment=Payment::where('lead_id',$id)->first();
+        //dd($payment);
+        if (is_null($payment)) {
+            return $this->sendError('payment not found.');
+        }
+        $result=PaymentResource::make($payment);
+        return $this->sendResponse($result, 'Payment retrieved successfully.');
+    }
+
+    public function remove_installment(Request $request)
+    {
+        DB::beginTransaction();
+        $input = $request->all();
+        $installment_id=$input['installment_id'];
+        $PaymentInstallment=PaymentInstallment::where('id',$installment_id)->first();
+        $payment_id=$PaymentInstallment->payment_id;
+        $PaymentInstallment->delete();
+        $total_installment_amount=PaymentInstallment::where('payment_id',$payment_id)->sum('installment_amount');
+
+        $payment=Payment::where('id',$payment_id)->first();
+        $payment->installment_total=$total_installment_amount;
+        $payment->save();
+        
+        
+        DB::commit();
+        return $this->sendResponse([], 'Payment installment deleted successfully.');
     }
 
     

@@ -72,6 +72,8 @@ Route::middleware('auth:api')->group( function () {
     Route::apiResource('payments', Payments::class);
     Route::post('payments-installment', [Payments::class,'paymentInstallment']);
     Route::get('getPrograms', [ProgramsController::class,'getProgram']);
+    Route::get('leadPaymentDetails/{id}', [Payments::class,'leadPaymentDetails']);
+    Route::post('remove_installment', [Payments::class,'remove_installment']);
     Route::post('import-leads', [LeadsController::class,'importLeads']);
     
 });

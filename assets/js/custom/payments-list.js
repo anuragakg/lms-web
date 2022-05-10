@@ -116,7 +116,8 @@ $(function () {
 							"render": function(data, type, row) {
 								var html='';
 								if(payment_add){
-										html +='<a href="installment_payment.php?id='+row.id+'" class="btn btn-primary">Add Installment</a>  | ';		
+									html +='<a href="payment.php?id='+row.lead_id+'&form_id='+row.id+'&action=edit" class="btn btn-primary">Edit Payment Info</a>&nbsp;  | ';		
+									html +='<a href="installment_payment.php?id='+row.id+'" class="btn btn-primary">Add Installment</a>  | ';		
 									
 									
 								}

@@ -327,4 +327,14 @@ var conf = {
         url : endpoint + 'import-leads',
         'method': 'POST',
     },
+    'fetchLeadPaymentDetails':{
+        url : function (id) {
+            return endpoint + 'leadPaymentDetails/' + id;
+        },
+        'method': 'GET',
+    },
+    'remove_installment':{
+       url : endpoint + 'remove_installment',
+        'method': 'POST',
+    }
 }
