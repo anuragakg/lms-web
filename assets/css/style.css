@@ -10,9 +10,8 @@
   background: #ffffff;
   margin: 5px 0;
   padding: 10px;
-  border: 1px solid #e7e7e7;
-  border-radius: 3px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px 0 rgb(67 89 113 / 12%);
 }
 .card-subtitle {
   font-size: 12px;
@@ -484,8 +483,8 @@ a.dt-button.active:not(.disabled) {
   box-shadow: none;
 }
 .btn-primary {
-  background: #49830c;
-  border-color: #49830c;
+  background: #00f381;
+  border-color: #00f381;
   color: #ffffff !important;
   min-width: 100px;
   height: 38px;
@@ -1824,13 +1823,15 @@ footer p {
 .form-control {
   height: 38px;
   border-radius: 0px;
+  color: #697a8d;
   box-shadow: none;
-  border-color: #e7e7e7;
+  border-color: #d9dee3;
+  border-radius: 5px;
   font-family: 'Roboto', sans-serif;
 }
 .form-control:hover {
   box-shadow: none;
-  border-color: #e7e7e7;
+  border-color: #d9dee3;
 }
 .form-control:focus,
 .form-control.active {
@@ -2593,26 +2594,7 @@ ul {
   text-transform: capitalize;
   border-radius: 3px;
 }
-thead tr th {
-  color: #fff;
-  font-weight: 500;
-  background: #49830c;
-}
-thead tr th:last-child {
-  text-align: right;
-}
-tbody tr th {
-  color: #373757;
-  font-family: 'Roboto', sans-serif;
-  font-weight: normal;
-}
-tbody tr td {
-  font-family: 'Roboto', sans-serif;
-  color: #868e96;
-}
-tbody tr td:last-child {
-  text-align: right;
-}
+
 
 .table > thead > tr > th {
   border-bottom: 1px solid #e7e7e7;
@@ -3550,7 +3532,7 @@ tbody tr td:last-child {
 }
 body {
   font-family: 'Roboto', sans-serif;
-  background: #edffdb;
+  background: #f5f5f9;
   color: #000;
   font-size: 14px;
 }
