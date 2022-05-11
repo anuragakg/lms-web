@@ -492,8 +492,8 @@ a.dt-button.active:not(.disabled) {
 .btn-primary.active,
 .btn-primary:focus,
 .btn-primary:hover {
-  background: #4b970f;
-  border-color: #49830c;
+  background: #00e378;
+  border-color: #00e378;
   color: #ffffff;
   box-shadow: none;
 }

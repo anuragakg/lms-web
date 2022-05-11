@@ -94,7 +94,7 @@
 }
 
 .sidebar .nano-content>ul li>a:hover {
-  background: rgba(67, 89, 113, 0.04) ;
+  background: #333 ;
 }
 
 .sidebar .nano-content>ul li>a>.sidebar-collapse-icon {
@@ -146,7 +146,7 @@ html.rtl .sidebar .nano-content>ul>li.label, html.rtl .sidebar .nano-content>ul>
 }
 
 .sidebar .nano-content>ul>li.active>a, .sidebar .nano-content>ul>li.open>a, .sidebar .nano-content>ul>li>ul {
-    background-color: rgba(105, 108, 255, 0.16);
+    background-color:#333;
 }
 
 .sidebar .nano-content>ul>li>ul>li.label, .sidebar .nano-content>ul>li>ul>li.content, .sidebar .nano-content>ul>li>ul>li>a {
@@ -160,7 +160,7 @@ html.rtl .sidebar .nano-content>ul>li>ul>li.label, html.rtl .sidebar .nano-conte
 }
 
 .sidebar .nano-content>ul>li>ul>li.active>a, .sidebar .nano-content>ul>li>ul>li.open>a, .sidebar .nano-content>ul>li>ul>li>ul {
-    background: #4a8908;
+    background: #505050;
 }
 
 .sidebar .nano-content>ul>li>ul>li>ul>li.label, .sidebar .nano-content>ul>li>ul>li>ul>li.content, .sidebar .nano-content>ul>li>ul>li>ul>li>a {
@@ -174,7 +174,7 @@ html.rtl .sidebar .nano-content>ul>li>ul>li>ul>li.label, html.rtl .sidebar .nano
 }
 
 .sidebar .nano-content>ul>li>ul>li>ul>li.active>a, .sidebar .nano-content>ul>li>ul>li>ul>li.open>a, .sidebar .nano-content>ul>li>ul>li>ul>li>ul {
-    background: #6ed70f;
+    background: #5e5e5e;
 }
 
 .sidebar .nano-content>ul>li>ul>li>ul>li>ul>li.label, .sidebar .nano-content>ul>li>ul>li>ul>li>ul>li.content, .sidebar .nano-content>ul>li>ul>li>ul>li>ul>li>a {
