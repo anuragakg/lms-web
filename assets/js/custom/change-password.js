@@ -35,7 +35,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', response.message);
-					setTimeout(function() { window.location = 'change-password.php'}, 500);
+					setTimeout(function() { window.location = 'change-password.php'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}

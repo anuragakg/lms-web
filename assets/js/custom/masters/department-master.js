@@ -66,7 +66,7 @@ addDepartment = () => {
 		        if (response.status == 1) {
 		        	$('#formID')[0].reset();
 		            TRIFED.showMessage('success', 'Successfully Added');
-		            setTimeout(function() {document.location = "department-master.php";}, 500);
+		            setTimeout(function() {document.location = "department-master.php";}, 1500);
 		        } else {
 					TRIFED.showError('error', response.message);
 					$("#submitButton").attr("disabled", false);
@@ -123,7 +123,7 @@ updateData = () =>{
 			TRIFED.asyncAjaxHit(url, method, data, function (response) {
 		        if (response.status == 1) {
 					TRIFED.showMessage('success', 'Successfully Updated');
-					setTimeout(function() {document.location = "department-master.php";}, 500);
+					setTimeout(function() {document.location = "department-master.php";}, 1500);
 		        } else {
 		            TRIFED.showError('error', response.message);
 		        }

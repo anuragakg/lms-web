@@ -185,7 +185,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Product Vertical Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'new-product-vertical.php'}, 500);
+					setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -215,7 +215,7 @@ deleteVertical=(id=0)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Vertical deleted Successfully');
-				setTimeout(function() { window.location = 'new-product-vertical.php'}, 500);
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
 			}
 		});	
 	}
@@ -237,7 +237,7 @@ updateStatus=(id,status)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Vertical Status Updated Successfully');
-				setTimeout(function() { window.location = 'new-product-vertical.php'}, 500);
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
 			}
 		});	
 	}

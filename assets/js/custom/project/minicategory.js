@@ -180,7 +180,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'product-mini-category-list.php?form_type=1'}, 500);
+					setTimeout(function() { window.location = 'product-mini-category-list.php?form_type=1'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -316,7 +316,7 @@ deleteCategory=(id=0)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product mini Category deleted Successfully');
-				setTimeout(function() { window.location = 'product-mini-category-list.php'}, 500);
+				setTimeout(function() { window.location = 'product-mini-category-list.php'}, 1500);
 			}
 		});	
 	}
@@ -338,7 +338,7 @@ updateStatus=(id,status)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product mini category Status Updated Successfully');
-				setTimeout(function() { window.location = 'product-mini-category-list.php'}, 500);
+				setTimeout(function() { window.location = 'product-mini-category-list.php'}, 1500);
 			}
 		});	
 	}

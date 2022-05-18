@@ -245,7 +245,7 @@ $(document).ready(function(){
 						}
 						
 
-						setTimeout(function() {document.location = "view-role-mapping-fund-flow.php";}, 500);
+						setTimeout(function() {document.location = "view-role-mapping-fund-flow.php";}, 1500);
 						
 					} else {
 						TRIFED.showError('error', response.message);

@@ -71,7 +71,7 @@
                                     <div class="col-md-2 mt-2"><label for=""> Product Category Name </label></div>
                                     <div class="col-md-3 mb-2"><input type="text" name="title" id="title" placeholder="Enter Product Category Name" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                     <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div></div>
-                                    <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Submit</button></div>
+                                    <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Create</button></div>
                                 </div>    
                             </form>
                         </div>

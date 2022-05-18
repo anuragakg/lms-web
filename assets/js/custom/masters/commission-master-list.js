@@ -159,7 +159,7 @@ changeActiveStatus = (id) => {
 				TRIFED.showMessage('success', response.data.message);
 				setTimeout(function () {
 					location.reload();
-				}, 500);
+				}, 1500);
 			} else {
 				TRIFED.showError('error', response.message);
 			}

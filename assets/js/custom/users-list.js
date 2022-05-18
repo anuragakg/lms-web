@@ -131,7 +131,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Product Form Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'new-form-list.php'}, 500);
+					setTimeout(function() { window.location = 'new-form-list.php'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -172,7 +172,7 @@ deleteForm=(id=0)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Form deleted Successfully');
-				setTimeout(function() { window.location = 'new-form-list.php'}, 500);
+				setTimeout(function() { window.location = 'new-form-list.php'}, 1500);
 			}
 		});	
 	}

@@ -56,7 +56,7 @@ updateProfile = () => {
 	        if (response.status == 1) {
 	        	$('#formID')[0].reset();
 	            TRIFED.showMessage('success', 'Successfully updated');
-	            setTimeout(function() { window.location = 'index.php'}, 500);
+	            setTimeout(function() { window.location = 'index.php'}, 1500);
 	        } else {
 	            TRIFED.showError('error', response.message);
 	        }

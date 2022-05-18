@@ -222,7 +222,7 @@ function importExcelFile() {
 				TRIFED.showMessage("success", "Successfully Added");
 				setTimeout(function() {
 					location.reload();
-				}, 500);
+				}, 1500);
 			}else{
 				$('#file_errors').html(r.message).css('color','red');
 				$(".fa-spinner").hide();

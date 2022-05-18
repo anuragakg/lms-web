@@ -127,7 +127,7 @@
                                     <div class="row form-group">
                                         <label class="col-md-4 col-form-label" for=""> </label>
                                         <div class="col-md-6">
-                                            <button type="submit"  class="btn btn-sm btn-primary">Submit</button>
+                                            <button type="submit"  class="btn btn-sm btn-primary">Create</button>
                                         </div>
                                     </div>
                                         

@@ -180,7 +180,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" id="enableCreate" class="btn btn-sm btn-primary mt-3" data-toggle="modal" data-target="#exampleModal" >Submit</button>
+                            <button type="submit" id="enableCreate" class="btn btn-sm btn-primary mt-3" data-toggle="modal" data-target="#exampleModal" >Create</button>
                         </div>
                         
                         

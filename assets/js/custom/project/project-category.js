@@ -185,7 +185,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'new-product-category.php'}, 500);
+					setTimeout(function() { window.location = 'new-product-category.php'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -215,7 +215,7 @@ deleteCategory=(id=0)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Category deleted Successfully');
-				setTimeout(function() { window.location = 'new-product-category.php'}, 500);
+				setTimeout(function() { window.location = 'new-product-category.php'}, 1500);
 			}
 		});	
 	}
@@ -237,7 +237,7 @@ updateStatus=(id,status)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Category Status Updated Successfully');
-				setTimeout(function() { window.location = 'new-product-category.php'}, 500);
+				setTimeout(function() { window.location = 'new-product-category.php'}, 1500);
 			}
 		});	
 	}

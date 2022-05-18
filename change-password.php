@@ -87,7 +87,7 @@
                                         </div>
 									</div>
                                     
-                                    <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                    <button type="submit"  class="btn btn-sm btn-primary mt-3">Create</button>
                                 </div>    
                             </form>
                             

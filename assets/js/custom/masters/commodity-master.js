@@ -141,7 +141,7 @@ function makeAjaxRequest(method, data, url, message = "Success") {
         TRIFED.showMessage("success", message);
         setTimeout(function() {
           document.location = "commodity-master.php";
-        }, 500);
+        }, 1500);
       } else {
         TRIFED.showError("error", response.message);
         $("#submitButton").attr("disabled", false);

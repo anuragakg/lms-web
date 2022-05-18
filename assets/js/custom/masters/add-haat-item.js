@@ -26,7 +26,7 @@ addHaatItem= () => {
             if (response.status == 1) {
               response_data=response.data;
               TRIFED.showMessage('success', 'Successfully Updated');
-              setTimeout(function() {document.location = "haat-bazaar-items.php";}, 500);              
+              setTimeout(function() {document.location = "haat-bazaar-items.php";}, 1500);              
             } else {
               TRIFED.showError('error', response.message);
               $("#submitButton").attr("disabled", false);
@@ -41,7 +41,7 @@ addHaatItem= () => {
             if (response.status == 1) {
               response_data=response.data;
               TRIFED.showMessage('success', 'Successfully Added');
-              setTimeout(function() {document.location = "haat-bazaar-items.php";}, 500);              
+              setTimeout(function() {document.location = "haat-bazaar-items.php";}, 1500);              
             } else {
               TRIFED.showError('error', response.message);
               $("#submitButton").attr("disabled", false);

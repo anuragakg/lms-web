@@ -41,7 +41,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'User saved successfully');
-					setTimeout(function() { window.location = 'users-list.php'}, 500);
+					setTimeout(function() { window.location = 'users-list.php'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}

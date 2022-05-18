@@ -71,7 +71,7 @@
                                     <label for=""> Upload File </label>
                                     <input type="file" name="file" id="file" placeholder="Upload File"
                                         class="form-control form-control-sm" required="">
-                                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Submit</button>
+                                        <button type="submit"  class="btn btn-sm btn-primary mt-3">Import</button>
                                 </div>    
                             </form>
                             
