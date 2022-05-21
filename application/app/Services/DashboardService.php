@@ -44,6 +44,7 @@ class DashboardService
                 }
             }
         }
+        $data['staff_users']=User::where('emp_type',2)->count('id');
         //get  Lead category
         return $data;
 

@@ -157,8 +157,8 @@
                                     <div class="stat-icon dib"><i class="ti-layout-grid2 color-pink border-pink"></i>
                                     </div>
                                     <div class="stat-content dib">
-                                        <div class="stat-tex font-weight-bold">Programs</div>
-                                        <div class="stat-digit">5</div>
+                                        <div class="stat-tex font-weight-bold">Staff Users</div>
+                                        <div class="stat-digit" id="staff_users"></div>
                                     </div>
                                 </div>
                             </div>
