@@ -52,6 +52,7 @@ class ProductCategory extends JsonResource
             'title' => $this->title,
             'status' => $this->status,
             'status_text' => $status_text,
+            'pending_user_type'=>$pending_user_type,
             'added_by' => $this->getAddedBy->name??'-',
 			'current_usertype_status' => $current_usertype_status,
             'approved_by' => isset($this->getApprovedBy->name)?$this->getApprovedBy->name:'-',

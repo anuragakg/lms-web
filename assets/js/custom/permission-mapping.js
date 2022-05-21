@@ -33,7 +33,7 @@ $(function() {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Saved Successfully');
-					setTimeout(function() { window.location = 'roles.php'}, 1500);
+					setTimeout(function() { window.location = 'roles.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}

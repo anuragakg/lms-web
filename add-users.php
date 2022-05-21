@@ -75,15 +75,39 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-md-4 col-form-label" for="">  Email </label>
+                                        <label class="col-md-4 col-form-label" for="">  Contact Number </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="phone" id="phone" placeholder="Enter phone" class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Official Contact Number </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="official_contact_number" id="official_contact_number" placeholder="Enter official contact number" class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Emergency Contact Number </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="emergency_contact_number" id="emergency_contact_number" placeholder="Enter Emergency contact number" class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Relation for the Contact Number </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="relation_contact_number" id="relation_contact_number" placeholder="Enter Relation of contact number" class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">  Official Email </label>
                                         <div class="col-md-6">
                                             <input type="text" name="email" id="email" placeholder="Enter email" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-md-4 col-form-label" for="">  Phone </label>
+                                        <label class="col-md-4 col-form-label" for="">  Personal Email Id</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="phone" id="phone" placeholder="Enter phone" class="form-control form-control-sm" required="">
+                                            <input type="email" name="personal_email" id="personal_email" placeholder="Enter email" class="form-control form-control-sm"  required="">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -119,9 +143,27 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-md-4 col-form-label" for="">Date of joining  </label>
+                                        <label class="col-md-4 col-form-label" for="">Permanent Address  </label>
                                         <div class="col-md-6">
-                                            <input type="text" name="doj" id="doj" placeholder="Enter Date of joining" class="form-control form-control-sm" required="">
+                                            <input type="text" name="perm_address" id="perm_address" placeholder="Enter Permanent address"  class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">Communication Address  </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="comm_address" id="comm_address" placeholder="Enter communication address"  class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">Aadhar Card  </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="aadhar" id="aadhar" placeholder="Enter aadhar number" minlength="12" maxlength="12" class="form-control form-control-sm" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-md-4 col-form-label" for="">PAN Number  </label>
+                                        <div class="col-md-6">
+                                            <input type="text" name="pan_number" id="pan_number" placeholder="Enter pan number"  class="form-control form-control-sm" required="">
                                         </div>
                                     </div>
                                     <div class="row form-group">

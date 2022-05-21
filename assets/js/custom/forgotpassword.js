@@ -84,7 +84,7 @@ $(function(){
             }).done(function (response) {
 				$('#success_msg').html('');
 				TRIFED.showMessage('success', response.message);
-				setTimeout(function() { window.location = 'index.php'}, 1500);
+				setTimeout(function() { window.location = 'index.php'}, 3000);
                 $('#success_msg').html('');
             });
           

@@ -18,7 +18,7 @@ $(function () {
             TRIFED.fileAjaxHit(url, method, data, function (response) {
                 if (response.status == 1) {
                     TRIFED.showMessage('success', 'Successfully Added');
-					setTimeout(function() { window.location = 'user-listing.php'}, 1500);
+					setTimeout(function() { window.location = 'user-listing.php'}, 3000);
 
                 } else {
                     TRIFED.showError('error', response.message);

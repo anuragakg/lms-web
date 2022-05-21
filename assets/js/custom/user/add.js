@@ -41,7 +41,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'User saved successfully');
-					setTimeout(function() { window.location = 'users-list.php'}, 1500);
+					setTimeout(function() { window.location = 'users-list.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -74,13 +74,20 @@ getUser=(id=0)=>{
 		if (response) {
 			$('#name').val(response.data.name);
 			$('#email').val(response.data.email);
+			$('#official_contact_number').val(response.data.official_contact_number);
+			$('#emergency_contact_number').val(response.data.emergency_contact_number);
+			$('#relation_contact_number').val(response.data.relation_contact_number);
+			$('#personal_email').val(response.data.personal_email);
 			$('#role').val(response.data.role_id);
 			$('#phone').val(response.data.phone);
 			$('#emp_code').val(response.data.emp_code);
 			$('#dept').val(response.data.dept);
 			$('#designation').val(response.data.designation);
 			$('#rm').val(response.data.rm);
-			$('#doj').val(response.data.doj);
+			$('#perm_address').val(response.data.perm_address);
+			$('#comm_address').val(response.data.comm_address);
+			$('#aadhar').val(response.data.aadhar);
+			$('#pan_number').val(response.data.pan_number);
 		}
 	});
 }

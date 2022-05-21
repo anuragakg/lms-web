@@ -28,7 +28,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Data imported successfully');
-					setTimeout(function() { window.location = 'social_leads.php'}, 1500);
+					setTimeout(function() { window.location = 'social_leads.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -58,7 +58,7 @@ deleteVertical=(id=0)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Vertical deleted Successfully');
-				setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 3000);
 			}
 		});	
 	}
@@ -80,7 +80,7 @@ updateStatus=(id,status)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Vertical Status Updated Successfully');
-				setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 3000);
 			}
 		});	
 	}

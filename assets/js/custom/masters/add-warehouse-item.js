@@ -26,7 +26,7 @@ addWarehouse = () => {
             if (response.status == 1) {
               response_data=response.data;
               TRIFED.showMessage('success', 'Successfully Updated');
-              setTimeout(function() {document.location = "warehouse-items.php";}, 1500);              
+              setTimeout(function() {document.location = "warehouse-items.php";}, 3000);              
             } else {
               TRIFED.showError('error', response.message);
               $("#submitButton").attr("disabled", false);

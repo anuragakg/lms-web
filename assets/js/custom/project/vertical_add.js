@@ -184,8 +184,8 @@ $(function () {
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
-					TRIFED.showMessage('success', 'Product Vertical Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
+					TRIFED.showMessage('success', 'Vertical name Successfully created and sent for approval');
+					setTimeout(function() { window.location = 'new-product-vertical.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -208,14 +208,14 @@ fetchVertical = (id = 0) => {
 	});
 }
 deleteVertical=(id=0)=>{
-	if(confirm('Are you sure to delete this?')){
+	if(confirm('Are you sure you wish to delete vertical name?')){
 		var url = conf.deleteProjectVerticalById.url(id);
 		var method = conf.deleteProjectVerticalById.method;
 		var data = {};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Vertical deleted Successfully');
-				setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 3000);
 			}
 		});	
 	}
@@ -223,11 +223,11 @@ deleteVertical=(id=0)=>{
 }
 updateStatus=(id,status)=>{
 	if(status==1){
-		status_text='approve';
+		status_text='Approve';
 	}else{
-		status_text='reject';
+		status_text='Reject';
 	}
-	if(confirm(`Are you sure to ${status_text} this?`)){
+	if(confirm(`Are you sure you wish to ${status_text} vertical name?`)){
 		var url = conf.updateProjectVerticalStatus.url;
 		var method = conf.updateProjectVerticalStatus.method;
 		var data = {
@@ -237,7 +237,7 @@ updateStatus=(id,status)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Vertical Status Updated Successfully');
-				setTimeout(function() { window.location = 'new-product-vertical.php'}, 1500);
+				setTimeout(function() { window.location = 'new-product-vertical.php'}, 3000);
 			}
 		});	
 	}

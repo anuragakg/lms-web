@@ -30,10 +30,26 @@ class ProcductCategoryController extends BaseController
         try{
             $product=$this->service->getList($request);
             $items = ProductResource::collection($product);
+            $items_arr=getResourceData($items);
+            $data=array();
+            $users=$this->getLUsers();
+            
+            foreach($items_arr as $arr){
+                $pending_usertype=array();
+                $pending_user_type=$arr['pending_user_type'];
+                foreach ($pending_user_type as $key => $user) {
+                    $pending_usertype[]=$users[$user]['name'];
+                }
+                if(!empty($pending_usertype)){
+                    $status_text='Pending '.implode(',', $pending_usertype);    
+                }
+                $arr['status_text']=$status_text;
+                $data[]=$arr;
+            }
             $json_data = array(
             "recordsTotal"    => $items->total(),  
             "recordsFiltered" => $items->total(), 
-            "data"            => $items,
+            "data"            => $data,
             'current_page' => $items->currentPage(),
             'next' => $items->nextPageUrl(),
             'previous' => $items->previousPageUrl(),

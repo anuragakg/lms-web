@@ -202,7 +202,7 @@ $('#add_role').on('click', function (e) {
 			$('#formID')[0].reset();
 			TRIFED.showMessage('success', 'Successfully Added');
 
-			setTimeout(function() { window.location = 'role-listing.php'}, 1500);
+			setTimeout(function() { window.location = 'role-listing.php'}, 3000);
 
 
 

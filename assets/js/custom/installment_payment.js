@@ -139,7 +139,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Programs Added Successfully ');
-					setTimeout(function() { window.location = 'payments-list.php'}, 1500);
+					setTimeout(function() { window.location = 'payments-list.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}

@@ -22,7 +22,7 @@ $('#form_submit').on('click', function (e) {
 			if (response.status == 1) {
 				$('#formID')[0].reset();
 				TRIFED.showMessage('success', 'Successfully Added');
-				setTimeout(function () { window.location = 'packing-master-list.php' }, 1500);
+				setTimeout(function () { window.location = 'packing-master-list.php' }, 3000);
 			} else {
 				TRIFED.showError('error', response.message);
 			}

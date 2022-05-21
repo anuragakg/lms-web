@@ -132,3 +132,9 @@ function time_elapsed_string($datetime, $full = false) {
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 
+function getResourceData($item)
+{
+    $item=json_encode($item);
+    $array=  collect(json_decode($item,true));
+    return $array->toArray(); 
+}

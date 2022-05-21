@@ -184,8 +184,8 @@ $(function () {
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
-					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'new-product-category.php'}, 1500);
+					TRIFED.showMessage('success', ' Category successfully created and sent for approval');
+					setTimeout(function() { window.location = 'new-product-category.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -208,14 +208,14 @@ fetchCategory = (id = 0) => {
 	});
 }
 deleteCategory=(id=0)=>{
-	if(confirm('Are you sure to delete this?')){
+	if(confirm('Are you sure you wish to delete category name?')){
 		var url = conf.deleteProjectCategoryById.url(id);
 		var method = conf.deleteProjectCategoryById.method;
 		var data = {};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Category deleted Successfully');
-				setTimeout(function() { window.location = 'new-product-category.php'}, 1500);
+				setTimeout(function() { window.location = 'new-product-category.php'}, 3000);
 			}
 		});	
 	}
@@ -223,11 +223,11 @@ deleteCategory=(id=0)=>{
 }
 updateStatus=(id,status)=>{
 	if(status==1){
-		status_text='approve';
+		status_text='Approve';
 	}else{
-		status_text='reject';
+		status_text='Reject';
 	}
-	if(confirm(`Are you sure to ${status_text} this?`)){
+	if(confirm(`Are you sure you wish to ${status_text} project category?`)){
 		var url = conf.updateProjectCategoryStatus.url;
 		var method = conf.updateProjectCategoryStatus.method;
 		var data = {
@@ -237,7 +237,7 @@ updateStatus=(id,status)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Product Category Status Updated Successfully');
-				setTimeout(function() { window.location = 'new-product-category.php'}, 1500);
+				setTimeout(function() { window.location = 'new-product-category.php'}, 3000);
 			}
 		});	
 	}

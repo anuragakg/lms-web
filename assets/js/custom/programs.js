@@ -155,7 +155,7 @@ $(function () {
 				if (response.status == 1) {
 					
 					TRIFED.showMessage('success', 'Programs Added Successfully ');
-					setTimeout(function() { window.location = 'programs.php'}, 1500);
+					setTimeout(function() { window.location = 'programs.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -187,7 +187,7 @@ deleteVertical=(id=0)=>{
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
 				TRIFED.showMessage('success', 'Program  deleted Successfully');
-				setTimeout(function() { window.location = 'programs.php'}, 1500);
+				setTimeout(function() { window.location = 'programs.php'}, 3000);
 			}
 		});	
 	}

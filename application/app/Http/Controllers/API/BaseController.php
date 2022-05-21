@@ -6,7 +6,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
-
+use DB;
+use App\Models\User;
 
 class BaseController extends Controller
 {
@@ -47,5 +48,24 @@ class BaseController extends Controller
 
 
         return response()->json($response, $code);
+    }
+
+    public function getLUsers(){
+        $users= User::whereIn('role',[2,3,4])->groupBy('role')->get();
+        $data=array();
+        foreach ($users as $key => $user) 
+        {
+            if($user->role==2){
+                $role=1;
+            }
+            if($user->role==3){
+                $role=2;
+            }
+            if($user->role==4){
+                $role=3;
+            }
+            $data[$role]=$user;
+        }
+        return $data;
     }
 }

@@ -210,8 +210,8 @@ $(function () {
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
-					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'product-sub-category-list.php'}, 1500);
+					TRIFED.showMessage('success', 'Sub Category successfully created and sent for approval');
+					setTimeout(function() { window.location = 'product-sub-category-list.php'}, 3000);
 				} else {
 					TRIFED.showError('error', response.message);
 				}
@@ -289,14 +289,14 @@ fetchVertical = () => {
 	});
 }
 deleteCategory=(id=0)=>{
-	if(confirm('Are you sure to delete this?')){
+	if(confirm('Are you sure you wish to delete sub category?')){
 		var url = conf.deleteSubCategory.url(id);
 		var method = conf.deleteSubCategory.method;
 		var data = {};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
-				TRIFED.showMessage('success', 'Product Sub Category deleted Successfully');
-				setTimeout(function() { window.location = 'product-sub-category-list.php'}, 1500);
+				TRIFED.showMessage('success', ' Sub Category deleted Successfully');
+				setTimeout(function() { window.location = 'product-sub-category-list.php'}, 3000);
 			}
 		});	
 	}
@@ -304,11 +304,11 @@ deleteCategory=(id=0)=>{
 }
 updateStatus=(id,status)=>{
 	if(status==1){
-		status_text='approve';
+		status_text='Approve';
 	}else{
-		status_text='reject';
+		status_text='Reject';
 	}
-	if(confirm(`Are you sure to ${status_text} this?`)){
+	if(confirm(`Are you sure you wish to ${status_text} project sub category?`)){
 		var url = conf.updateProjectSubCategoryStatus.url;
 		var method = conf.updateProjectSubCategoryStatus.method;
 		var data = {
@@ -317,8 +317,8 @@ updateStatus=(id,status)=>{
 		};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
-				TRIFED.showMessage('success', 'Product sub category Status Updated Successfully');
-				setTimeout(function() { window.location = 'product-sub-category-list.php'}, 1500);
+				TRIFED.showMessage('success', 'Project sub category Status Updated Successfully');
+				setTimeout(function() { window.location = 'product-sub-category-list.php'}, 3000);
 			}
 		});	
 	}
