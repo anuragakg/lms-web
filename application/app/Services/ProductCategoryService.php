@@ -102,7 +102,7 @@ class ProductCategoryService
     }
     public function checkValidation($input){
         return Validator::make($input, [
-            'title' => 'required'
+            'title' => 'required|unique:product_category,title'
         ]);
     }
     public function getProduct($id){

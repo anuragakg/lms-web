@@ -64,17 +64,40 @@ class ProductSubcategoryController extends BaseController
     public function store(Request $request)
     {
         $input = $request->all();
-        $validator=$this->service->checkValidation($input);
+        //$validator=$this->service->checkValidation($input);
 
         
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors()->first());       
-        }
+        // if($validator->fails()){
+        //     return $this->sendError('Validation Error.', $validator->errors()->first());       
+        // }
         
         try{
             if(isset($request->form_id) && !empty($request->form_id)){
+                $form_id=$request->form_id;
+                $validator = Validator::make($input, [
+                    'sub_category' => ['required',"unique:product_subcategory,sub_category,$form_id"],
+                    'category_id' => 'required',
+                    'product_vertical_id' => 'required',
+                    'product_form_mini_id' => 'required',
+                    'product_form_lead_id' => 'required'
+                ]);
+                
+                if($validator->fails()){
+                    return $this->sendError('Validation Error.', $validator->errors()->first());       
+                }
                 $product=$this->service->updateCategory($request,$request->form_id);
             }else{
+                $validator = Validator::make($input, [
+                    'sub_category' => ['required',"unique:product_subcategory,sub_category"],
+                    'category_id' => 'required',
+                    'product_vertical_id' => 'required',
+                    'product_form_mini_id' => 'required',
+                    'product_form_lead_id' => 'required'
+                ]);
+                
+                if($validator->fails()){
+                    return $this->sendError('Validation Error.', $validator->errors()->first());       
+                }
                 $product=$this->service->addCategory($request);    
             }
             

@@ -22,7 +22,6 @@ class ProductVertical extends JsonResource
         if(in_array($role, [2,3,4]))
         {
             $current_usertype_status=$this->getStatus->where('user_type',$user_role)->first();
-                
         }
         $pending_user_type=$this->getStatus->where('status',0)->pluck('user_type');
         

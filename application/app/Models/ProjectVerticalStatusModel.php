@@ -9,4 +9,9 @@ class ProjectVerticalStatusModel extends Model
 {
     use HasFactory,SoftDeletes;
 	protected $table='project_vertical_status';
+
+	public function getUser()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'added_by');
+    }
 }

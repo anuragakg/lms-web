@@ -59,22 +59,33 @@ class ProductVerticalModelController extends BaseController
     public function store(Request $request)
     {
         $input = $request->all();
-		$validator=$this->service->checkValidation($input);
+		//$validator=$this->service->checkValidation($input);
 
         
    
-        $validator = Validator::make($input, [
-            'title' => 'required'
-        ]);
         
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors()->first());       
-        }
+        
+        
 		
 		//try{
             if(isset($request->form_id) && !empty($request->form_id)){
+                $form_id=$request->form_id;
+                $validator = Validator::make($input, [
+                    'title' => ['required',"unique:product_vertical_models,title,$form_id"]
+                ]);
+                
+                if($validator->fails()){
+                    return $this->sendError('Validation Error.', $validator->errors()->first());       
+                }
                 $product=$this->service->updateVertical($request,$request->form_id);
             }else{
+                $validator = Validator::make($input, [
+                    'title' => 'required|unique:product_vertical_models,title'
+                ]);
+                
+                if($validator->fails()){
+                    return $this->sendError('Validation Error.', $validator->errors()->first());       
+                }
                 $product=$this->service->addVertical($request);    
             }
 			
