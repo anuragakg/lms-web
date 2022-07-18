@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Resources;
-use App\Http\Resources\StatusResource;
+
 use Illuminate\Http\Resources\Json\JsonResource;
-use Auth;
-class ProjectStatusResource extends JsonResource
+
+class QuestionsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,11 +14,12 @@ class ProjectStatusResource extends JsonResource
      */
     public function toArray($request)
     {
-        
         return [
             'id' => $this->id,
-            'status' => ProductVerticalStatusResource::collection($this->getStatus),
-            
+            'form_id' => $this->form_id,
+            'question' => $this->question,
+            'element_type' => $this->element_type,
+            'options'=>$this->getOptions
         ];
     }
 }

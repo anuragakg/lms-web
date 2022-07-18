@@ -191,6 +191,14 @@ var conf = {
         'url': endpoint + 'roles',
         'method': 'GET',
     },
+    'addNewRole': {
+        url : endpoint + 'roles',
+        'method': 'POST',
+    },
+    'fetchRoleUsers': {
+        url : endpoint + 'fetchRoleUsers',
+        'method': 'POST',
+    },
     'getPermissionList': {
         'url': endpoint + 'permissions_list',
         'method': 'GET',
@@ -336,5 +344,31 @@ var conf = {
     'remove_installment':{
        url : endpoint + 'remove_installment',
         'method': 'POST',
+    },
+    'addForm':{
+       url : endpoint + 'forms',
+        'method': 'POST',
+    },
+    'getQuestionsList':{
+        url : function (form_id) {
+            return endpoint + 'getQuestionsList/' + form_id;
+        },
+        'method': 'GET',
+    },
+    'addFormsAnswer':{
+        url : endpoint + 'addFormsAnswer',
+        'method': 'POST',
+    },
+    'getFormsAnswer':{
+        url : function (id) {
+            return endpoint + 'answers_view/' + id;
+        },
+        'method': 'GET',
+    },
+    'forms_list':{
+        url : endpoint + 'forms_list',
+        'method': 'GET',
     }
+
+
 }

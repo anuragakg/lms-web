@@ -1,3 +1,5 @@
+var project_vertical_status = TRIFED.checkPermissions("project_vertical_status");
+
 function getUrlVars() {
 	var vars = [], hash;
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -10,10 +12,13 @@ function getUrlVars() {
 }
 const edit_id = TRIFED.getUrlParameters().id;
 $(function () {
-	
+	var row=[];
+	fetchRoleList();
 	if(edit_id!= undefined)
 	{
 		fetchVertical(edit_id)
+	}else{
+		add_approver(row);
 	}
  	var auth = TRIFED.getLocalStorageItem();
  	let listElement='#list';
@@ -53,15 +58,16 @@ $(function () {
 				         var api = new $.fn.dataTable.Api(settings);
 				         
 				         d.page = api.page()+1;
+				         d.status = $('#status').val();
 				         
 				      },
 		            "dataSrc": function(json) {
 		            		json.draw = json.data.draw;
-							json.recordsTotal = json.data.recordsTotal;
-							json.recordsFiltered = json.data.recordsFiltered;			
+								json.recordsTotal = json.data.recordsTotal;
+								json.recordsFiltered = json.data.recordsFiltered;			
 	       					return json.data.data;
 	       						
-	    			}
+	    				}
                    },
 		            "columns": [
 		                { 
@@ -72,7 +78,7 @@ $(function () {
 						    }
 						},
 						{ 
-							"orderable": false,
+							//"orderable": false,
 							"render": function(data, type, row) {
 									return row.title;
 							}
@@ -86,23 +92,17 @@ $(function () {
 							 
 						},
 						{ 
-							"orderable": false,
+							//"orderable": false,
 							"render": function(data, type, row) {
 									return row.created_at;
 							}
 							 
 						},
+						
 						{ 
-							"orderable": false,
+							//"orderable": false,
 							"render": function(data, type, row) {
-									return row.updated_at;
-							}
-							 
-						},
-						{ 
-							"orderable": false,
-							"render": function(data, type, row) {
-									return row.approved_by;
+									return row.approve_status_text;
 							}
 							 
 						},
@@ -110,22 +110,25 @@ $(function () {
 							"orderable": false,
 							"render": function(data, type, row) {
 									var html='';
+									
 									if(row.status==0){
 										text_class='text-warning';
+										html += '<p class="'+text_class+'">'+row.pending_status_text+'</p><br>';
 									}
 									if(row.status==1){
 										text_class='text-success';
+										html += '<p class="'+text_class+'">Approved</p><br>';
 									}
 									if(row.status==2){
 										text_class='text-danger';
+										html += '<p class="'+text_class+'">'+row.rejected_status_text+'</p><br>';
 									}
-									html += '<p class="'+text_class+'">'+row.status_text+'</p><br>';
-									if(auth.role ==2 || auth.role ==3 ||auth.role ==4)
+									if(row.can_approve == 1 && project_vertical_status)
 									{
-										if(row.current_usertype_status.status == 0 && row.status==0){
+										if(row.status!=1 && row.status!=2){
 											html += '<a class="btn btn-success" href="javascript:void(0)" onclick="updateStatus('+row.id+',1)">Approve</a> | ';
-											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';	
-										}	
+											html += '<a class="btn btn-danger" href="javascript:void(0)" onclick="updateStatus('+row.id+',2)">Reject</a>';				
+										}
 									}
 									html+='<a title="View History" href="javascript:void(0)" onclick="showHistory('+row.id+')"><i class="fa fa-line-chart" aria-hidden="true"></i></a>';
 									return html;
@@ -150,7 +153,9 @@ $(function () {
 
       });
 
-
+	$('#status').on('change',function () {
+		oTable.ajax.reload();
+	});
 
 
 	$("#formID").submit(function(e) {
@@ -202,7 +207,10 @@ fetchVertical = (id = 0) => {
 	var data = {};
 	TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 		if (response) {
-			$('#title').val(response.data.title)
+			$('#title').val(response.data.title);
+			response.data.getStatus.forEach((row)=>{
+				add_approver(row);
+			});
 			//fillDistrict(response.data);
 		}
 	});
@@ -227,12 +235,19 @@ updateStatus=(id,status)=>{
 	}else{
 		status_text='Reject';
 	}
+	var reason='';
 	if(confirm(`Are you sure you wish to ${status_text} vertical name?`)){
+		if(status==2){
+			reason=prompt(`Please enter the reason for ${status_text}`);
+			
+		}
+		
 		var url = conf.updateProjectVerticalStatus.url;
 		var method = conf.updateProjectVerticalStatus.method;
 		var data = {
 			id,
-			status
+			status,
+			reason
 		};
 		TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
 			if (response) {
@@ -253,7 +268,7 @@ showHistory=(id)=>{
 				var html='';
 				response.data.status.forEach((row)=>{
 					html +='<tr>';
-						html +='<td>'+row.user_type+'</td>';
+						html +='<td>'+row.role_name+'</td>';
 						if(row.status==1){
 							var text_class='text-success';	
 						}
@@ -266,6 +281,7 @@ showHistory=(id)=>{
 						html +='<td class="'+text_class+'">'+row.status_text+'</td>';
 						html +='<td>'+row.approver_name+'</td>';
 						html +='<td>'+row.approver_email+'</td>';
+						html +='<td>'+row.approver_remarks+'</td>';
 						
 						if(row.status!=0){
 							html +='<td>'+row.updated_at+'</td>';

@@ -9,6 +9,7 @@ use Auth;
 use App\Http\Resources\Users as ApiResource;
 use Validator;
 use App\Services\UsersService;
+use App\Models\User;
 use App\Http\Controllers\API\BaseController as BaseController;
 class UsersController extends BaseController
 {
@@ -119,4 +120,10 @@ class UsersController extends BaseController
 	{
 		$this->service->sendEmail();
 	}
+    public function fetchRoleUsers(Request $request)
+    {
+        $input=$request->all();
+        $users= User::where('role',$input['role_id'])->get();
+        return $this->sendResponse($users, 'user retrieved successfully.');
+    }
 }

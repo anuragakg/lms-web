@@ -8,6 +8,8 @@ use App\Models\RolesModel;
 use App\Models\PermissionModel;
 use App\Models\RolePermissionModel;
 use DB;
+use Auth;
+use Validator;
 class RolesController extends BaseController
 {
     /**
@@ -53,7 +55,49 @@ class RolesController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $user_id = Auth::user()->id;
+        $input = $request->all();
+        //$validator=$this->service->checkValidation($input);
+
+        
+        //try{
+            if(isset($request->form_id) && !empty($request->form_id)){
+                $form_id=$request->form_id;
+                $validator = Validator::make($input, [
+                    'title' => ['required',"unique:user_roles,title,$form_id"]
+                ]);
+                
+                if($validator->fails()){
+                    return $this->sendError('Validation Error.', $validator->errors()->first());       
+                }
+                
+                $roles=RolesModel::where('id',$request->form_id)->first();
+                $roles->title=$request->title;
+                $roles->created_by=$user_id;    
+                $roles->role_type='1';    
+                $roles->save();
+
+            }else{
+                $validator = Validator::make($input, [
+                    'title' => 'required|unique:user_roles,title'
+                ]);
+                
+                if($validator->fails()){
+                    return $this->sendError('Validation Error.', $validator->errors()->first());       
+                }
+                $roles=new RolesModel();
+                $roles->title=$request->title;
+                $roles->created_by=$user_id;    
+                $roles->role_type='1';    
+                $roles->save();    
+            }
+            
+            return $this->sendResponse($roles, 'Product created successfully.');
+           
+        //}catch (\Throwable $th) {
+            return $this->sendError('Exception Error.', $th);  
+            
+        //}
     }
 
     /**

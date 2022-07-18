@@ -66,20 +66,58 @@
 
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 hidden project_vertical_add project_vertical_edit">
                             <form id="formID">
+                                
                                 <div class="row form">
                                     <div class="col-md-2 mt-2"><label for=""> Product Vertical Name </label></div>
                                     <div class="col-md-3 mb-2"><input type="text" name="title" id="title" placeholder="Enter Product Vertical Name" class="form-control form-control-sm" pattern="[A-Za-z0-9]+" required="">
                                         <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div></div>
-                                    <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Create</button></div>
+                                    
                                 </div>    
+                                <div class="row form">
+                                    <div class="col-md-2 mt-2"><label for=""> Select Approvers</label></div>
+                                    <div class="col-md-6">
+                                        <table class="table table-border  ">
+                                    <thead>
+                                        <tr>
+                                            <td>Sr.No</td>
+                                            <td>Role</td>
+                                            <td>User</td>
+                                            
+                                            <td><a href="javascript:void(0)" onclick="add_approver()" ><i class="fa fa-plus"></i></a></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="approvers_container">
+                                        
+                                    </tbody>
+                                    
+                                </table>
+                                    </div>
+                                </div>
+                                <div class="row form">
+                                    <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Create</button></div>
+                                </div>
+                                
+
                             </form>
                         </div>
                      
                         <div class="col-md-12 mt-3">
                             <h6 class="w-100">List of Existing Product Vertical </h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Select Status</label>
+                                    <select class="form-control" id="status">
+                                        <option value="">Select Status</option>
+                                        <option value="0">Pending</option>
+                                        <option value="1">Approved</option>
+                                        <option value="2">Rejected</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div id="myGrid"  class="table-responsive">
+                                
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
@@ -87,9 +125,7 @@
                                             <th>Name</th>
                                             <th>Initiated By</th>
                                             <th>Created Date</th>
-                                            
-                                            <th>Updated Date</th>
-                                            <th>Updated By</th>
+                                            <th>Approved By</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -113,7 +149,7 @@
 <?php include('parts/js-files.php'); ?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/custom/project/vertical_add.js?v=<?php echo time();?>"></script> 
-  
+<?php include('parts/approver_template.php'); ?>
 
 </body>
 

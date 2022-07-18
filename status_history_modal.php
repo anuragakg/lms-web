@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -16,6 +16,7 @@
                 <th>Status</th>
                 <th>User Name</th>
                 <th>Email Id</th>
+                <th>Reason</th>
                 <th>Updated At</th>
             </thead>
             <tbody id="status_data">

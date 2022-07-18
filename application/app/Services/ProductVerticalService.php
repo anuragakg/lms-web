@@ -14,20 +14,38 @@ use App\Notifications\VerticalCreated;
 class ProductVerticalService 
 {
     public function getList($request){
+        $columns = array( 
+                0 =>'id', 
+                1=> 'title',
+                3=> 'created_at',
+                5=> 'status',
+        );
+
+        $order = isset($columns[$request['order'][0]['column']])?$columns[$request['order'][0]['column']]:'id';
+        $dir = isset($request['order'][0]['dir'])?$request['order'][0]['dir']:'DESC';
+
         $limit = $request['length']??10;
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         
-        $product=ProductVerticalModel::orderBy('id','desc');
+        $product=ProductVerticalModel::orderBy($order,$dir);
+        $product=$product->leftJoin('users',function($join) {
+                $join->on('product_vertical_models.added_by','=','users.id');
+            }
+        );
         if(!empty($search)){
-            $product=$product->where(DB::raw("CONCAT(`title`)"), 'LIKE', "%".$search."%");    
+            $product=$product->where(DB::raw("CONCAT(`title`,`name`)"), 'LIKE', "%".$search."%");    
         }
-        
+        $status=$request['status'];
+        if($status !=''){
+            $product=$product->where('status',$status);    
+        }
+        $product=$product->select('product_vertical_models.*');
         return $product->paginate($limit);
             
     }
     public function addVertical($request){
         $user_id = Auth::user()->id??1;
-        
+        $input=$request->all();
         
         try{
             DB::beginTransaction();
@@ -38,25 +56,21 @@ class ProductVerticalService
             $product->approved_by=0;
             $product->save();
             
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='1';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='2';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='3';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
 
-            sendVerticalNotification($product);
+            if(!empty($request['approver']['role'])){
+                foreach ($request['approver']['role'] as $key => $role) {
+                    
+                    $projectstatus=new ProjectVerticalStatusModel();
+                    $projectstatus->status=0;
+                    $projectstatus->role=$role;
+                    $projectstatus->user_id=$request['approver']['user'][$key];
+                    $projectstatus->product_id=$product->id;
+                    $projectstatus->save();
+                }
+            }
+            
+
+            //sendVerticalNotification($product);
             
 
             DB::commit();
@@ -75,24 +89,19 @@ class ProductVerticalService
             $product->title=$request->title;
             $product->save();
             ProjectVerticalStatusModel::where('product_id',$id)->delete();
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='1';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='2';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-            
-            $projectstatus=new ProjectVerticalStatusModel();
-            $projectstatus->status=0;
-            $projectstatus->user_type='3';
-            $projectstatus->product_id=$product->id;
-            $projectstatus->save();
-
+            if(!empty($request['approver']['role'])){
+                foreach ($request['approver']['role'] as $key => $role) {
+                    
+                    $projectstatus=new ProjectVerticalStatusModel();
+                    $projectstatus->status=0;
+                    $projectstatus->role=$role;
+                    $projectstatus->user_id=$request['approver']['user'][$key];
+                    $projectstatus->product_id=$product->id;
+                    $projectstatus->save();
+                }
+            }
+            $product->status=0;
+            $product->save();
             DB::commit();
             return $product;
         }catch (\Throwable $th) {
@@ -113,21 +122,27 @@ class ProductVerticalService
         $user = Auth::user();
         $role=$user->role;
         $user_id=$user->id;
-        $user_role=getLTypeUser($role);
+
         $id=$request->id;
         $status=$request->status;
+        $reason=$request->reason;
 
         DB::beginTransaction();
-        $project=ProductVerticalModel::find($request->id);
-        $project_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'user_type'=>$user_role])->first();
+        $project=ProductVerticalModel::find($id);
+        $project_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'user_id'=>$user_id])->first();
         $project_status->status=$status;
+        if($status==1){
+            $project_status->approver_remarks='Approved';
+        }else{
+            $project_status->approver_remarks=$reason;
+        }
         $project_status->updated_by=$user_id;
         $project_status->save();
         if($status==2){
             $project->status=2;
             $project->approved_by=$user_id;
             $project->save();
-        }else{
+        }
             if($project->status!=2)
             {
                 $all_status=ProjectVerticalStatusModel::where(['product_id'=>$id,'status'=>0])->first();
@@ -138,7 +153,7 @@ class ProductVerticalService
                     $project->save();
                 }
             }
-        }
+        
         
         DB::commit();
         return $project;

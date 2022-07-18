@@ -18,6 +18,7 @@ class ProductVerticalModel extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'added_by');
     }
+    
 	public function getApprovedBy()
     {
         return $this->hasOne('App\Models\User', 'id', 'approved_by');

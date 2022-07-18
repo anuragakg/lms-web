@@ -17,6 +17,7 @@ use App\Http\Controllers\API\LeadsController;
 use App\Http\Controllers\API\ProgramsController;
 use App\Http\Controllers\API\Payments;
 use App\Http\Controllers\API\CronController;
+use App\Http\Controllers\API\FormController;
 //use App\Http\Controllers\API\QuickbookController;
 
 /*
@@ -64,6 +65,7 @@ Route::middleware('auth:api')->group( function () {
     Route::post('save_role_permissions', [RolesController::class,'savePermissions']);
     Route::get('get-role-permissions/{id}', [RolesController::class,'getRolePermission']);
     Route::resource('users', UsersController::class);
+    Route::post('fetchRoleUsers', [UsersController::class,'fetchRoleUsers']);
 	
     Route::get('notification/mark-all-read', [NotificationController::class,'markAllRead'])->name('notification-read');
     Route::get('notification/count', [NotificationController::class,'getNotificationCount'])->name('notification-count');
@@ -75,6 +77,11 @@ Route::middleware('auth:api')->group( function () {
     Route::get('leadPaymentDetails/{id}', [Payments::class,'leadPaymentDetails']);
     Route::post('remove_installment', [Payments::class,'remove_installment']);
     Route::post('import-leads', [LeadsController::class,'importLeads']);
+    Route::apiResource('forms', FormController::class);
+    Route::get('getQuestionsList/{id}', [FormController::class,'getQuestionsList']);
+    Route::post('addFormsAnswer', [FormController::class,'addFormsAnswer']);
+    Route::get('answers_view/{id}', [FormController::class,'answers_view']);
+    Route::get('forms_list', [FormController::class,'forms_list']);
     
 });
 Route::apiResource('cron', CronController::class);

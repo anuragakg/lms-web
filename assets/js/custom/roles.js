@@ -104,8 +104,8 @@ $(function () {
 			//const data=$('#formID').serializeArray();
 			
     		
-			var url = conf.addProjectSubCategory.url;
-			var method = conf.addProjectSubCategory.method;
+			var url = conf.addNewRole.url;
+			var method = conf.addNewRole.method;
 			
 			var form = $('#formID')[0];   
     		var data = new FormData(form);	
@@ -116,8 +116,8 @@ $(function () {
 			TRIFED.fileAjaxHit(url, method, data, function (response) {
 				if (response.status == 1) {
 					
-					TRIFED.showMessage('success', 'Product Category Successfully submitted and sent for approval');
-					setTimeout(function() { window.location = 'product-sub-category-list.php'}, 500);
+					TRIFED.showMessage('success', 'Role created Successfully');
+					setTimeout(function() { window.location = 'roles.php'}, 1500);
 				} else {
 					TRIFED.showError('error', response.message);
 				}

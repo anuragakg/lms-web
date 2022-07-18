@@ -29,6 +29,9 @@
     <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/lib/helper.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/plugins/switch/on-off-switch.css"/>
 </head>
 
 <body>
@@ -36,14 +39,14 @@
     <?php include('parts/head-tag.php'); ?>
     <?php include('sidebar.php');?>
     <?php include('header.php');?>
-	<div class="content-wrap">
+    <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Roles</h1>
+                                <h1>Forms List </h1>
                             </div>
                         </div>
                     </div>
@@ -52,8 +55,8 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="new-user.html">Staff Members</a></li>
-                                    <li class="breadcrumb-item active">Roles</li>
+                                    <li class="breadcrumb-item"><a href="projects.html">forms</a></li>
+                                    <li class="breadcrumb-item active">Forms List</li>
                                 </ol>
                             </div>
                         </div>
@@ -61,43 +64,34 @@
                     <!-- /# column -->
                 </div>
                 <!-- /# row -->
-                <div class="hidden role_add col-md-12">
-                    <form id="formID">
-                        <div class="row form">
-                            <div class="col-md-2 mt-2"><label for=""> Role Name </label></div>
-                            <div class="col-md-3 mb-2"><input type="text" name="title" id="title" placeholder="Enter Role" class="form-control form-control-sm"  required="">
-                                <div id="nameChange" class="mt-2 w-100" style="font-size: 10px;"></div></div>
-                            <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Create</button></div>
-                        </div>    
-                    </form>
-                </div>
-                <section id="main-content">
-                    <div class="mt-3">
-                           <!-- <h6 class="w-100">List of Roles </h6> -->
+
+                    <section id="main-content">
+                        <div class="mt-3">
+                            <!--<h6 class="w-100">Users List </h6> -->
                             <div id="myGrid" class="table-responsive">
                                 <table width="100%" id="list" class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>SR.No</th>
-                                            <th>Role</th>
+                                            <th>Form Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                     </tbody>
+                                    </tbody>
                                 </table>
                             </div>
-                    </div>
-                </section>
+                        </div>
+                    </section>
             </div>
 
         </div>
     </div>
+   
+<?php include('parts/js-files.php'); ?>
 
-    <?php include('parts/js-files.php'); ?>
-
-	<script type="text/javascript" src="assets/js/custom/roles.js?v=<?php echo time();?>"></script> 
-
+<script type="text/javascript" src="assets/js/custom/forms-list.js?v=<?php echo time();?>"></script> 
+   
 </body>
 
 </html>

@@ -192,6 +192,8 @@ $path=$parts['path'];
 
                     <li class="hidden payment_add"><a href="social_leads.php"><i class="ti-file"></i> Social Leads </a></li>
                     <li class="hidden payment_add"><a href="payments-list.php"><i class="ti-file"></i> Payments </a></li>
+                    <li class="hidden"><a href="create-form.php"><i class="ti-file"></i> Create Form </a></li>
+                    <li class="hidden"><a href="forms-list.php"><i class="ti-file"></i> Form List</a></li>
                     <li><a href="javascript:void(0)" onclick="TRIFED.logout();"><i class="ti-close"></i> Logout</a></li>
                 </ul>
             </div>

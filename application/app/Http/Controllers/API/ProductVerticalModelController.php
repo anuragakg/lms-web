@@ -13,6 +13,7 @@ use DB;
 use Auth;
 use App\Http\Resources\ProductVertical as ProductResource;
 use Validator;
+use App\Models\User;
 use App\Http\Resources\ProjectStatusResource;
 class ProductVerticalModelController extends BaseController
 {
@@ -29,6 +30,7 @@ class ProductVerticalModelController extends BaseController
      */
     public function index(Request $request)
     {
+        $user_id = Auth::user()->id;
         $request = $request->all();
         //try{
 			$product=$this->service->getList($request);
@@ -38,15 +40,42 @@ class ProductVerticalModelController extends BaseController
             $users=$this->getLUsers();
             
             foreach($items_arr as $arr){
-                $pending_usertype=array();
-                $pending_user_type=$arr['pending_user_type'];
-                foreach ($pending_user_type as $key => $user) {
-                    $pending_usertype[]=$users[$user]['name'];
+                $pending_users=array();
+                $approve_users=array();
+                $rejected_users=array();
+                $pending_status_text='';
+                $approve_status_text='';
+                $rejected_status_text='';
+                $status=$arr['getStatus'];
+                $can_approve=0;
+                foreach ($status as $key => $st) {
+                    if($st['user_id']==$user_id){
+                            $can_approve=1;
+                        }
+                    if($st['status']==0){
+
+                        $pending_users[]=$st['approver_name'];    
+                    }
+                    if($st['status']==1){
+                        $approve_users[]=$st['approver_name'];
+                    }
+                    if($st['status']==2){
+                        $rejected_users[]=$st['approver_name'];   
+                    }
                 }
-                if(!empty($pending_usertype)){
-                    $status_text='Pending '.implode(',', $pending_usertype);    
+                if(!empty($pending_users)){
+                    $pending_status_text='Pending '.implode(',', $pending_users);    
                 }
-                $arr['status_text']=$status_text;
+                if(!empty($approve_users)){
+                    $approve_status_text='Approved By '.implode(',', $approve_users);    
+                }
+                if(!empty($rejected_users)){
+                    $rejected_status_text='Rejected by '.implode(',', $rejected_users);    
+                }
+                $arr['pending_status_text']=$pending_status_text;
+                $arr['approve_status_text']=$approve_status_text;
+                $arr['rejected_status_text']=$rejected_status_text;
+                $arr['can_approve']=$can_approve;
                 $data[]=$arr;
             }
 			$json_data = array(

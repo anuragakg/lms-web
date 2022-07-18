@@ -59,7 +59,14 @@ class RegisterController extends BaseController
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
             $success['name'] =  $user->name;
-            $success['permissions'] =  $user->getPermissions;
+            $user_permission =  $user->getPermissions->toArray();
+            if(!empty($user_permission))
+				{
+					foreach ($user_permission as $permissionObj) {
+
+						$success['permissions'][] = $permissionObj['permission'];				
+					}	
+				}
             $success['role'] =  $user->role;
             
             return $this->sendResponse($success, 'User login successfully.');

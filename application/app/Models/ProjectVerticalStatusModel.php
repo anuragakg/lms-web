@@ -14,4 +14,13 @@ class ProjectVerticalStatusModel extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'added_by');
     }
+    public function getApproverName()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+    public function getRoleName()
+    {
+        return $this->belongsTo('App\Models\RolesModel', 'role', 'id');
+    }
+
 }

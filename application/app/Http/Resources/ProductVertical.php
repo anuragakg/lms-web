@@ -17,27 +17,27 @@ class ProductVertical extends JsonResource
         $user = Auth::user();
         $role=$user->role;
         $user_id=$user->id;
-        $user_role=getLTypeUser($role);
-        $current_usertype_status=null;
-        if(in_array($role, [2,3,4]))
-        {
-            $current_usertype_status=$this->getStatus->where('user_type',$user_role)->first();
-        }
-        $pending_user_type=$this->getStatus->where('status',0)->pluck('user_type');
+        // $user_role=getLTypeUser($role);
+        // $current_usertype_status=null;
+        // if(in_array($role, [2,3,4]))
+        // {
+        //     $current_usertype_status=$this->getStatus->where('user_type',$user_role)->first();
+        // }
+        // $pending_user_type=$this->getStatus->where('status',0)->pluck('user_type');
+        $status_text='Pending';
         
-        
-        if($this->status==0 )
-        {
-            $pending_usertype=array();
-            foreach ($pending_user_type as $key => $user) {
-                $pending_usertype[]='L'.$user;
-            }
-            if(!empty($pending_usertype)){
-                $status_text='Pending '.implode(',', $pending_usertype);    
-            }else{
-                $status_text='Pending';
-            }
-        }
+        // if($this->status==0 )
+        // {
+        //     $pending_usertype=array();
+        //     foreach ($pending_user_type as $key => $user) {
+        //         $pending_usertype[]='L'.$user;
+        //     }
+        //     if(!empty($pending_usertype)){
+        //         $status_text='Pending '.implode(',', $pending_usertype);    
+        //     }else{
+        //         $status_text='Pending';
+        //     }
+        // }
         if($this->status==1)
         {
             $status_text='Approved';
@@ -52,10 +52,11 @@ class ProductVertical extends JsonResource
             'title' => $this->title,
             'status' => $this->status,
             'status_text' => $status_text,
-            'current_usertype_status' => $current_usertype_status,
-            'pending_user_type'=>$pending_user_type,
+            'getStatus'=>ProductVerticalStatusResource::collection($this->getStatus),
+            //'current_usertype_status' => $current_usertype_status,
+            //'pending_user_type'=>$pending_user_type,
             'added_by' => $this->getAddedBy->name??'-',
-            'approved_by' => isset($this->getApprovedBy->name)?$this->getApprovedBy->name:'-',
+            //'approved_by' => isset($this->getApprovedBy->name)?$this->getApprovedBy->name:'-',
            
             'created_at' => $this->created_at->format('d/m/Y H:i'),
             'updated_at' => $this->updated_at->format('d/m/Y H:i'),

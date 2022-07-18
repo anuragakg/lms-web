@@ -132,7 +132,14 @@ class NotificationController extends BaseController
         $user  = Auth::user();
         $list['count'] = $this->service->getNotificationCount();
         $list['role'] =  $user->role;
-        $list['permissions'] =  $user->getPermissions;
+        $user_permission =  $user->getPermissions->toArray();
+        if(!empty($user_permission))
+        {
+            foreach ($user_permission as $permissionObj) {
+
+                $list['permissions'][] = $permissionObj['permission'];               
+            }   
+        }
         return $this->sendResponse( $list, 'Unread Notification');
     }
 }
