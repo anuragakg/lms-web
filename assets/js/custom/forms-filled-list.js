@@ -1,3 +1,4 @@
+const form_id = TRIFED.getUrlParameters().id;
 $(function () {
 	
 
@@ -29,7 +30,7 @@ $(function () {
 			  ],
 			  
             "ajax":{
-                     "url": conf.forms_list.url,
+                     "url": conf.forms_filed_list.url,
                      "dataType": "json",
                      "type": "GET",
                      "headers": {
@@ -39,6 +40,7 @@ $(function () {
 				         var api = new $.fn.dataTable.Api(settings);
 				         
 				         d.page = api.page()+1;
+				         d.form_id = form_id;
 				         
 				      },
 		            "dataSrc": function(json) {
@@ -60,7 +62,7 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
-									return row.title;
+									return row.form_title;
 							}
 							 
 						},
@@ -68,10 +70,8 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
-									var html='';
-									html +='<a href="form.php?id='+row.id+'" class="ti-pencil">Add Form data</a> ';
 									
-									return html;
+									return row.added_by;
 							}
 							 
 						},
@@ -79,11 +79,7 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
-									if(row.get_filled_forms){
-										return '<a href="form-filled-list.php?id='+row.id+'" >'+row.get_filled_forms+'</a> ';
-									}else{
-										return row.get_filled_forms;	
-									}
+									return '<a href="answers_view.php?id='+row.id+'&form_id='+row.form_id+'" class="ti-eye"></a> ';
 									
 							}
 							 

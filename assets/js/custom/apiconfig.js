@@ -368,7 +368,11 @@ var conf = {
     'forms_list':{
         url : endpoint + 'forms_list',
         'method': 'GET',
-    }
+    },
+    'forms_filed_list':{
+        url : endpoint + 'forms_filed_list',
+        'method': 'GET',
+    },
 
 
 }

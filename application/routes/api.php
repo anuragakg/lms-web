@@ -79,6 +79,7 @@ Route::middleware('auth:api')->group( function () {
     Route::post('import-leads', [LeadsController::class,'importLeads']);
     Route::apiResource('forms', FormController::class);
     Route::get('getQuestionsList/{id}', [FormController::class,'getQuestionsList']);
+    Route::get('forms_filed_list', [FormController::class,'forms_filed_list']);
     Route::post('addFormsAnswer', [FormController::class,'addFormsAnswer']);
     Route::get('answers_view/{id}', [FormController::class,'answers_view']);
     Route::get('forms_list', [FormController::class,'forms_list']);

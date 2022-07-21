@@ -74,8 +74,9 @@
                                         <tr>
                                             <th>SR.No</th>
                                             <th>Form Name</th>
-                                            <th>Action</th>
-                                            <th>Total Forms Filled</th>
+                                            <th>Added by</th>
+                                            <th>View Details</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,7 +92,7 @@
    
 <?php include('parts/js-files.php'); ?>
 
-<script type="text/javascript" src="assets/js/custom/forms-list.js?v=<?php echo time();?>"></script> 
+<script type="text/javascript" src="assets/js/custom/forms-filled-list.js?v=<?php echo time();?>"></script> 
    
 </body>
 

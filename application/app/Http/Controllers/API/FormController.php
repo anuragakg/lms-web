@@ -13,17 +13,21 @@ use App\Models\QuestionsAnswer;
 use App\Models\Options;
 use App\Http\Resources\FormResource;
 use App\Http\Resources\AnswersResource;
-use App\Services\FormsService;
+use App\Http\Resources\FormListResource;
+use App\Http\Resources\FormAnswerlistResource;
 use Validator;
+use App\Services\FormsService;
+
 class FormController extends BaseController
 {
-	protected $service;
+	    protected $service;
     protected $leadsService;
     protected $FormsService;
     public function __construct(FormsService $FormsService)
     {
         $this->service = $FormsService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -232,21 +236,53 @@ class FormController extends BaseController
     public function forms_list(Request $request)
     {
         $request = $request->all();
-        try{
+       // try{
             $items=$this->service->getList($request);
-            //$items = ApiResource::collection($users);
+            $items = FormListResource::collection($items);
             $json_data = array(
-            "recordsTotal"    => $items->total(),  
-            "recordsFiltered" => $items->total(), 
+            "recordsTotal"    => $items->total(),
+            "recordsFiltered" => $items->total(),
             "data"            => $items,
             'current_page' => $items->currentPage(),
             'next' => $items->nextPageUrl(),
             'previous' => $items->previousPageUrl(),
-            'per_page' => $items->perPage(),   
+            'per_page' => $items->perPage(),
             );
             return $this->sendResponse( $json_data, 'Users Listed successfully.');
-        }catch (\Throwable $th) {
-           return $this->sendError('Exception Error.', $th);  
-       }
+       // }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);
+       //}
+
     }
+    public function forms_filed_list(Request $request)
+    {
+        $request = $request->all();
+       // try{
+            $items=$this->service->forms_filled_list($request);
+            $items = FormAnswerlistResource::collection($items);
+            $json_data = array(
+            "recordsTotal"    => $items->total(),
+            "recordsFiltered" => $items->total(),
+            "data"            => $items,
+            'current_page' => $items->currentPage(),
+            'next' => $items->nextPageUrl(),
+            'previous' => $items->previousPageUrl(),
+            'per_page' => $items->perPage(),
+            );
+            return $this->sendResponse( $json_data, 'Users Listed successfully.');
+       // }catch (\Throwable $th) {
+           return $this->sendError('Exception Error.', $th);
+       //}
+
+    }
+
+
+
+
+
+
+
+
+
+
 }

@@ -14,4 +14,8 @@ class Form extends Model
     {
         return $this->hasMany('App\Models\Questions', 'form_id', 'id');
     }
+    public function getFilledForms()
+    {
+        return $this->hasMany('App\Models\FormAnswers', 'form_id', 'id');
+    }
 }

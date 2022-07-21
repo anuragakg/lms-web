@@ -12,4 +12,12 @@ class FormAnswers extends Model
     {
         return $this->hasMany('App\Models\QuestionsAnswer', 'formsAnswers_id', 'id');
     }
+    public function getAddedBy()
+    {
+        return $this->belongsTo('App\Models\User', 'added_by','id' );
+    }
+    public function getForm()
+    {
+        return $this->belongsTo('App\Models\Form', 'form_id','id' );
+    }
 }

@@ -172,7 +172,7 @@ $(function () {
                 if (response.status == 1) {
                     
                     TRIFED.showMessage('success', 'Data saved successfully');
-                    //setTimeout(function() { window.location = 'users-list.php'}, 3000);
+                    setTimeout(function() { window.location = 'form-filled-list.php?id='+form_id}, 3000);
                 } else {
                     TRIFED.showError('error', response.message);
                 }
