@@ -116,10 +116,12 @@
             <div class="col-md-3 mb-2">
                 <select class="form-control " name="question[question_answer_option][{{random_id}}]" id="question_answer_option_{{random_id}}" onchange="change_options({{random_id}})" required>
                     <option value="">Select Options</option>
-                    <option value="text">text</option>
-                    <option value="select">select</option>
-                    <option value="radio">radio</option>
-                    <option value="date">date</option>
+                    <option value="text">Text</option>
+                    <option value="textarea">Textarea</option>
+                    <option value="number">Number</option>
+                    <option value="select">Select</option>
+                    <option value="radio">Radio</option>
+                    <option value="date">Date</option>
                 </select>
             </div>
             <div class="col-md-3 mb-2">

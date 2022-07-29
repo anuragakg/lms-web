@@ -124,6 +124,20 @@
     </div>
 
 </script>
+<script id="textarea_template" type="text/template">
+
+    <div class="col-md-6 mb-2">
+        <textarea class="form-control " name="question[{{row.id}}]" value="" required id="option_element_{{random_id}}" ></textarea>
+    </div>
+
+</script>
+<script id="number_template" type="text/template">
+
+    <div class="col-md-6 mb-2">
+        <input type="number" class="form-control " name="question[{{row.id}}]" value="" required id="option_element_{{random_id}}" >
+    </div>
+
+</script>
 <script id="radio_template" type="text/template">
 
     <div class="col-md-6 mb-2">
@@ -207,6 +221,14 @@ getQuestionsList = (form_id) => {
                     {
                         textTemplate(random_id,row)
                     }
+                    if(row.element_type=='textarea')
+                    {
+                        textareaTemplate(random_id,row)
+                    }
+                    if(row.element_type=='number')
+                    {
+                        numberTemplate(random_id,row)
+                    }
                     if(row.element_type=='select')
                     {
                         var options=row.options;
@@ -247,6 +269,26 @@ textTemplate=(random_id,row)=>{
         random_id
     };
     var template = $("#text_template").html();
+    var text = Mustache.render(template, data);
+    $("#options_"+random_id).html(text);
+}
+textareaTemplate=(random_id,row)=>{
+    //var random_id=Date.now();
+    var data = { 
+        row,
+        random_id
+    };
+    var template = $("#textarea_template").html();
+    var text = Mustache.render(template, data);
+    $("#options_"+random_id).html(text);
+}
+numberTemplate=(random_id,row)=>{
+    //var random_id=Date.now();
+    var data = { 
+        row,
+        random_id
+    };
+    var template = $("#number_template").html();
     var text = Mustache.render(template, data);
     $("#options_"+random_id).html(text);
 }
