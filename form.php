@@ -120,35 +120,35 @@
 <script id="text_template" type="text/template">
 
     <div class="col-md-6 mb-2">
-        <input type="text" class="form-control " name="question[{{row.id}}]" value="" required id="option_element_{{random_id}}" >
+        <input type="text" class="form-control " name="question[{{row.id}}]" value="" {{#row.is_required}}required{{/row.is_required}} id="option_element_{{random_id}}" >
     </div>
 
 </script>
 <script id="textarea_template" type="text/template">
 
     <div class="col-md-6 mb-2">
-        <textarea class="form-control " name="question[{{row.id}}]" value="" required id="option_element_{{random_id}}" ></textarea>
+        <textarea class="form-control " name="question[{{row.id}}]" value="" {{#row.is_required}}required{{/row.is_required}} id="option_element_{{random_id}}" ></textarea>
     </div>
 
 </script>
 <script id="number_template" type="text/template">
 
     <div class="col-md-6 mb-2">
-        <input type="number" class="form-control " name="question[{{row.id}}]" value="" required id="option_element_{{random_id}}" >
+        <input type="number" class="form-control " name="question[{{row.id}}]" value="" {{#row.is_required}}required{{/row.is_required}} id="option_element_{{random_id}}" >
     </div>
 
 </script>
 <script id="radio_template" type="text/template">
 
     <div class="col-md-6 mb-2">
-        <input required type="radio" name="question[{{row.id}}]" value="{{options.option_text}}">{{options.option_text}}
+        <input {{#row.is_required}}required{{/row.is_required}} type="radio" name="question[{{row.id}}]" value="{{options.option_text}}">{{options.option_text}}
     </div>
 
 </script>
 
 
 <script id="select_template" type="text/template">
- <select required id="question_select_{{row.id}}" name="question[{{row.id}}]">
+ <select {{#row.is_required}}required{{/row.is_required}} id="question_select_{{row.id}}" name="question[{{row.id}}]">
     <option value="">Select</option>
  </select>
 </script>
@@ -186,7 +186,7 @@ $(function () {
                 if (response.status == 1) {
                     
                     TRIFED.showMessage('success', 'Data saved successfully');
-                    setTimeout(function() { window.location = 'form-filled-list.php?id='+form_id}, 3000);
+                    setTimeout(function() { window.location = 'answers_view.php?form_id='+form_id}, 3000);
                 } else {
                     TRIFED.showError('error', response.message);
                 }

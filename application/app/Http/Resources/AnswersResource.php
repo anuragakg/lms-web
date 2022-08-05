@@ -19,7 +19,7 @@ class AnswersResource extends JsonResource
             'form_id' => $this->form_id,
             //'answers'=>'',
             'answers' => $this->getAnswers,
-            'added_by' => $this->added_by,
+            'added_by' => $this->getAddedBy->name,
             'created_at' => $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at->format('d/m/Y'),
         ];

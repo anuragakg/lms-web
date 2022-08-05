@@ -52,50 +52,161 @@ class FormController extends BaseController
         $user_id=$user->id;
        
         $input = $request->all();
-       // dd($input);
-		// $validator=$this->service->checkValidation($input);
-
-        
-   
-        
-  //       if($validator->fails()){
-  //           return $this->sendError('Validation Error.', $validator->errors()->first());       
-  //       }
+       
 		DB::beginTransaction();
-        $forms=new Form();
-        $forms->title=$input['title'];
-        $forms->added_by=$user_id;
-        $forms->save();
+        if(!isset($request['form_id'])){
+            $forms=new Form();
+            $forms->title=$input['title'];
+            $forms->added_by=$user_id;
+            $forms->save();
 
-        if(isset($input['question']['question_text']) && !empty($input['question']['question_text'])){
-            foreach ($input['question']['question_text'] as $key => $question_text) 
-            {
+            if(isset($input['question']['question_text']) && !empty($input['question']['question_text'])){
+                foreach ($input['question']['question_text'] as $key => $question_text) 
+                {
 
-                $question=new Questions();
-                $question->form_id=$forms->id;    
-                $question->question=$question_text;    
-                $question->element_type=$input['question']['question_answer_option'][$key];    
-                $question->save(); 
+                    $question=new Questions();
+                    $question->form_id=$forms->id;    
+                    $question->question=$question_text;    
+                    $question->element_type=$input['question']['question_answer_option'][$key];    
+                    $question->is_required=isset($input['question']['is_required'][$key])?1:0;    
+                    $question->save(); 
 
-                //dd($question);
-                
-                
-                if(isset($input['question']['option_text'][$key]) && !empty($input['question']['option_text'][$key])){
-                    foreach ($input['question']['option_text'][$key] as $option_key => $option) 
-                    {
-                        $options=new Options();
-                        $options->form_id=$forms->id;   
-                        $options->question_id=$question->id;   
-                        $options->option_text=$option;   
-                        $options->save();   
+                    //dd($question);
+                    
+                    
+                    if(isset($input['question']['option_text'][$key]) && !empty($input['question']['option_text'][$key])){
+                        foreach ($input['question']['option_text'][$key] as $option_key => $option) 
+                        {
+                            $options=new Options();
+                            $options->form_id=$forms->id;   
+                            $options->question_id=$question->id;   
+                            $options->option_text=$option;   
+                            $options->save();   
+                        }
                     }
                 }
             }
+        }else{
+            $form_id=$request['form_id'];
+            $forms=Form::findOrFail($form_id);
+            $forms->title=$input['title'];
+            //$forms->added_by=$user_id;
+            $forms->save();
+
+            $old_question=Questions::where('form_id',$form_id);
+            $old_questions_id=$old_question->pluck('id');
+            $new_questions_ids=[];
+            
+            if(isset($input['question']['question_id']) && !empty($input['question']['question_id'])){
+                foreach ($input['question']['question_id'] as $key => $question_id) 
+                {
+                   $new_questions_ids[]=$question_id;
+
+
+                }
+            }
+            //echo '<pre>';print_r($old_questions_id);
+            //echo '<pre>';print_r($new_questions_ids);
+
+            // get the difference in array
+            $diff_array=array_diff($old_questions_id->toArray(), $new_questions_ids);
+            //echo '<pre>new';print_r($diff_array);   
+            if(!empty($diff_array)){
+                foreach($diff_array as $questionid)
+                {
+                    $question=Questions::findOrFail($questionid)->delete();
+                    
+                    $options=Options::where('question_id',$questionid)->delete();
+                }
+            }
+            if(isset($input['question']['question_text']) && !empty($input['question']['question_text'])){
+                foreach ($input['question']['question_text'] as $key => $question_text) 
+                {
+                    $question_id=$input['question']['question_id'][$key];
+                    if($question_id==''){
+                        $question=new Questions();
+                        $question->form_id=$forms->id;    
+                        $question->question=$question_text;    
+                        $question->element_type=$input['question']['question_answer_option'][$key];
+                        $question->is_required=isset($input['question']['is_required'][$key])?1:0;        
+                        $question->save(); 
+
+                        if(isset($input['question']['option_text'][$key]) && !empty($input['question']['option_text'][$key])){
+                            foreach ($input['question']['option_text'][$key] as $option_key => $option) 
+                            {
+                                $options=new Options();
+                                $options->form_id=$forms->id;   
+                                $options->question_id=$question->id;   
+                                $options->option_text=$option;   
+                                $options->save();   
+                            }
+                        }
+                    }else
+                    {
+                        $question=Questions::findOrFail($question_id);
+                        $question->form_id=$form_id;    
+                        $question->question=$question_text;    
+                        $question->element_type=$input['question']['question_answer_option'][$key];
+                        $question->is_required=isset($input['question']['is_required'][$key])?1:0;       
+                        $question->save(); 
+
+                        $new_options_ids=[];
+
+                        $old_options=Options::where('question_id',$question_id)->pluck('id');
+                        //$old_options=Options::where('question_id',$question_id)->pluck('id');
+                        
+                        if(isset($input['question']['option_id'][$key]) && !empty($input['question']['option_id'][$key])){
+                            foreach ($input['question']['option_id'][$key] as $option_key => $option) 
+                            {
+                                $new_options_ids[]=$option;
+                            }
+                        }
+
+                        $option_diff=array_diff($old_options->toArray(),$new_options_ids);
+                        
+                        if(!empty($option_diff)){
+                            foreach($option_diff as $deleteoptionid){
+                                //echo $deleteoptionid;
+                                Options::where('id',$deleteoptionid)->delete();
+                            }   
+                        }
+                       //dd($input);
+                        if(isset($input['question']['option_text'][$key]) && !empty($input['question']['option_text'][$key])){
+                            foreach ($input['question']['option_text'][$key] as $option_key => $option) 
+                            {
+                                
+                                $option_id=$input['question']['option_id'][$key][$option_key];
+
+                                if($option_id==''){
+                                    $options=new Options();
+                                    $options->form_id=$forms->id;   
+                                    $options->question_id=$question->id;   
+                                    $options->option_text=$option;   
+                                    $options->save();    
+                                }else{
+                                    //dd($option);die;
+                                    $options=Options::findOrFail($option_id);
+                                    $options->form_id=$forms->id;   
+                                    $options->question_id=$question->id;   
+                                    $options->option_text=$option;   
+                                    $options->save();
+                                }
+                                   
+                            }
+                                
+                        }                       
+                    }
+                }
+            }
+
+           
         }
+          //  die('die');
         DB::commit();
         
        
 		return $this->sendResponse($forms, 'Programs created successfully.');
+        
            
 		
     }
@@ -228,10 +339,22 @@ class FormController extends BaseController
            
         
     }
-    public function answers_view($id){
-        $formsAnswers=FormAnswers::findOrFail($id);
-        
-        return $this->sendResponse(new AnswersResource($formsAnswers), 'form retrieved successfully.');
+    public function answers_view(Request $request){
+        $form_id=$request['form_id'];
+        $limit=50;
+
+        $formsAnswers=FormAnswers::where('form_id',$form_id)->paginate($limit);
+        $items=AnswersResource::collection($formsAnswers);
+        $json_data = array(
+            "recordsTotal"    => $items->total(),
+            "recordsFiltered" => $items->total(),
+            "data"            => $items,
+            'current_page' => $items->currentPage(),
+            'next' => $items->nextPageUrl(),
+            'previous' => $items->previousPageUrl(),
+            'per_page' => $items->perPage(),
+            );
+        return $this->sendResponse($json_data, 'form retrieved successfully.');
     }
     public function forms_list(Request $request)
     {
@@ -282,7 +405,10 @@ class FormController extends BaseController
 
 
 
-
+    public function getDynamicFormData($id){
+        $form=Form::findOrFail($id);
+        return $this->sendResponse(new FormResource($form), 'form retrieved successfully.');
+    }
 
 
 }

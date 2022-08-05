@@ -67,7 +67,6 @@
                     <div class="row">
 
                         <div class="col-md-12 hidden ">
-                            <form id="formID">
                                 
                                 <div class="row form">
                                     <div class="col-md-2 mt-2"><label for=""> Form Name </label></div>
@@ -80,12 +79,10 @@
                                 <div  id="questions_container" >
                                     
                                 </div>
-                                <div class="row form">
-                                    <div class="col-md-2"><button type="submit"  class="btn btn-sm btn-primary">Submit</button></div>
-                                </div>
                                 
+                                <button type="text" id="show_btn" class="btn btn-primary" onclick="showMore()">Show More</button>
 
-                            </form>
+                                
                         </div>
                      
                         
@@ -112,9 +109,23 @@
             
         </div>
         
-        <div id="answers_{{row.id}}">
+        <div id="answers_{{row.id}}_{{filled_number}}">
 
         </div>
+    </div>
+</script>
+<script id="otherinfo_template" type="text/template">
+    
+    <div id="question_{{random_id}}">
+        <div class="row form" >
+            <div class="col-md-2 mt-2"><label for=""> Added By </label></div>
+            <div class="col-md-6 mb-2" id="added_by_{{filled_number}}">{{added_by}}
+                
+            </div>
+            
+            
+        </div>
+        
     </div>
 </script>
 <script id="text_template" type="text/template">
@@ -140,48 +151,14 @@
 </script>
 <script>
 var roles='';
+var questions=[];
+const id = TRIFED.getUrlParameters().id;
+const form_id = TRIFED.getUrlParameters().form_id;
 $(function () {
-    const id = TRIFED.getUrlParameters().id;
-    const form_id = TRIFED.getUrlParameters().form_id;
+    
     getQuestionsList(form_id);
-    getFormsAnswer(id);
-    $("#formID").submit(function(e) {
-        e.preventDefault();
-    }).validate({
-        rules: {
-            
-            
-        },
-        messages: {
-            
-        },
-        submitHandler: function(form) { 
-            
-            //const data=$('#formID').serializeArray();
-            
-            
-            var url = conf.addFormsAnswer.url;
-            var method = conf.addFormsAnswer.method;
-            
-            var form = $('#formID')[0];   
-            var data = new FormData(form);  
-            data.append('form_id', form_id );
-            // if (edit_id != undefined && edit_id != '') 
-            // {
-            //     data.append('form_id', edit_id );
-            // }
-            TRIFED.fileAjaxHit(url, method, data, function (response) {
-                if (response.status == 1) {
-                    
-                    TRIFED.showMessage('success', 'Data saved successfully');
-                    //setTimeout(function() { window.location = 'users-list.php'}, 3000);
-                } else {
-                    TRIFED.showError('error', response.message);
-                }
-            });
-            return false;  //This doesn't prevent the form from submitting.
-        }
-    });  
+    getFormsAnswer(form_id);
+        
 });
 getQuestionsList = (form_id) => {
     var url = conf.getQuestionsList.url(form_id);
@@ -190,59 +167,85 @@ getQuestionsList = (form_id) => {
     TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
         if (response) {
             $('#title').html(response.data.title);
-            var questions=response.data.questions;
-            var question_no=0;
-            questions.forEach((row)=>{
-                ++question_no;
-                //if(row.element_type=='text')
-                //{
-                    var random_id=Date.now();
-                    var data = { 
-                        random_id:random_id,
-                        question_no,
-                        row
-                    };
-                    var template = $("#questions_template").html();
-                    var text = Mustache.render(template, data);
-                    $("#questions_container").append(text);
-                    if(row.element_type=='text')
-                    {
-                        textTemplate(random_id,row)
-                    }
-                    if(row.element_type=='select')
-                    {
-                        var options=row.options;
-                        selectTemplate(random_id,row,options)
-                        
-                    }
-                    if(row.element_type=='radio')
-                    {
-                        var options=row.options;
-                        options.forEach((opt)=>{
-                            radioTemplate(random_id,row,opt)
-                        });
-                    }
-                    if(row.element_type=='date')
-                    {
-                        var options=row.options;
-                        textTemplate(random_id,row);
-                        $('#option_element_'+random_id).datepicker(
-                            {
-                                dateFormat: 'dd-mm-yy',
-                                changeMonth: true,
-                                changeYear: true,
-                                yearRange: "c-100:c+10",
-                            }
-                        );
-                        $('#option_element_'+random_id).prop('readonly',true)
-                    }
-
-                //}
-            })
+            questions=response.data.questions;
+            //fillQuestions();            
         }
     });
 }
+
+fillQuestions=(userdata)=>{
+    var question_no=0;
+    fillednumber=userdata.filled_number;
+    added_by=userdata.added_by;
+    questions.forEach((row)=>{
+        ++question_no;
+        //if(row.element_type=='text')
+        //{
+            var random_id=Math.floor((Math.random() * 10000) + 1);
+            var data = { 
+                random_id:random_id,
+                question_no,
+                row,
+                filled_number:fillednumber,
+                added_by
+            };
+            var template = $("#questions_template").html();
+            var text = Mustache.render(template, data);
+            $("#questions_container").append(text);
+            if(row.element_type=='text')
+            {
+                textTemplate(random_id,row)
+            }
+            if(row.element_type=='select')
+            {
+                var options=row.options;
+                selectTemplate(random_id,row,options)
+                
+            }
+            if(row.element_type=='radio')
+            {
+                var options=row.options;
+                options.forEach((opt)=>{
+                    radioTemplate(random_id,row,opt)
+                });
+            }
+            if(row.element_type=='date')
+            {
+                var options=row.options;
+                textTemplate(random_id,row);
+                $('#option_element_'+random_id).datepicker(
+                    {
+                        dateFormat: 'dd-mm-yy',
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "c-100:c+10",
+                    }
+                );
+                $('#option_element_'+random_id).prop('readonly',true)
+            }
+
+        //}
+    });
+
+    var otherdata = { 
+                added_by
+            };
+            var othertemplate = $("#otherinfo_template").html();
+            var othertext = Mustache.render(othertemplate, otherdata);
+            $("#questions_container").append(othertext);
+}
+
 textTemplate=(random_id,row)=>{
+    //var random_id=Date.now();
+    var data = { 
+        row,
+        random_id
+    };
+    var template = $("#text_template").html();
+    var text = Mustache.render(template, data);
+    $("#options_"+random_id).html(text);
+}
+userdataTemplate=(row)=>{
     //var random_id=Date.now();
     var data = { 
         row,
@@ -274,18 +277,45 @@ selectTemplate=(random_id,row,options)=>{
     });
     $('#question_select_'+row.id).html(select_options);
 }
-getFormsAnswer = (id) => {
-    var url = conf.getFormsAnswer.url(id);
+var page=1;var filled_number=0;
+getFormsAnswer = (form_id) => {
+    var url = conf.getFormsAnswer.url;
     var method = conf.getFormsAnswer.method;
-    var data = {};
+    var data = {
+        form_id,
+        page
+    };
     TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
         if (response) {
-            var answers=response.data.answers;
-            answers.forEach((row)=>{
-                $('#answers_'+row.question_id).html('Answer :' +row.asnwer);
-            })
+           var data=response.data.data;
+           //console.log(data)
+           if(response.data.next==null){
+            $('#show_btn').hide();
+           } 
+           if(data.length){
+
+            data.forEach((dt)=>{
+                    ++filled_number;
+                    var user_data={
+                        filled_number,
+                        added_by:dt.added_by
+                    }
+                    fillQuestions(user_data);
+                    dt.answers.forEach((row)=>{
+                        $('#answers_'+row.question_id+'_'+filled_number).html('Answer :' +row.asnwer);
+                    });   
+                    $('#questions_container').append('<hr>');
+               }); 
+           }else{
+            $('#show_btn').hide();
+           }
+           
         }
     });
+}
+showMore=()=>{
+    ++page;
+    getFormsAnswer(form_id);
 }
 </script>
 </script>

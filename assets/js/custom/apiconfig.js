@@ -360,10 +360,8 @@ var conf = {
         'method': 'POST',
     },
     'getFormsAnswer':{
-        url : function (id) {
-            return endpoint + 'answers_view/' + id;
-        },
-        'method': 'GET',
+        url : endpoint + 'answers_view',
+        'method': 'POST',
     },
     'forms_list':{
         url : endpoint + 'forms_list',
@@ -374,5 +372,10 @@ var conf = {
         'method': 'GET',
     },
 
-
+    'getDynamicFormData':{
+        url : function (form_id) {
+            return endpoint + 'getDynamicFormData/' + form_id;
+        },
+        'method': 'GET',
+    },
 }

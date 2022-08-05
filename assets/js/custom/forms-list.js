@@ -69,8 +69,8 @@ $(function () {
 							"orderable": false,
 							"render": function(data, type, row) {
 									var html='';
-									html +='<a href="form.php?id='+row.id+'" class="ti-pencil">Add Form data</a> ';
-									
+									html +='<a href="form.php?id='+row.id+'" class="btn btn-primary">Add Form data</a> | ';
+									html +='<a href="create-form.php?form_id='+row.id+'" class="btn btn-warning">Edit</a> ';
 									return html;
 							}
 							 

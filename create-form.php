@@ -107,7 +107,15 @@
         <div class="row form" >
             <div class="col-md-2 mt-2"><label for=""> Question <span class="question_number"></span></label></div>
             <div class="col-md-6 mb-2">
-                <input type="text" class="form-control " name="question[question_text][{{random_id}}]" id="question_text_{{random_id}}" value="" required>
+                <input type="text" class="form-control " name="question[question_text][{{random_id}}]" id="question_text_{{random_id}}" value="{{row.question}}" required>
+
+                <input type="hidden" class="form-control " name="question[question_id][{{random_id}}]" id="question_id_{{random_id}}" value="{{row.id}}" required>
+
+                Is Required 
+                
+                <input type="checkbox" name="question[is_required][{{random_id}}]" {{#row.is_required}}checked{{/row.is_required}}>
+
+
             </div>
             
         </div>
@@ -139,7 +147,9 @@
     <div class="col-md-2 mt-2"><label for=""> Option <span class="option_number_{{question_random_id}}"></span></label>
     </div>
     <div class="col-md-6 mb-2">
-        <input type="text" class="form-control " name="question[option_text][{{question_random_id}}][]" id="option_text_{{question_random_id}}_{{random_id}}" value="" required>
+        <input type="text" class="form-control " name="question[option_text][{{question_random_id}}][]" id="option_text_{{question_random_id}}_{{random_id}}" value="{{option.option_text}}" required>
+
+       <input type="hidden" class="form-control " name="question[option_id][{{question_random_id}}][]" id="option_id_{{question_random_id}}_{{random_id}}" value="{{option.id}}" required>
     </div>
     <div class="col-md-3 mb-2">
         <a onclick="add_options({{question_random_id}});" href="javascript:void(0)"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
@@ -151,7 +161,13 @@
 <script>
 var roles='';
 $(function () {
-    add_Question();
+    const form_id = TRIFED.getUrlParameters().form_id;
+    if(form_id!=undefined){
+        getDynamicFormData(form_id);
+    }else{
+        add_Question();    
+    }
+    
     $("#formID").submit(function(e) {
         e.preventDefault();
     }).validate({
@@ -164,18 +180,15 @@ $(function () {
         },
         submitHandler: function(form) { 
             
-            //const data=$('#formID').serializeArray();
-            
-            
             var url = conf.addForm.url;
             var method = conf.addForm.method;
             
             var form = $('#formID')[0];   
             var data = new FormData(form);  
-            // if (edit_id != undefined && edit_id != '') 
-            // {
-            //     data.append('form_id', edit_id );
-            // }
+            if (form_id != undefined && form_id != '') 
+            {
+                data.append('form_id', form_id );
+            }
             TRIFED.fileAjaxHit(url, method, data, function (response) {
                 if (response.status == 1) {
                     
@@ -191,11 +204,13 @@ $(function () {
 });
     
 
-    function add_Question(row=[]){
+    function add_Question(row=[],question_random_id=''){
+        if(question_random_id==0){
+            var question_random_id=Date.now();    
+        }
         
-        var random_id=Date.now();
         var data = { 
-            random_id:random_id,
+            random_id:question_random_id,
             row
         };
         var template = $("#questions_template").html();
@@ -232,18 +247,20 @@ $(function () {
         var option_type=$('#question_answer_option_'+question_random_id).val();
         if(option_type=='select' || option_type=='radio' ||  option_type=='checkbox')
         {
-
-            add_select_options(question_random_id);
+            var option_data='';
+            add_select_options(question_random_id,option_data);
         }else{
             $(".options_"+question_random_id).remove();
         }
     }
-    function add_select_options(question_random_id)
+    function add_select_options(question_random_id,option_data)
     {
-        var random_id=Date.now();
+        //var random_id=Date.now();
+        let random_id = Math.floor((Math.random() * 10000) + 1);
         var data = { 
             question_random_id,
-            random_id
+            random_id,
+            option:option_data
         };
         var template = $("#select_template").html();
         var text = Mustache.render(template, data);
@@ -265,7 +282,40 @@ $(function () {
            inc_question_select(question_random_id);
         }
     }
-    </script>
+getDynamicFormData = (id = 0) => {
+    var url = conf.getDynamicFormData.url(id);
+    var method = conf.getDynamicFormData.method;
+    var data = {};
+    TRIFED.asyncAjaxHit(url, method, data, function (response, cb) {
+        if (response) {
+            $('#title').val(response.data.title);
+
+            var questions=response.data.questions;
+            var question_no=0;
+            questions.forEach((row)=>{
+                ++question_no;
+                //var question_random_id=Date.now();
+                var question_random_id=question_no;
+                add_Question(row,question_random_id);
+                var option_type=row.element_type;
+                $('#question_answer_option_'+question_random_id).val(row.element_type);//.trigger('change');
+                if(option_type=='select' || option_type=='radio' ||  option_type=='checkbox')
+                {
+                    var options=row.options;
+                    options.forEach((opt)=>{
+                        add_select_options(question_random_id,opt);
+                    });
+                    
+
+                }else{
+                    $(".options_"+question_random_id).remove();
+                }
+               
+            })
+        }
+    });
+}
+   
 </script>
 </body>
 

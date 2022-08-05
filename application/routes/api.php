@@ -81,8 +81,9 @@ Route::middleware('auth:api')->group( function () {
     Route::get('getQuestionsList/{id}', [FormController::class,'getQuestionsList']);
     Route::get('forms_filed_list', [FormController::class,'forms_filed_list']);
     Route::post('addFormsAnswer', [FormController::class,'addFormsAnswer']);
-    Route::get('answers_view/{id}', [FormController::class,'answers_view']);
+    Route::post('answers_view', [FormController::class,'answers_view']);
     Route::get('forms_list', [FormController::class,'forms_list']);
+    Route::get('getDynamicFormData/{id}', [FormController::class,'getDynamicFormData']);
     
 });
 Route::apiResource('cron', CronController::class);
