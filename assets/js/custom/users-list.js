@@ -81,6 +81,13 @@ $(function () {
 						{ 
 							"orderable": false,
 							"render": function(data, type, row) {
+									return row.created_at;
+							}
+							 
+						},
+						{ 
+							"orderable": false,
+							"render": function(data, type, row) {
 									var html='';
 									html +='<a href="add-users.php?id='+row.id+'" class="ti-pencil"></a> ';
 									

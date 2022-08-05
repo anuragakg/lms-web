@@ -17,9 +17,13 @@ class UsersService
         $limit = $request['length']??10;
         $search = isset($request['search']['value'])?$request['search']['value']:'';
         
-        $user=User::orderBy('id','desc');
+        $user=User::leftJoin('user_roles', function($join) {
+          $join->on('users.role', '=', 'user_roles.id');
+        })->orderBy('users.id','desc');
+
+
         if(!empty($search)){
-            $user=$user->where(DB::raw("CONCAT(`name`,`email`)"), 'LIKE', "%".$search."%");    
+            $user=$user->where(DB::raw("CONCAT(users.name,users.email,user_roles.title)"), 'LIKE', "%".$search."%");    
         }
         
         return $user->paginate($limit);
